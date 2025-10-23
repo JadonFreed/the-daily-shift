@@ -3,24 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Shift: NHL Roster IQ</title>
+    <title>The Shift: Roster IQ</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     
     <script>
-        // Custom Tailwind Configuration for Electric Rink theme
+        // Custom Tailwind Configuration for Classic Rink theme
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'primary-dark': '#0A0A0A', // Deep Charcoal (60%)
-                        'secondary-light': '#EAEAEA', // Light Silver (30%)
-                        'accent-cyan': '#00FFFF', // Electric Cyan (10%)
-                        'error-red': '#FF3131',
+                        'primary-dark': '#051C2C', // Dark Rink / Navy (60%)
+                        'secondary-light': '#E1F5FE', // Ice Blue / Off-White (30%)
+                        'accent-red': '#C8102E', // Red / Warm Accent (10%)
+                        'error-red': '#FF3131', // Bright red for feedback
+                        'rank-gold': '#FFD700', // Gold for top ranks
                     },
                     fontFamily: {
-                        sans: ['Orbitron', 'sans-serif'], // Kinetic Typography aesthetic
+                        sans: ['Roboto', 'sans-serif'], // Clean, readable font
                     },
                 }
             }
@@ -29,24 +30,25 @@
 </head>
 <body class="bg-primary-dark text-secondary-light min-h-screen flex items-center justify-center p-4">
 
-    <div id="app-container" class="w-full max-w-2xl bg-primary-dark/95 shadow-2xl rounded-xl p-6 md:p-8 border border-accent-cyan/10">
+    <div id="app-container" class="w-full max-w-2xl bg-primary-dark/95 shadow-2xl rounded-xl p-6 md:p-8 border-4 border-secondary-light/30">
         
         <header class="text-center mb-6">
-            <h1 class="text-3xl md:text-5xl font-bold text-accent-cyan glow-text border-b border-accent-cyan/20 pb-2">
+            <h1 class="text-3xl md:text-5xl font-bold text-secondary-light border-b border-secondary-light/50 pb-2">
                 THE SHIFT: ROSTER IQ
             </h1>
-            <p class="text-sm text-secondary-light/70 mt-1">ADVANCED ANALYTICS QUIZ DASHBOARD</p>
+            <p class="text-sm text-secondary-light/70 mt-1">MASTER YOUR HOCKEY ROSTER KNOWLEDGE</p>
         </header>
 
         <main id="game-area" class="min-h-[400px]">
             </main>
         
-        <footer class="mt-6 pt-4 border-t border-secondary-light/10 text-xs flex justify-between">
-            <div>
-                <span class="text-accent-cyan">High Score: </span><span id="high-score">0</span>
+        <footer class="mt-6 pt-4 border-t border-secondary-light/20 text-sm flex justify-between items-center">
+            <div id="overall-rank-display">
+                <span class="text-secondary-light/80">OVERALL RANK: </span>
+                <span id="player-rank" class="text-lg font-bold text-accent-red">ROOKIE</span>
             </div>
             <div>
-                <span class="text-accent-cyan">Current Streak: </span><span id="current-streak">0</span>
+                <span class="text-secondary-light/80">BEST STREAK: </span><span id="current-streak">0</span>
             </div>
         </footer>
     </div>
