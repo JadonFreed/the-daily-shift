@@ -1,0 +1,58 @@
+/* Custom CSS for mandated visual effects */
+
+/* Kinetic Typography Style & Accent Glow */
+.glow-text {
+    text-shadow: 0 0 5px var(--tw-colors-accent-cyan), 0 0 10px var(--tw-colors-accent-cyan);
+    letter-spacing: 0.05em;
+}
+
+/* Glassmorphism for Player Cards */
+.player-card {
+    background-color: rgba(4, 255, 255, 0.05); /* Very light Cyan tint */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 255, 255, 0.2); /* Thin cyan border */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Accent Button Styles (Interactive & Feedback) */
+.accent-button {
+    @apply bg-accent-cyan text-primary-dark font-bold py-3 px-6 rounded-lg transition-all duration-150 shadow-lg;
+    box-shadow: 0 0 5px var(--tw-colors-accent-cyan);
+}
+
+.accent-button:hover {
+    @apply bg-opacity-80;
+    box-shadow: 0 0 15px var(--tw-colors-accent-cyan);
+}
+
+/* Micro-animations: Correct Answer Pulse */
+@keyframes correct-pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 var(--tw-colors-accent-cyan); }
+    50% { transform: scale(1.03); box-shadow: 0 0 10px 5px var(--tw-colors-accent-cyan); }
+    100% { transform: scale(1); box-shadow: none; }
+}
+
+.pulse-correct {
+    animation: correct-pulse 0.3s ease-out;
+}
+
+/* Micro-animations: Incorrect Answer Red Flash */
+.flash-incorrect {
+    background-color: var(--tw-colors-error-red) !important;
+    color: var(--tw-colors-secondary-light) !important;
+    animation: none; /* Override pulse animation */
+}
+
+/* Kinetic Typography for Question Text */
+.kinetic-text {
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: 0 0 2px var(--tw-colors-secondary-light);
+}
+
+/* Hide content initially to prevent flashes */
+[data-state="hidden"] {
+    display: none;
+}
