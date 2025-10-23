@@ -1,7 +1,6 @@
 const QUESTIONS_PER_SHIFT = 10;
 const TIME_LIMIT = 60; // seconds
-// *** IMPORTANT FIX FOR GITHUB PAGES DEPLOYMENT ***
-// Replace 'your-repo-name' with your actual GitHub repository name, e.g., '/the-daily-shift/'
+// *** CORRECT PATH FOR GITHUB PAGES DEPLOYMENT (assuming repo name is 'the-daily-shift') ***
 const JSON_FILE = '/the-daily-shift/nhl_players_updated.json';
 
 let playersData = [];
@@ -96,6 +95,12 @@ const saveStats = (newScore, finalCorrect) => {
 const loadGame = async () => {
     try {
         const response = await fetch(JSON_FILE);
+        
+        // Ensure response is OK before trying to parse JSON
+        if (!response.ok) {
+             throw new Error(`HTTP error! status: ${response.status} at path ${JSON_FILE}`);
+        }
+        
         playersData = await response.json();
         availableTeams = getTeams(playersData);
 
@@ -109,7 +114,15 @@ const loadGame = async () => {
 
     } catch (error) {
         console.error("Failed to load NHL players data:", error);
-        document.getElementById('game-area').innerHTML = `<p class="text-error-red">ERROR: Could not load player data. Please check ${JSON_FILE} path in script.js (remember to include /your-repo-name/).</p>`;
+        // Display a clearer error message in the game area
+        document.getElementById('game-area').innerHTML = `
+            <p class="text-error-red text-xl font-bold">DATA LOAD FAILED</p>
+            <p class="text-secondary-light/70 mt-2">
+                Check the console for details. Common fix: Ensure line 4 in 'script.js' is: 
+                <code class="text-accent-cyan block mt-2">const JSON_FILE = '/the-daily-shift/nhl_players_updated.json';</code>
+                And that the file 'nhl_players_updated.json' is in your repo's root.
+            </p>
+        `;
     }
 };
 
@@ -121,7 +134,7 @@ const renderMainMenu = (team1 = 'NYR', team2 = 'PIT') => { // Example live game:
     const savedChallenge = JSON.parse(localStorage.getItem(`dailyShift_${todayKey}`));
     
     const dailyShiftButton = savedChallenge && savedChallenge.completed 
-        ? `<button class="accent-button w-full opacity-50 cursor-not-allowed" disabled>DAILY SHIFT COMPLETE (RESET: TOMORROW)</button>`
+        ? `<button class="accent-button w-full opacity-50 cursor-not-allowed" disabled>1. DAILY SHIFT COMPLETE (RESET: TOMORROW)</button>`
         : `<button id="start-daily-shift" class="accent-button w-full">1. DAILY SHIFT (10 Random Questions, 60s)</button>`;
 
     area.innerHTML = `
@@ -542,7 +555,11 @@ const renderQuestionDisplay = (question) => {
 
 
 const renderDebriefScreen = (finalScore, finalCorrect, mistakes, timeElapsed, modeName) => {
-    document.getElementById('game-timer').remove();
+    const timerElement = document.getElementById('game-timer');
+    if (timerElement) {
+        timerElement.remove();
+    }
+    
     const area = document.getElementById('game-area');
     const accuracy = ((finalCorrect / QUESTIONS_PER_SHIFT) * 100).toFixed(0);
     const timeRemaining = TIME_LIMIT - timeElapsed;
