@@ -1,7 +1,7 @@
 const QUESTIONS_PER_SHIFT = 10;
 const TIME_LIMIT = 60; // seconds
 // NOTE: Please ensure this path is correct for your repo!
-const JSON_FILE = '/the-daily-shift/nhl_players_updated.json'; 
+const JSON_FILE = '/the-daily-shift/nhl_players_updated.json';
 
 let playersData = [];
 let availableTeams = [];
