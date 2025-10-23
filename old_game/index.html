@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Daily Shift: NHL Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script>
+        // Custom Tailwind Configuration for Electric Rink theme
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#0A0A0A', // Deep Charcoal (60%)
+                        'secondary-light': '#EAEAEA', // Light Silver (30%)
+                        'accent-cyan': '#00FFFF', // Electric Cyan (10%)
+                        'error-red': '#FF3131',
+                    },
+                    fontFamily: {
+                        sans: ['Orbitron', 'sans-serif'], // Kinetic Typography aesthetic
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-primary-dark text-secondary-light min-h-screen flex items-center justify-center p-4">
+
+    <div id="app-container" class="w-full max-w-2xl bg-primary-dark/95 shadow-2xl rounded-xl p-6 md:p-8 border border-accent-cyan/10">
+        
+        <header class="text-center mb-6">
+            <h1 class="text-3xl md:text-5xl font-bold text-accent-cyan glow-text border-b border-accent-cyan/20 pb-2">
+                THE DAILY SHIFT
+            </h1>
+            <p class="text-sm text-secondary-light/70 mt-1">TEST YOUR NHL ANALYTICS. ONE CHANCE. DAILY RESET.</p>
+        </header>
+
+        <main id="game-area" class="min-h-[400px]">
+            </main>
+        
+        <footer class="mt-6 pt-4 border-t border-secondary-light/10 text-xs flex justify-between">
+            <div>
+                <span class="text-accent-cyan">High Score: </span><span id="high-score">0</span>
+            </div>
+            <div>
+                <span class="text-accent-cyan">Current Streak: </span><span id="current-streak">0</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,15 +1,18 @@
 const QUESTIONS_PER_SHIFT = 10;
 const TIME_LIMIT = 60; // seconds
-const JSON_FILE = 'nhl_players.json';
+// *** IMPORTANT FIX FOR GITHUB PAGES DEPLOYMENT ***
+// Replace 'your-repo-name' with your actual GitHub repository name, e.g., '/the-daily-shift/'
+const JSON_FILE = '/the-daily-shift/nhl_players.json'; 
 
 let playersData = [];
+let availableTeams = [];
 let dailyQuestions = [];
 let currentQuestionIndex = 0;
 let score = 0;
 let correctAnswers = 0;
+let mistakes = [];
 let timerInterval;
 let startTime;
-let mistakes = [];
 
 // --- Utility Functions ---
 
@@ -28,15 +31,12 @@ const getDailySeed = () => {
 
 const shuffleArray = (array, seed) => {
     let currentIndex = array.length, randomIndex;
-    let prng = (seed) => seededRandom(seed + 100); // Start with a unique seed based on the daily seed
+    let prng = (seed) => seededRandom(seed + 100);
 
-    // While there remain elements to shuffle.
     while (currentIndex !== 0) {
-        // Pick a remaining element.
         randomIndex = Math.floor(prng(currentIndex) * currentIndex);
         currentIndex--;
 
-        // And swap it with the current element.
         [array[currentIndex], array[randomIndex]] = [
             array[randomIndex], array[currentIndex]
         ];
@@ -44,9 +44,15 @@ const shuffleArray = (array, seed) => {
     return array;
 }
 
+const getTeams = (data) => {
+    return [...new Set(data.map(p => p.team_abbr))].map(abbr => {
+        return { abbr: abbr, name: data.find(p => p.team_abbr === abbr).team_name };
+    }).sort((a, b) => a.name.localeCompare(b.name));
+}
+
 // --- Local Storage Management ---
 
-const getTodayDateKey = () => new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+const getTodayDateKey = () => new Date().toISOString().slice(0, 10);
 
 const getSavedStats = () => ({
     highScore: parseInt(localStorage.getItem('highScore') || '0'),
@@ -58,27 +64,24 @@ const saveStats = (newScore, finalCorrect) => {
     const todayKey = getTodayDateKey();
     const stats = getSavedStats();
     
-    // 1. Update High Score
     if (newScore > stats.highScore) {
         localStorage.setItem('highScore', newScore.toString());
         document.getElementById('high-score').textContent = newScore;
     }
 
-    // 2. Update Streak
     let newStreak = stats.currentStreak;
     if (finalCorrect === QUESTIONS_PER_SHIFT) {
-        // Check if today is the day after the last played date with a perfect score
         const yesterday = new Date(todayKey);
         yesterday.setDate(yesterday.getDate() - 1);
         const yesterdayKey = yesterday.toISOString().slice(0, 10);
         
         if (stats.lastPlayedDate === yesterdayKey) {
-            newStreak += 1; // Increment streak
+            newStreak += 1;
         } else if (stats.lastPlayedDate !== todayKey) {
-            newStreak = 1; // Start new streak
+            newStreak = 1;
         }
     } else {
-        newStreak = 0; // Streak broken
+        newStreak = 0;
     }
     
     if (stats.lastPlayedDate !== todayKey) {
@@ -94,26 +97,114 @@ const loadGame = async () => {
     try {
         const response = await fetch(JSON_FILE);
         playersData = await response.json();
+        availableTeams = getTeams(playersData);
+
         const { highScore, currentStreak } = getSavedStats();
         
-        // Update persistent stats on UI
         document.getElementById('high-score').textContent = highScore;
         document.getElementById('current-streak').textContent = currentStreak;
         
-        // Prepare daily challenge
-        prepareDailyChallenge();
-        renderStartScreen();
+        // Go to Main Menu
+        renderMainMenu();
 
     } catch (error) {
         console.error("Failed to load NHL players data:", error);
-        document.getElementById('game-area').innerHTML = `<p class="text-error-red">ERROR: Could not load player data. Please check ${JSON_FILE}.</p>`;
+        document.getElementById('game-area').innerHTML = `<p class="text-error-red">ERROR: Could not load player data. Please check ${JSON_FILE} path in script.js (remember to include /your-repo-name/).</p>`;
     }
 };
 
+// --- Menu Rendering ---
+
+const renderMainMenu = (team1 = 'NYR', team2 = 'PIT') => { // Example live game: NYR vs PIT
+    const area = document.getElementById('game-area');
+    const todayKey = getTodayDateKey();
+    const savedChallenge = JSON.parse(localStorage.getItem(`dailyShift_${todayKey}`));
+    
+    const dailyShiftButton = savedChallenge && savedChallenge.completed 
+        ? `<button class="accent-button w-full opacity-50 cursor-not-allowed" disabled>DAILY SHIFT COMPLETE (RESET: TOMORROW)</button>`
+        : `<button id="start-daily-shift" class="accent-button w-full">1. DAILY SHIFT (10 Random Questions, 60s)</button>`;
+
+    area.innerHTML = `
+        <div class="text-center space-y-6">
+            <h2 class="text-2xl font-bold text-secondary-light border-b border-secondary-light/20 pb-2">SELECT GAME MODE</h2>
+
+            <div class="space-y-4">
+                <div class="p-4 border border-accent-cyan/20 rounded-lg">
+                    ${dailyShiftButton}
+                    <p class="text-xs text-secondary-light/70 mt-2">The original quick-fire challenge. Tests general knowledge.</p>
+                </div>
+
+                <div class="p-4 border border-accent-cyan/20 rounded-lg">
+                    <button id="start-team-quiz" class="accent-button w-full bg-secondary-light/10 text-secondary-light hover:bg-accent-cyan/20">2. TEAM ROSTER QUIZ</button>
+                    <p class="text-xs text-secondary-light/70 mt-2">Focus your study on a single team roster of your choice.</p>
+                </div>
+            </div>
+
+            <div class="p-4 border border-error-red/50 rounded-lg bg-error-red/10 animate-pulse-slow">
+                <p class="text-lg font-bold text-error-red">LIVE GAME ALERT: ${team1} vs ${team2}</p>
+                <button id="start-live-quiz" class="accent-button w-full bg-error-red text-secondary-light hover:bg-error-red/80 mt-2">
+                    3. BATTLE QUIZ: ${team1} vs ${team2}
+                </button>
+                <p class="text-xs text-secondary-light/70 mt-2">
+                    (NOTE: This is a simulated alert. In a live application, this button would dynamically appear using the Scoreboard API found in search.)
+                </p>
+            </div>
+            
+        </div>
+    `;
+
+    if (!(savedChallenge && savedChallenge.completed)) {
+        document.getElementById('start-daily-shift').addEventListener('click', () => {
+             prepareDailyChallenge();
+             startShift("Daily Shift");
+        });
+    }
+    
+    document.getElementById('start-team-quiz').addEventListener('click', renderTeamSelectScreen);
+    document.getElementById('start-live-quiz').addEventListener('click', () => {
+         prepareTeamCentricChallenge(team1, team2);
+         startShift(`Battle Quiz: ${team1} vs ${team2}`);
+    });
+};
+
+// --- Team Select Screen ---
+
+const renderTeamSelectScreen = () => {
+    const area = document.getElementById('game-area');
+    
+    const teamOptions = availableTeams.map(t => 
+        `<option value="${t.abbr}">${t.team_name} (${t.abbr})</option>`
+    ).join('');
+
+    area.innerHTML = `
+        <div class="space-y-6">
+            <h2 class="text-2xl font-bold text-accent-cyan border-b border-accent-cyan/20 pb-2">TEAM ROSTER QUIZ</h2>
+            
+            <p class="text-secondary-light/80">Select a team to focus your 10-question roster quiz:</p>
+            
+            <select id="team-selector" class="w-full p-3 bg-secondary-light/10 text-secondary-light rounded-lg border border-accent-cyan/20">
+                ${teamOptions}
+            </select>
+
+            <button id="start-team-centric-shift" class="accent-button w-full mt-4">START ROSTER QUIZ</button>
+            <button id="back-to-menu" class="w-full text-secondary-light/50 hover:text-accent-cyan/80 mt-4">← Back to Main Menu</button>
+        </div>
+    `;
+
+    document.getElementById('start-team-centric-shift').addEventListener('click', () => {
+        const teamAbbr = document.getElementById('team-selector').value;
+        const teamName = availableTeams.find(t => t.abbr === teamAbbr).name;
+        prepareTeamCentricChallenge(teamAbbr);
+        startShift(`Team Roster Quiz: ${teamName}`);
+    });
+    
+    document.getElementById('back-to-menu').addEventListener('click', renderMainMenu);
+}
+
 // --- Question Generation Logic ---
 
-const getRandomPlayer = (excludeIds = []) => {
-    const availablePlayers = playersData.filter(p => !excludeIds.includes(p.id));
+const getRandomPlayer = (data, excludeIds = []) => {
+    const availablePlayers = data.filter(p => !excludeIds.includes(p.id));
     if (availablePlayers.length === 0) return null;
     const randomIndex = Math.floor(Math.random() * availablePlayers.length);
     return availablePlayers[randomIndex];
@@ -124,8 +215,9 @@ const generateIdentityCheck = (dailyPlayer) => {
     let options = [correctPlayer.player_name];
     let excludeIds = [correctPlayer.id];
 
+    // Get 3 incorrect player names from the *entire* player pool
     while (options.length < 4) {
-        const decoy = getRandomPlayer(excludeIds);
+        const decoy = getRandomPlayer(playersData, excludeIds);
         if (decoy && !options.includes(decoy.player_name)) {
             options.push(decoy.player_name);
             excludeIds.push(decoy.id);
@@ -134,182 +226,173 @@ const generateIdentityCheck = (dailyPlayer) => {
 
     return {
         type: "Identity Check",
-        player: correctPlayer,
+        player: { // Only include display info, not the answer
+            team_abbr: correctPlayer.team_abbr, 
+            position: correctPlayer.position, 
+            jersey_number: correctPlayer.jersey_number
+        },
         question: `IDENTITY CHECK: Which player matches this card?`,
-        options: shuffleArray(options, getDailySeed() + currentQuestionIndex), // Shuffle options deterministically
-        correctAnswer: correctPlayer.player_name
+        options: shuffleArray(options, getDailySeed() + currentQuestionIndex),
+        correctAnswer: correctPlayer.player_name,
+        // Include full player data only for the Debrief Review
+        debriefData: { name: correctPlayer.player_name, trait: correctPlayer.unique_trait }
     };
 };
 
 const generatePositionalDrill = (dailyPlayer) => {
     const correctPlayer = dailyPlayer;
-    const allPositions = ['C', 'LW', 'RW', 'D', 'G'];
-    let options = [correctPlayer.position.split('/')[0]];
+    // Note: 'L' and 'R' are for forwards (LW/RW). For the quiz, simplify to C, F, D, G.
+    const primaryPosition = correctPlayer.position.split('/')[0];
+    const simplifiedPosition = ['L', 'R', 'C'].includes(primaryPosition) ? 'F' : primaryPosition;
+
+    const allPositions = ['F', 'D', 'G'];
+    let options = [simplifiedPosition];
     
-    // Filter to get unique decoy positions
-    const decoyPositions = allPositions.filter(p => !correctPlayer.position.includes(p));
+    const decoyPositions = allPositions.filter(p => p !== simplifiedPosition);
     shuffleArray(decoyPositions, getDailySeed() + currentQuestionIndex + 1);
 
     while (options.length < 4 && decoyPositions.length > 0) {
-        options.push(decoyPositions.pop());
+        // Include "W" for forward as a close decoy if needed
+        options.push(decoyPositions.pop() || 'W');
     }
     
     return {
         type: "Positional Drill",
-        player: correctPlayer,
-        question: `POSITIONAL DRILL: What is the primary position of ${correctPlayer.player_name} (${correctPlayer.team_abbr})?`,
+        player: { // Only include info to ask the question
+            name: correctPlayer.player_name,
+            team_abbr: correctPlayer.team_abbr,
+            jersey_number: correctPlayer.jersey_number
+        },
+        question: `POSITIONAL DRILL: What is the primary role of #${correctPlayer.jersey_number} ${correctPlayer.player_name} (${correctPlayer.team_abbr})?`,
         options: shuffleArray(options, getDailySeed() + currentQuestionIndex),
-        correctAnswer: correctPlayer.position.split('/')[0]
+        correctAnswer: simplifiedPosition,
+        debriefData: { name: correctPlayer.player_name, trait: correctPlayer.unique_trait }
     };
 };
 
-const generateRatingMatchup = (dailyPlayer) => {
-    const playerA = dailyPlayer;
-    // Find a second player with a rating difference to make the question interesting
-    let playerB;
-    const playerA_rating = playerA.rating;
+const generateJerseyNumberCheck = (dailyPlayer) => {
+    const correctPlayer = dailyPlayer;
+    let options = [correctPlayer.jersey_number];
+    let excludeIds = [correctPlayer.id];
     
-    // Attempt to find a player within a 5-15 rating band of playerA (if possible)
-    let candidates = playersData.filter(p => 
-        p.id !== playerA.id && 
-        Math.abs(p.rating - playerA_rating) >= 5 && 
-        Math.abs(p.rating - playerA_rating) <= 15
-    );
-    
-    if (candidates.length === 0) {
-        // Fallback: just pick a random player
-        playerB = getRandomPlayer([playerA.id]);
-    } else {
-        playerB = candidates[Math.floor(seededRandom(getDailySeed() + currentQuestionIndex + 2) * candidates.length)];
+    // Get 3 incorrect jersey numbers from other players
+    while (options.length < 4) {
+        const decoy = getRandomPlayer(playersData, excludeIds);
+        if (decoy && !options.includes(decoy.jersey_number)) {
+            options.push(decoy.jersey_number);
+            excludeIds.push(decoy.id);
+        }
     }
-
-    if (!playerB) { 
-        // Should not happen with large dataset but as a fail-safe
-        playerB = getRandomPlayer([playerA.id]);
-    }
-
-    const higherPlayer = playerA.rating > playerB.rating ? playerA : playerB;
-    const lowerPlayer = playerA.rating < playerB.rating ? playerA : playerB;
-    const isTie = playerA.rating === playerB.rating;
-
-    // Shuffle A and B to randomize display order
-    const displayPlayers = shuffleArray([playerA, playerB], getDailySeed() + currentQuestionIndex);
 
     return {
-        type: "Rating Matchup",
-        player: playerA, // The 'main' player, though both are important
-        playerB: playerB,
-        question: `RATING MATCHUP: Which player has the higher Overall Rating?`,
-        options: [
-            `${displayPlayers[0].player_name} (${displayPlayers[0].rating})`,
-            `${displayPlayers[1].player_name} (${displayPlayers[1].rating})`,
-            "They have the same rating"
-        ],
-        correctAnswer: isTie ? "They have the same rating" : `${higherPlayer.player_name} (${higherPlayer.rating})`
+        type: "Jersey Number Check",
+        player: {
+            name: correctPlayer.player_name,
+            team_abbr: correctPlayer.team_abbr,
+            position: correctPlayer.position
+        },
+        question: `JERSEY CHECK: What number does ${correctPlayer.player_name} (${correctPlayer.team_abbr}) wear?`,
+        options: shuffleArray(options, getDailySeed() + currentQuestionIndex),
+        correctAnswer: correctPlayer.jersey_number,
+        debriefData: { name: correctPlayer.player_name, trait: correctPlayer.unique_trait }
     };
 };
 
+// --- Challenge Preparation ---
 
 const prepareDailyChallenge = () => {
     const dailySeed = getDailySeed();
     const todayKey = getTodayDateKey();
-    const savedChallenge = localStorage.getItem(`dailyShift_${todayKey}`);
+    
+    let availablePlayers = shuffleArray([...playersData], dailySeed);
+    dailyQuestions = [];
+    mistakes = [];
 
-    if (savedChallenge) {
-        // Challenge for today already exists in localStorage
-        const data = JSON.parse(savedChallenge);
-        dailyQuestions = data.questions;
-        // Check if the user already completed the shift today
-        if (data.completed) {
-            renderDebriefScreen(data.finalScore, data.finalCorrect, data.mistakes, data.timeElapsed);
-            return;
-        }
-    } else {
-        // Generate new challenge
-        let availablePlayers = shuffleArray([...playersData], dailySeed); // Copy and shuffle players based on daily seed
-        dailyQuestions = [];
-        mistakes = [];
+    const questionTypes = shuffleArray([
+        'Identity Check', 'Positional Drill', 'Jersey Number Check', 
+        'Identity Check', 'Positional Drill', 'Jersey Number Check',
+        'Identity Check', 'Positional Drill', 'Jersey Number Check', 'Identity Check' 
+    ], dailySeed + 1); // 4 of each Identity/Positional, 2 Jersey Check (for 10 total)
 
-        // Distribute questions evenly across the three modes (5 questions from two modes, 5 from the third is complex. Let's aim for 3-4 from each mode for 10 questions.)
+    for (let i = 0; i < QUESTIONS_PER_SHIFT; i++) {
+        const player = availablePlayers.pop(); 
         
-        const questionTypes = shuffleArray([
-            'Identity Check', 'Positional Drill', 'Rating Matchup', 
-            'Identity Check', 'Positional Drill', 'Rating Matchup',
-            'Identity Check', 'Positional Drill', 'Rating Matchup', 'Rating Matchup' // 10 total
-        ], dailySeed + 1);
+        if (!player) break;
 
-        for (let i = 0; i < QUESTIONS_PER_SHIFT; i++) {
-            let question;
-            const player = availablePlayers.pop(); 
-
-            // Use the determined question type for the current player
-            if (questionTypes[i] === 'Identity Check') {
-                question = generateIdentityCheck(player);
-            } else if (questionTypes[i] === 'Positional Drill') {
-                question = generatePositionalDrill(player);
-            } else if (questionTypes[i] === 'Rating Matchup') {
-                question = generateRatingMatchup(player);
-            }
-            dailyQuestions.push(question);
+        let question;
+        const type = questionTypes[i];
+        
+        if (type === 'Identity Check') {
+            question = generateIdentityCheck(player);
+        } else if (type === 'Positional Drill') {
+            question = generatePositionalDrill(player);
+        } else if (type === 'Jersey Number Check') {
+            question = generateJerseyNumberCheck(player);
         }
-
-        // Save the newly generated challenge
-        localStorage.setItem(`dailyShift_${todayKey}`, JSON.stringify({
-            questions: dailyQuestions,
-            completed: false,
-            finalScore: 0,
-            finalCorrect: 0,
-            mistakes: [],
-            timeElapsed: 0
-        }));
+        
+        dailyQuestions.push(question);
     }
+
+    // Save the newly generated challenge
+    localStorage.setItem(`dailyShift_${todayKey}`, JSON.stringify({
+        questions: dailyQuestions,
+        completed: false,
+        finalScore: 0,
+        finalCorrect: 0,
+        mistakes: [],
+        timeElapsed: 0
+    }));
 };
+
+const prepareTeamCentricChallenge = (teamAbbr1, teamAbbr2 = null) => {
+    const modeSeed = Date.now(); // Use current time for non-daily modes
+    
+    // Filter players by team(s)
+    let teamPlayers = playersData.filter(p => p.team_abbr === teamAbbr1 || (teamAbbr2 && p.team_abbr === teamAbbr2));
+    
+    // Ensure we have enough players, otherwise select a few random from other teams
+    while (teamPlayers.length < QUESTIONS_PER_SHIFT) {
+        const randomPlayer = getRandomPlayer(playersData, teamPlayers.map(p => p.id));
+        if (randomPlayer) teamPlayers.push(randomPlayer);
+        else break;
+    }
+
+    let availablePlayers = shuffleArray(teamPlayers, modeSeed);
+    dailyQuestions = [];
+    mistakes = [];
+
+    // All questions are Roster/Jersey focused for Team-Centric mode (no Identity Check on face/rating)
+    const questionTypes = shuffleArray([
+        'Positional Drill', 'Jersey Number Check', 'Positional Drill', 'Jersey Number Check',
+        'Positional Drill', 'Jersey Number Check', 'Positional Drill', 'Jersey Number Check', 
+        'Positional Drill', 'Jersey Number Check'
+    ], modeSeed + 1);
+
+    for (let i = 0; i < QUESTIONS_PER_SHIFT; i++) {
+        const player = availablePlayers.pop();
+        if (!player) break;
+
+        let question;
+        const type = questionTypes[i];
+        
+        if (type === 'Positional Drill') {
+            question = generatePositionalDrill(player);
+        } else if (type === 'Jersey Number Check') {
+            question = generateJerseyNumberCheck(player);
+        }
+        dailyQuestions.push(question);
+    }
+}
+
 
 // --- Game Flow and Rendering ---
 
-const renderStartScreen = () => {
-    const area = document.getElementById('game-area');
-    const todayKey = getTodayDateKey();
-    const savedChallenge = JSON.parse(localStorage.getItem(`dailyShift_${todayKey}`));
-
-    if (savedChallenge && savedChallenge.completed) {
-        // User has already played today, show debrief immediately (handled in loadGame, but safe check here)
-        return;
-    }
-    
-    area.innerHTML = `
-        <div class="text-center space-y-6">
-            <h2 class="text-2xl font-bold text-secondary-light">THE DAILY SHIFT CHALLENGE</h2>
-            <p class="text-secondary-light/80">
-                You have one attempt per day. Answer ${QUESTIONS_PER_SHIFT} questions in 60 seconds.
-            </p>
-            <div class="flex justify-around text-lg font-mono">
-                <div class="p-4 border border-accent-cyan/50 rounded-lg">
-                    <span class="text-accent-cyan block">Questions</span> 10
-                </div>
-                <div class="p-4 border border-accent-cyan/50 rounded-lg">
-                    <span class="text-accent-cyan block">Time Limit</span> 60s
-                </div>
-            </div>
-            <button id="start-button" class="accent-button w-full">INITIATE SHIFT (START)</button>
-        </div>
-    `;
-    
-    document.getElementById('start-button').addEventListener('click', startShift);
-};
-
-const startShift = () => {
+const startShift = (modeName) => {
     currentQuestionIndex = 0;
     correctAnswers = 0;
     score = 0;
     mistakes = [];
     startTime = Date.now();
-    
-    // Start Timer
-    const timerElement = document.getElementById('game-timer');
-    if (timerElement) {
-        timerElement.remove(); // Remove old timer if it exists
-    }
     
     const timerDisplay = document.createElement('div');
     timerDisplay.id = 'game-timer';
@@ -322,45 +405,48 @@ const startShift = () => {
         
         if (remainingTime <= 0) {
             clearInterval(timerInterval);
-            endShift(true); // Time's up
+            endShift(modeName, true);
         } else {
             timerDisplay.textContent = `TIME: ${remainingTime}s`;
         }
     };
     
-    clearInterval(timerInterval); // Clear any existing interval
+    clearInterval(timerInterval);
     timerInterval = setInterval(updateTimer, 1000);
-    updateTimer(); // Initial call
+    updateTimer();
     
-    renderQuestion(dailyQuestions[currentQuestionIndex]);
+    renderQuestion(modeName, dailyQuestions[currentQuestionIndex]);
 };
 
-const endShift = (timedOut = false) => {
+const endShift = (modeName, timedOut = false) => {
     clearInterval(timerInterval);
     const timeElapsed = timedOut ? TIME_LIMIT : Math.floor((Date.now() - startTime) / 1000);
     const timeRemaining = TIME_LIMIT - timeElapsed;
 
     // Calculate final score
     const basePoints = correctAnswers * 100;
-    const speedMultiplier = 1 + (timeRemaining > 0 ? timeRemaining / TIME_LIMIT : 0);
+    // Speed multiplier logic simplified slightly, max 1.5x
+    const speedMultiplier = 1 + (timeRemaining > 0 ? timeRemaining / (TIME_LIMIT * 2) : 0);
     const finalScore = Math.floor(basePoints * speedMultiplier);
     
-    // Save completion status
-    const todayKey = getTodayDateKey();
-    localStorage.setItem(`dailyShift_${todayKey}`, JSON.stringify({
-        questions: dailyQuestions,
-        completed: true,
-        finalScore: finalScore,
-        finalCorrect: correctAnswers,
-        mistakes: mistakes,
-        timeElapsed: timeElapsed
-    }));
+    // Save completion status only for Daily Shift mode for streaks
+    if (modeName === "Daily Shift") {
+        const todayKey = getTodayDateKey();
+        localStorage.setItem(`dailyShift_${todayKey}`, JSON.stringify({
+            questions: dailyQuestions,
+            completed: true,
+            finalScore: finalScore,
+            finalCorrect: correctAnswers,
+            mistakes: mistakes,
+            timeElapsed: timeElapsed
+        }));
+        saveStats(finalScore, correctAnswers);
+    }
     
-    saveStats(finalScore, correctAnswers);
-    renderDebriefScreen(finalScore, correctAnswers, mistakes, timeElapsed);
+    renderDebriefScreen(finalScore, correctAnswers, mistakes, timeElapsed, modeName);
 };
 
-const handleAnswer = (userAnswer) => {
+const handleAnswer = (userAnswer, modeName) => {
     const currentQuestion = dailyQuestions[currentQuestionIndex];
     const isCorrect = userAnswer === currentQuestion.correctAnswer;
     const options = document.querySelectorAll('.option-button');
@@ -373,26 +459,23 @@ const handleAnswer = (userAnswer) => {
         }
     });
     
-    // Micro-animation and Feedback
     if (isCorrect) {
         correctAnswers++;
-        score += 100; // Base points
+        score += 100;
         answeredButton.classList.add('pulse-correct');
     } else {
-        // Incorrect Answer: Button briefly turns error red
         answeredButton.classList.add('flash-incorrect');
         
-        // Record mistake for debrief screen
+        // Record mistake: use the non-answer properties for the review screen
         mistakes.push({
             questionType: currentQuestion.type,
             questionText: currentQuestion.question,
-            player: currentQuestion.player,
-            uniqueTrait: currentQuestion.player.unique_trait,
             userAnswer: userAnswer,
-            correctAnswer: currentQuestion.correctAnswer
+            correctAnswer: currentQuestion.correctAnswer,
+            // Debrief data now explicitly contains the name and trait for the review
+            debriefData: currentQuestion.debriefData
         });
 
-        // Highlight the correct answer in accent color
         options.forEach(button => {
             if (button.textContent.trim() === currentQuestion.correctAnswer) {
                 button.classList.add('text-primary-dark', 'bg-accent-cyan');
@@ -400,23 +483,22 @@ const handleAnswer = (userAnswer) => {
         });
     }
 
-    // Move to next question after a brief delay
     setTimeout(() => {
         currentQuestionIndex++;
         if (currentQuestionIndex < QUESTIONS_PER_SHIFT) {
-            renderQuestion(dailyQuestions[currentQuestionIndex]);
+            renderQuestion(modeName, dailyQuestions[currentQuestionIndex]);
         } else {
-            endShift();
+            endShift(modeName);
         }
-    }, 1000); // 1-second pause for feedback animation
+    }, 1000);
 };
 
-const renderQuestion = (question) => {
+const renderQuestion = (modeName, question) => {
     const area = document.getElementById('game-area');
     area.innerHTML = `
         <div class="space-y-6">
             <div class="flex justify-between text-sm font-mono text-secondary-light/70">
-                <span>SCORE: <span class="text-accent-cyan">${score}</span></span>
+                <span>MODE: <span class="text-accent-cyan">${modeName}</span></span>
                 <span>QUESTION ${currentQuestionIndex + 1}/${QUESTIONS_PER_SHIFT}</span>
             </div>
 
@@ -427,8 +509,8 @@ const renderQuestion = (question) => {
                 ${renderQuestionDisplay(question)}
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6" id="options-grid">
-                    ${question.options.map((option, index) => `
-                        <button class="option-button w-full bg-secondary-light/10 text-secondary-light py-3 px-4 rounded-lg hover:bg-accent-cyan/20 transition-colors duration-150" data-answer="${option}">
+                    ${question.options.map((option) => `
+                        <button class="option-button w-full bg-secondary-light/10 text-secondary-light py-3 px-4 rounded-lg hover:bg-accent-cyan/20 transition-colors duration-150" data-answer="${option}" data-mode="${modeName}">
                             ${option}
                         </button>
                     `).join('')}
@@ -437,56 +519,34 @@ const renderQuestion = (question) => {
         </div>
     `;
     
-    // Attach event listeners to options
     document.querySelectorAll('.option-button').forEach(button => {
-        button.addEventListener('click', (e) => handleAnswer(e.target.dataset.answer));
+        button.addEventListener('click', (e) => handleAnswer(e.target.dataset.answer, e.target.dataset.mode));
     });
 };
 
 const renderQuestionDisplay = (question) => {
-    // Player Card (Identity Check & Positional Drill)
-    if (question.type === 'Identity Check' || question.type === 'Positional Drill') {
+    // Only show the card for Identity Check, where the Player Name is the question/answer
+    if (question.type === 'Identity Check') {
         const p = question.player;
         return `
-            <div class="player-card p-4 mx-auto w-48 text-center">
-                <p class="text-4xl font-bold text-accent-cyan">${p.rating}</p>
+            <div class="player-card p-4 mx-auto w-48 text-center mb-6">
+                <p class="text-4xl font-bold text-accent-cyan">#${p.jersey_number}</p>
                 <p class="text-xl text-secondary-light/80">${p.team_abbr}</p>
                 <p class="text-lg text-secondary-light">${p.position.split('/')[0]}</p>
-                ${question.type === 'Positional Drill' ? `<p class="text-2xl mt-2 font-bold">${p.player_name}</p>` : ''}
             </div>
         `;
     }
-    
-    // Rating Matchup
-    if (question.type === 'Rating Matchup') {
-        const pA = question.player;
-        const pB = question.playerB;
-        return `
-            <div class="flex justify-center space-x-6">
-                <div class="player-card p-4 w-48 text-center">
-                    <p class="text-2xl font-bold text-secondary-light">PLAYER A</p>
-                    <p class="text-xl text-secondary-light">${pA.player_name}</p>
-                    <p class="text-lg text-accent-cyan/70">${pA.team_abbr}</p>
-                </div>
-                <div class="player-card p-4 w-48 text-center">
-                    <p class="text-2xl font-bold text-secondary-light">PLAYER B</p>
-                    <p class="text-xl text-secondary-light">${pB.player_name}</p>
-                    <p class="text-lg text-accent-cyan/70">${pB.team_abbr}</p>
-                </div>
-            </div>
-        `;
-    }
+    // Other modes display name/team in the question itself, so no need for an extra card.
     return '';
 };
 
 
-const renderDebriefScreen = (finalScore, finalCorrect, mistakes, timeElapsed) => {
+const renderDebriefScreen = (finalScore, finalCorrect, mistakes, timeElapsed, modeName) => {
     document.getElementById('game-timer').remove();
     const area = document.getElementById('game-area');
     const accuracy = ((finalCorrect / QUESTIONS_PER_SHIFT) * 100).toFixed(0);
     const timeRemaining = TIME_LIMIT - timeElapsed;
-    const speedBonus = 1 + (timeRemaining > 0 ? timeRemaining / TIME_LIMIT : 0);
-    const basePoints = finalCorrect * 100;
+    const speedBonus = 1 + (timeRemaining > 0 ? timeRemaining / (TIME_LIMIT * 2) : 0);
     
     area.innerHTML = `
         <div class="text-center space-y-6">
@@ -501,27 +561,31 @@ const renderDebriefScreen = (finalScore, finalCorrect, mistakes, timeElapsed) =>
 
             <h3 class="text-5xl font-bold py-4 border-y border-accent-cyan/50">TOTAL POINTS: <span class="text-accent-cyan">${finalScore}</span></h3>
 
-            <h4 class="text-xl font-bold text-error-red mt-8">MISTAKE REVIEW (${mistakes.length} ERRORS)</h4>
+            <h4 class="text-xl font-bold ${mistakes.length > 0 ? 'text-error-red' : 'text-accent-cyan'} mt-8">
+                MISTAKE REVIEW (${mistakes.length} ERRORS)
+            </h4>
             <div class="space-y-4 text-left max-h-60 overflow-y-auto pr-2">
                 ${mistakes.length === 0 ? `
                     <p class="text-lg text-secondary-light/80">PERFECT SHIFT! No review needed.</p>
                 ` : mistakes.map(m => `
                     <div class="p-3 border border-error-red/50 rounded-lg bg-error-red/10">
                         <p class="font-bold text-error-red">${m.questionType}: ${m.questionText}</p>
-                        <p class="text-sm mt-1">Your Answer: <span class="text-error-red">${m.userAnswer}</span></p>
+                        <p class="text-sm mt-1">Player: <span class="font-bold">${m.debriefData.name}</span></p>
+                        <p class="text-sm">Your Answer: <span class="text-error-red">${m.userAnswer}</span></p>
                         <p class="text-sm">Correct Answer: <span class="text-accent-cyan">${m.correctAnswer}</span></p>
                         <p class="text-sm mt-2 text-secondary-light/90">
-                            <span class="font-bold">Fact:</span> ${m.uniqueTrait}
+                            <span class="font-bold">Fact:</span> ${m.debriefData.trait}
                         </p>
                     </div>
                 `).join('')}
             </div>
             
-            <button class="accent-button w-full mt-8" disabled>
-                DAILY SHIFT COMPLETE - RESET TOMORROW
+            <button id="back-to-main-menu" class="accent-button w-full mt-8">
+                BACK TO MAIN MENU
             </button>
         </div>
     `;
+    document.getElementById('back-to-main-menu').addEventListener('click', renderMainMenu);
 };
 
 
