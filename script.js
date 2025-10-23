@@ -2,7 +2,7 @@ const QUESTIONS_PER_SHIFT = 10;
 const TIME_LIMIT = 60; // seconds
 // *** IMPORTANT FIX FOR GITHUB PAGES DEPLOYMENT ***
 // Replace 'your-repo-name' with your actual GitHub repository name, e.g., '/the-daily-shift/'
-const JSON_FILE = 'nhl_players.json'; 
+const JSON_FILE = '/the-daily-shift/nhl_players_updated.json';
 
 let playersData = [];
 let availableTeams = [];
