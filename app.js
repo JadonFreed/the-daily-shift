@@ -182,11 +182,13 @@ function createPlayerCard(player) {
     card.dataset.playerId = player.id;
     card.dataset.position = player.position;
     
-    // *** NEW CARD CONTENT: Use Jersey Number and Position ***
+    // *** NEW CARD CONTENT: Use Jersey Number, POS, AGE, and HEIGHT ***
+    // Player name is hidden to make it a guessing game.
     card.innerHTML = `
         <h5>#${player.jersey_number || 'XX'}</h5>
-        <p>${player.player_name}</p>
         <p>POS: ${player.position}</p>
+        <p>AGE: ${player.age || '?'}</p>
+        <p>HT: ${player.height || '?'}</p>
         <p class="rating-tag">RATING: ${player.rating}</p>
     `;
 
@@ -375,6 +377,8 @@ function calculateScore() {
             const userPlayer = gameState.userLineup[lineId][slotKey];
             
             // NOTE: Check against the name field to ensure the right player is in the slot
+            // The `correctPlayer.name` comes from `team_line_structures.json`
+            // The `userPlayer.player_name` comes from `nhl_players.json`
             if (userPlayer && correctPlayer && userPlayer.player_name === correctPlayer.name) {
                 correctSlots++;
             } else {
@@ -429,15 +433,16 @@ function renderDebrief(results, timeUp) {
             // FIX: Use player_name field from the full player object
             const userPlayerName = m.user ? m.user.player_name : "EMPTY SLOT";
             const correctPlayer = m.correct;
-            // Lookup the unique trait from the original allPlayers list using player ID
-            const correctPlayerTrait = gameState.allPlayers.find(p => p.player_name === correctPlayer.name)?.unique_trait || "Data pending.";
+            // Lookup the unique trait from the original allPlayers list
+            const correctPlayerObj = gameState.allPlayers.find(p => p.player_name === correctPlayer.name);
+            const correctPlayerTrait = correctPlayerObj?.unique_trait || "Data pending.";
 
             const item = document.createElement('div');
             item.className = 'mistake-item';
             item.innerHTML = `
                 <p><strong>ERROR ${m.lineId} - ${m.slotKey}:</strong> Placed 
                 <span class="accent-text">${userPlayerName}</span>.</p>
-                <p class="correct-answer">**CORRECT:** ${correctPlayer.name} (Rtg: ${correctPlayer.rating})</p>
+                <p classKA="correct-answer">**CORRECT:** ${correctPlayer.name} (Rtg: ${correctPlayer.rating})</p>
                 <p class="correct-answer">**WHY?** *${correctPlayerTrait}*</p>
             `;
             mistakeList.appendChild(item);
