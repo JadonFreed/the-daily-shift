@@ -43,12 +43,12 @@ function setScreen(screenName) {
 /** Loads JSON data and initializes the start screen */
 async function loadDataAndInitialize() {
     try {
-        // Load the General Player Data
+        // Renamed lineStructures to match previous output file name
         const playersResponse = await fetch('nhl_players.json');
         if (!playersResponse.ok) throw new Error('Failed to load nhl_players.json');
         gameState.allPlayers = await playersResponse.json();
 
-        // Load the Line Structure Answer Key
+        // **CRITICAL FIX**: Fetching the correct answer key
         const linesResponse = await fetch('team_line_structures.json');
         if (!linesResponse.ok) throw new Error('Failed to load team_line_structures.json');
         gameState.lineStructures = await linesResponse.json();
@@ -56,14 +56,18 @@ async function loadDataAndInitialize() {
         initializeStartScreen();
         setScreen('start');
     } catch (error) {
-        console.error("Data loading error:", error);
+        console.error("Data loading error. Ensure 'nhl_players.json' and 'team_line_structures.json' are in the same folder.", error);
         alert("Error loading game data. Check console for details.");
     }
 }
 
 /** Populates the team dropdown and sets default settings */
 function initializeStartScreen() {
+    // FIX: Using lineStructures to get the list of teams (team_abbr)
     const teams = gameState.lineStructures.map(t => t.team_abbr).sort();
+    
+    // Clear old options and add new ones
+    teamSelect.innerHTML = ''; 
     teams.forEach(team => {
         const option = document.createElement('option');
         option.value = team;
@@ -71,15 +75,12 @@ function initializeStartScreen() {
         teamSelect.appendChild(option);
     });
 
-    // Set default team and lines
+    // Set default team to the first in the list
     gameState.currentTeam = teams[0] || null;
-    document.querySelectorAll('.line-btn').forEach(btn => {
-        if (parseInt(btn.dataset.lines) === gameState.linesToQuiz) {
-            btn.classList.add('active');
-        }
-    });
 
+    // Attach Event Listeners
     teamSelect.addEventListener('change', (e) => gameState.currentTeam = e.target.value);
+    
     document.querySelectorAll('.line-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             document.querySelectorAll('.line-btn').forEach(b => b.classList.remove('active'));
@@ -88,6 +89,7 @@ function initializeStartScreen() {
         });
     });
 
+    // Game Start Button Listener
     document.getElementById('start-shift-btn').addEventListener('click', startQuiz);
 }
 
@@ -119,7 +121,11 @@ function setupLineup() {
     for (let i = 1; i <= gameState.linesToQuiz; i++) {
         const lineKey = `Line ${i}`;
         gameState.correctLineup[lineKey] = teamData.lines[lineKey];
-        gameState.userLineup[lineKey] = { C: null, W1: null, W2: null, D1: null, D2: null };
+        // Ensure userLineup structure matches the correct lineup keys
+        gameState.userLineup[lineKey] = Object.keys(teamData.lines[lineKey]).reduce((acc, slotKey) => {
+            acc[slotKey] = null;
+            return acc;
+        }, {});
     }
 }
 
@@ -150,12 +156,13 @@ function renderQuizUI() {
     playerPool.innerHTML = '';
     const allTeamPlayers = gameState.allPlayers.filter(p => p.team_abbr === gameState.currentTeam);
     const poolPlayers = allTeamPlayers.filter(p => 
-        // Only include players that are C, W, or D and are in the top 6 for the quiz lines
+        // Only include players that are C, W, or D
         ['C', 'L', 'R', 'D'].includes(p.position)
-    ).sort((a, b) => b.rating - a.rating); // Sort by rating for a more interesting, ranked pool
+    ).sort((a, b) => b.rating - a.rating);
 
     // Get only the top (linesToQuiz * 5) players + a few extra for difficulty
-    const finalPool = poolPlayers.slice(0, (gameState.linesToQuiz * 5) + 5); 
+    const playersNeeded = gameState.linesToQuiz * 5;
+    const finalPool = poolPlayers.slice(0, playersNeeded + 5); 
 
     finalPool.forEach(player => {
         const card = createPlayerCard(player);
@@ -225,27 +232,24 @@ function handleDrop(e) {
     // Basic Position Check: C, L, R can go into W1/W2 slots. C into C. D into D1/D2.
     const isPositionValid = 
         (slotType === 'C' && playerPosition === 'C') ||
-        (slotType === 'W' && ['L', 'R', 'C'].includes(playerPosition)) || // Allow Centers in Wing slots for flexibility
+        (slotType === 'W' && ['L', 'R', 'C'].includes(playerPosition)) || 
         (slotType === 'D' && playerPosition === 'D');
 
     if (!isPositionValid) {
-        // Flash red for invalid drop and return the card to the pool if it was dragged from there
         if (!draggedCard.closest('.line-slot')) {
              draggedCard.classList.add('incorrect-flash');
              setTimeout(() => draggedCard.classList.remove('incorrect-flash'), 300);
         }
-        return; // Reject the drop
+        return; 
     }
 
     // Check if slot is empty
     if (slot.children.length > 1) { // 1 child is the label
-        // If slot is occupied, move existing player back to pool
         const existingCard = slot.querySelector('.player-card');
         playerPool.appendChild(existingCard);
         
-        // Remove existing player from userLineup
-        const [lineId, slotKey] = slot.dataset.slotId.split('-');
-        gameState.userLineup[lineId][slotKey] = null;
+        const [lineId_old, slotKey_old] = slot.dataset.slotId.split('-');
+        gameState.userLineup[lineId_old][slotKey_old] = null;
     }
 
     // Place the new card in the slot
@@ -283,8 +287,6 @@ function attachDragDropListeners() {
         slot.addEventListener('dragleave', handleDragLeave);
         slot.addEventListener('drop', handleDrop);
     });
-
-    // Player cards (dragstart is attached when they are created)
 }
 
 // --- Timer and Completion ---
@@ -317,11 +319,11 @@ function updateTimerDisplay() {
     timerText.textContent = `${gameState.timeRemaining}:00`;
 
     if (gameState.timeRemaining <= 10) {
-        timerBar.style.backgroundColor = var(--color-error-red); // Glitch red for tension
+        timerBar.style.backgroundColor = 'var(--color-error-red)'; 
         timerBar.style.boxShadow = `0 0 10px var(--color-error-red)`;
     } else {
-        timerBar.style.backgroundColor = var(--color-accent-magenta);
-        timerBar.style.boxShadow = `0 0 10px var(--color-accent-magenta)`;
+        timerBar.style.backgroundColor = 'var(--color-accent-cyan)';
+        timerBar.style.boxShadow = `0 0 10px var(--color-accent-cyan)`;
     }
 }
 
@@ -369,7 +371,7 @@ function calculateScore() {
             const correctPlayer = gameState.correctLineup[lineId][slotKey];
             const userPlayer = gameState.userLineup[lineId][slotKey];
             
-            if (userPlayer && correctPlayer && userPlayer.id === correctPlayer.id) {
+            if (userPlayer && correctPlayer && userPlayer.name === correctPlayer.name) {
                 correctSlots++;
             } else {
                 // Log mistake
@@ -411,3 +413,38 @@ function renderDebrief(results, timeUp) {
     document.getElementById('debrief-time-bonus').textContent = `${results.speedBonus.toFixed(2)}x`;
     document.getElementById('debrief-accuracy').textContent = `${accuracyPct}% (${results.correctSlots}/${results.totalSlots})`;
     document.getElementById('debrief-points').textContent = results.finalScore;
+
+    // Render Mistake Review
+    const mistakeList = document.getElementById('mistake-review-list');
+    mistakeList.innerHTML = '';
+
+    if (gameState.mistakes.length === 0) {
+        mistakeList.innerHTML = '<p class="review-placeholder">No errors detected. Flawless run. System applauds efficiency.</p>';
+    } else {
+        gameState.mistakes.forEach(m => {
+            const userPlayerName = m.user ? m.user.name : "EMPTY SLOT";
+            const correctPlayer = m.correct;
+            // Lookup the unique trait from the original allPlayers list using player ID
+            const correctPlayerTrait = gameState.allPlayers.find(p => p.id === correctPlayer.id)?.unique_trait || "Data pending.";
+
+            const item = document.createElement('div');
+            item.className = 'mistake-item';
+            item.innerHTML = `
+                <p><strong>ERROR ${m.lineId} - ${m.slotKey}:</strong> Placed 
+                <span class="accent-text">${userPlayerName}</span>.</p>
+                <p class="correct-answer">**CORRECT:** ${correctPlayer.name} (Rtg: ${correctPlayer.rating})</p>
+                <p class="correct-answer">**WHY?** *${correctPlayerTrait}*</p>
+            `;
+            mistakeList.appendChild(item);
+        });
+    }
+}
+
+// --- Event Listeners and Initialization ---
+
+document.getElementById('next-shift-btn').addEventListener('click', () => {
+    setScreen('start');
+});
+
+// Start the application
+window.addEventListener('load', loadDataAndInitialize);
