@@ -1,0 +1,4242 @@
+[
+    {
+      "id": "8477492",
+      "team_name": "COL",
+      "team_abbr": "COL",
+      "player_name": "Nathan MacKinnon",
+      "position": "C",
+      "rating": 100,
+      "unique_trait": "League's highest-rated player. An elite playmaker.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477934",
+      "team_name": "EDM",
+      "team_abbr": "EDM",
+      "player_name": "Leon Draisaitl",
+      "position": "C",
+      "rating": 97,
+      "unique_trait": "Top 10 rated player, elite C talent.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8480069",
+      "team_name": "COL",
+      "team_abbr": "COL",
+      "player_name": "Cale Makar",
+      "position": "D",
+      "rating": 96,
+      "unique_trait": "Top 10 rated player, elite D talent.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479407",
+      "team_name": "NJD",
+      "team_abbr": "NJD",
+      "player_name": "Jesper Bratt",
+      "position": "L",
+      "rating": 95,
+      "unique_trait": "Top 10 rated player, elite L talent.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477493",
+      "team_name": "FLA",
+      "team_abbr": "FLA",
+      "player_name": "Aleksander Barkov",
+      "position": "C",
+      "rating": 95,
+      "unique_trait": "Top 10 rated player, elite C talent.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476453",
+      "team_name": "TBL",
+      "team_abbr": "TBL",
+      "player_name": "Nikita Kucherov",
+      "position": "R",
+      "rating": 95,
+      "unique_trait": "Top 10 rated player, elite R talent.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477494",
+      "team_name": "COL",
+      "team_abbr": "COL",
+      "player_name": "Jonathan Drouin",
+      "position": "L",
+      "rating": 94,
+      "unique_trait": "Top 10 rated player, elite L talent.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479542",
+      "team_name": "TBL",
+      "team_abbr": "TBL",
+      "player_name": "Brandon Hagel",
+      "position": "L",
+      "rating": 94,
+      "unique_trait": "Top 10 rated player, elite L talent.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8480039",
+      "team_name": "COL",
+      "team_abbr": "COL",
+      "player_name": "Martin Necas",
+      "position": "C",
+      "rating": 94,
+      "unique_trait": "Top 10 rated player, elite C talent.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478398",
+      "team_name": "WPG",
+      "team_abbr": "WPG",
+      "player_name": "Kyle Connor",
+      "position": "L",
+      "rating": 93,
+      "unique_trait": "Top 10 rated player, elite L talent.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478402",
+      "team_name": "EDM",
+      "team_abbr": "EDM",
+      "player_name": "Connor McDavid",
+      "position": "C",
+      "rating": 92,
+      "unique_trait": "Top 50 rated player. A standout C in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8482093",
+      "team_name": "CAR",
+      "team_abbr": "CAR",
+      "player_name": "Seth Jarvis",
+      "position": "C",
+      "rating": 92,
+      "unique_trait": "Top 50 rated player. A standout C in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477933",
+      "team_name": "FLA",
+      "team_abbr": "FLA",
+      "player_name": "Sam Reinhart",
+      "position": "C",
+      "rating": 92,
+      "unique_trait": "Top 50 rated player. A standout C in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8480800",
+      "team_name": "VAN",
+      "team_abbr": "VAN",
+      "player_name": "Quinn Hughes",
+      "position": "D",
+      "rating": 91,
+      "unique_trait": "Top 50 rated player. A standout D in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478427",
+      "team_name": "CAR",
+      "team_abbr": "CAR",
+      "player_name": "Sebastian Aho",
+      "position": "C",
+      "rating": 91,
+      "unique_trait": "Top 50 rated player. A standout C in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8480018",
+      "team_name": "MTL",
+      "team_abbr": "MTL",
+      "player_name": "Nick Suzuki",
+      "position": "C",
+      "rating": 91,
+      "unique_trait": "Top 50 rated player. A standout C in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479343",
+      "team_name": "UTA",
+      "team_abbr": "UTA",
+      "player_name": "Clayton Keller",
+      "position": "R",
+      "rating": 91,
+      "unique_trait": "Top 50 rated player. A standout R in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8482078",
+      "team_name": "DET",
+      "team_abbr": "DET",
+      "player_name": "Lucas Raymond",
+      "position": "L",
+      "rating": 90,
+      "unique_trait": "Top 50 rated player. A standout L in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479318",
+      "team_name": "TOR",
+      "team_abbr": "TOR",
+      "player_name": "Auston Matthews",
+      "position": "C",
+      "rating": 90,
+      "unique_trait": "Top 50 rated player. A standout C in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8480023",
+      "team_name": "STL",
+      "team_abbr": "STL",
+      "player_name": "Robert Thomas",
+      "position": "C",
+      "rating": 90,
+      "unique_trait": "Top 50 rated player. A standout C in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8480002",
+      "team_name": "NJD",
+      "team_abbr": "NJD",
+      "player_name": "Nico Hischier",
+      "position": "C",
+      "rating": 89,
+      "unique_trait": "Top 50 rated player. A standout C in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478420",
+      "team_name": "DAL",
+      "team_abbr": "DAL",
+      "player_name": "Mikko Rantanen",
+      "position": "R",
+      "rating": 89,
+      "unique_trait": "Top 50 rated player. A standout R in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8482116",
+      "team_name": "OTT",
+      "team_abbr": "OTT",
+      "player_name": "Tim Sttzle",
+      "position": "C",
+      "rating": 89,
+      "unique_trait": "Top 50 rated player. A standout C in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478550",
+      "team_name": "NYR",
+      "team_abbr": "NYR",
+      "player_name": "Artemi Panarin",
+      "position": "L",
+      "rating": 89,
+      "unique_trait": "Top 50 rated player. A standout L in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478483",
+      "team_name": "TOR",
+      "team_abbr": "TOR",
+      "player_name": "Mitch Marner",
+      "position": "R",
+      "rating": 89,
+      "unique_trait": "Top 50 rated player. A standout R in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477956",
+      "team_name": "BOS",
+      "team_abbr": "BOS",
+      "player_name": "David Pastrnak",
+      "position": "R",
+      "rating": 89,
+      "unique_trait": "Top 50 rated player. A standout R in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478403",
+      "team_name": "VGK",
+      "team_abbr": "VGK",
+      "player_name": "Jack Eichel",
+      "position": "C",
+      "rating": 89,
+      "unique_trait": "Top 50 rated player. A standout C in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8481559",
+      "team_name": "NJD",
+      "team_abbr": "NJD",
+      "player_name": "Jack Hughes",
+      "position": "C",
+      "rating": 89,
+      "unique_trait": "Top 50 rated player. A standout C in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475913",
+      "team_name": "VGK",
+      "team_abbr": "VGK",
+      "player_name": "Mark Stone",
+      "position": "R",
+      "rating": 89,
+      "unique_trait": "Top 50 rated player. A standout R in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476887",
+      "team_name": "NSH",
+      "team_abbr": "NSH",
+      "player_name": "Filip Forsberg",
+      "position": "L",
+      "rating": 88,
+      "unique_trait": "Top 50 rated player. A standout L in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8480803",
+      "team_name": "EDM",
+      "team_abbr": "EDM",
+      "player_name": "Evan Bouchard",
+      "position": "D",
+      "rating": 88,
+      "unique_trait": "Top 50 rated player. A standout D in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475166",
+      "team_name": "TOR",
+      "team_abbr": "TOR",
+      "player_name": "John Tavares",
+      "position": "C",
+      "rating": 88,
+      "unique_trait": "Top 50 rated player. A standout C in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477497",
+      "team_name": "CBJ",
+      "team_abbr": "CBJ",
+      "player_name": "Sean Monahan",
+      "position": "C",
+      "rating": 88,
+      "unique_trait": "Top 50 rated player. A standout C in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475794",
+      "team_name": "DAL",
+      "team_abbr": "DAL",
+      "player_name": "Tyler Seguin",
+      "position": "C",
+      "rating": 88,
+      "unique_trait": "Top 50 rated player. A standout C in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477404",
+      "team_name": "TBL",
+      "team_abbr": "TBL",
+      "player_name": "Jake Guentzel",
+      "position": "C",
+      "rating": 87,
+      "unique_trait": "Top 50 rated player. A standout C in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477960",
+      "team_name": "LAK",
+      "team_abbr": "LAK",
+      "player_name": "Adrian Kempe",
+      "position": "R",
+      "rating": 87,
+      "unique_trait": "Top 50 rated player. A standout R in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479314",
+      "team_name": "FLA",
+      "team_abbr": "FLA",
+      "player_name": "Matthew Tkachuk",
+      "position": "L",
+      "rating": 87,
+      "unique_trait": "Top 50 rated player. A standout L in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477447",
+      "team_name": "VGK",
+      "team_abbr": "VGK",
+      "player_name": "Shea Theodore",
+      "position": "D",
+      "rating": 87,
+      "unique_trait": "Top 50 rated player. A standout D in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8482077",
+      "team_name": "STL",
+      "team_abbr": "STL",
+      "player_name": "Dylan Holloway",
+      "position": "L",
+      "rating": 86,
+      "unique_trait": "Top 50 rated player. A standout L in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8480893",
+      "team_name": "CBJ",
+      "team_abbr": "CBJ",
+      "player_name": "Kirill Marchenko",
+      "position": "R",
+      "rating": 86,
+      "unique_trait": "Top 50 rated player. A standout R in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8482740",
+      "team_name": "DAL",
+      "team_abbr": "DAL",
+      "player_name": "Wyatt Johnston",
+      "position": "C",
+      "rating": 86,
+      "unique_trait": "Top 50 rated player. A standout C in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8480839",
+      "team_name": "BUF",
+      "team_abbr": "BUF",
+      "player_name": "Rasmus Dahlin",
+      "position": "D",
+      "rating": 86,
+      "unique_trait": "Top 50 rated player. A standout D in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479420",
+      "team_name": "BUF",
+      "team_abbr": "BUF",
+      "player_name": "Tage Thompson",
+      "position": "C",
+      "rating": 85,
+      "unique_trait": "Top 50 rated player. A standout C in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475167",
+      "team_name": "TBL",
+      "team_abbr": "TBL",
+      "player_name": "Victor Hedman",
+      "position": "D",
+      "rating": 85,
+      "unique_trait": "Top 50 rated player. A standout D in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476881",
+      "team_name": "VGK",
+      "team_abbr": "VGK",
+      "player_name": "Tomas Hertl",
+      "position": "C",
+      "rating": 85,
+      "unique_trait": "Top 50 rated player. A standout C in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8471675",
+      "team_name": "PIT",
+      "team_abbr": "PIT",
+      "player_name": "Sidney Crosby",
+      "position": "C",
+      "rating": 85,
+      "unique_trait": "Top 50 rated player. A standout C in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477946",
+      "team_name": "DET",
+      "team_abbr": "DET",
+      "player_name": "Dylan Larkin",
+      "position": "C",
+      "rating": 85,
+      "unique_trait": "Top 50 rated player. A standout C in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477939",
+      "team_name": "TOR",
+      "team_abbr": "TOR",
+      "player_name": "William Nylander",
+      "position": "R",
+      "rating": 84,
+      "unique_trait": "Top 50 rated player. A standout R in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478864",
+      "team_name": "MIN",
+      "team_abbr": "MIN",
+      "player_name": "Kirill Kaprizov",
+      "position": "L",
+      "rating": 84,
+      "unique_trait": "Top 50 rated player. A standout L in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479323",
+      "team_name": "NYR",
+      "team_abbr": "NYR",
+      "player_name": "Adam Fox",
+      "position": "D",
+      "rating": 84,
+      "unique_trait": "Top 50 rated player. A standout D in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475168",
+      "team_name": "DAL",
+      "team_abbr": "DAL",
+      "player_name": "Matt Duchene",
+      "position": "C",
+      "rating": 84,
+      "unique_trait": "Top 50 rated player. A standout C in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477955",
+      "team_name": "SEA",
+      "team_abbr": "SEA",
+      "player_name": "Jared McCann",
+      "position": "L",
+      "rating": 84,
+      "unique_trait": "Top 50 rated player. A standout L in the league.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477951",
+      "team_name": "UTA",
+      "team_abbr": "UTA",
+      "player_name": "Nick Schmaltz",
+      "position": "C",
+      "rating": 83,
+      "unique_trait": "An excellent top-tier C, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476460",
+      "team_name": "WPG",
+      "team_abbr": "WPG",
+      "player_name": "Mark Scheifele",
+      "position": "C",
+      "rating": 83,
+      "unique_trait": "An excellent top-tier C, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8481656",
+      "team_name": "WSH",
+      "team_abbr": "WSH",
+      "player_name": "Aliaksei Protas",
+      "position": "C",
+      "rating": 83,
+      "unique_trait": "An excellent top-tier C, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479385",
+      "team_name": "STL",
+      "team_abbr": "STL",
+      "player_name": "Jordan Kyrou",
+      "position": "R",
+      "rating": 83,
+      "unique_trait": "An excellent top-tier R, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475172",
+      "team_name": "CGY",
+      "team_abbr": "CGY",
+      "player_name": "Nazem Kadri",
+      "position": "C",
+      "rating": 83,
+      "unique_trait": "An excellent top-tier C, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477940",
+      "team_name": "WPG",
+      "team_abbr": "WPG",
+      "player_name": "Nikolaj Ehlers",
+      "position": "L",
+      "rating": 83,
+      "unique_trait": "An excellent top-tier L, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477949",
+      "team_name": "BUF",
+      "team_abbr": "BUF",
+      "player_name": "Alex Tuch",
+      "position": "R",
+      "rating": 83,
+      "unique_trait": "An excellent top-tier R, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8471685",
+      "team_name": "LAK",
+      "team_abbr": "LAK",
+      "player_name": "Anze Kopitar",
+      "position": "C",
+      "rating": 83,
+      "unique_trait": "An excellent top-tier C, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476880",
+      "team_name": "WSH",
+      "team_abbr": "WSH",
+      "player_name": "Tom Wilson",
+      "position": "R",
+      "rating": 83,
+      "unique_trait": "An excellent top-tier R, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8482699",
+      "team_name": "UTA",
+      "team_abbr": "UTA",
+      "player_name": "Dylan Guenther",
+      "position": "R",
+      "rating": 83,
+      "unique_trait": "An excellent top-tier R, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478460",
+      "team_name": "CBJ",
+      "team_abbr": "CBJ",
+      "player_name": "Zach Werenski",
+      "position": "D",
+      "rating": 83,
+      "unique_trait": "An excellent top-tier D, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8481557",
+      "team_name": "MIN",
+      "team_abbr": "MIN",
+      "player_name": "Matt Boldy",
+      "position": "L",
+      "rating": 83,
+      "unique_trait": "An excellent top-tier L, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476389",
+      "team_name": "NYR",
+      "team_abbr": "NYR",
+      "player_name": "Vincent Trocheck",
+      "position": "C",
+      "rating": 82,
+      "unique_trait": "An excellent top-tier C, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8482660",
+      "team_name": "CBJ",
+      "team_abbr": "CBJ",
+      "player_name": "Kent Johnson",
+      "position": "C",
+      "rating": 82,
+      "unique_trait": "An excellent top-tier C, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478439",
+      "team_name": "PHI",
+      "team_abbr": "PHI",
+      "player_name": "Travis Konecny",
+      "position": "R",
+      "rating": 82,
+      "unique_trait": "An excellent top-tier R, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476483",
+      "team_name": "PIT",
+      "team_abbr": "PIT",
+      "player_name": "Rickard Rakell",
+      "position": "R",
+      "rating": 82,
+      "unique_trait": "An excellent top-tier R, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478010",
+      "team_name": "TBL",
+      "team_abbr": "TBL",
+      "player_name": "Brayden Point",
+      "position": "C",
+      "rating": 82,
+      "unique_trait": "An excellent top-tier C, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479400",
+      "team_name": "WSH",
+      "team_abbr": "WSH",
+      "player_name": "Pierre-Luc Dubois",
+      "position": "L",
+      "rating": 81,
+      "unique_trait": "An excellent top-tier L, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476906",
+      "team_name": "CAR",
+      "team_abbr": "CAR",
+      "player_name": "Shayne Gostisbehere",
+      "position": "D",
+      "rating": 81,
+      "unique_trait": "An excellent top-tier D, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8483431",
+      "team_name": "UTA",
+      "team_abbr": "UTA",
+      "player_name": "Logan Cooley",
+      "position": "C",
+      "rating": 81,
+      "unique_trait": "An excellent top-tier C, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478449",
+      "team_name": "DAL",
+      "team_abbr": "DAL",
+      "player_name": "Roope Hintz",
+      "position": "C",
+      "rating": 81,
+      "unique_trait": "An excellent top-tier C, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8483808",
+      "team_name": "LAK",
+      "team_abbr": "LAK",
+      "player_name": "Andrei Kuzmenko",
+      "position": "L",
+      "rating": 81,
+      "unique_trait": "An excellent top-tier L, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8471214",
+      "team_name": "WSH",
+      "team_abbr": "WSH",
+      "player_name": "Alex Ovechkin",
+      "position": "L",
+      "rating": 81,
+      "unique_trait": "An excellent top-tier L, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478975",
+      "team_name": "DAL",
+      "team_abbr": "DAL",
+      "player_name": "Mason Marchment",
+      "position": "L",
+      "rating": 81,
+      "unique_trait": "An excellent top-tier L, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8480208",
+      "team_name": "OTT",
+      "team_abbr": "OTT",
+      "player_name": "Drake Batherson",
+      "position": "R",
+      "rating": 81,
+      "unique_trait": "An excellent top-tier R, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8482758",
+      "team_name": "PIT",
+      "team_abbr": "PIT",
+      "player_name": "Ville Koivunen",
+      "position": "R",
+      "rating": 81,
+      "unique_trait": "An excellent top-tier R, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8480830",
+      "team_name": "CAR",
+      "team_abbr": "CAR",
+      "player_name": "Andrei Svechnikov",
+      "position": "R",
+      "rating": 80,
+      "unique_trait": "An excellent top-tier R, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476468",
+      "team_name": "NYR",
+      "team_abbr": "NYR",
+      "player_name": "J.T. Miller",
+      "position": "C",
+      "rating": 80,
+      "unique_trait": "An excellent top-tier C, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8484801",
+      "team_name": "SJS",
+      "team_abbr": "SJS",
+      "player_name": "Macklin Celebrini",
+      "position": "C",
+      "rating": 80,
+      "unique_trait": "An excellent top-tier C, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476459",
+      "team_name": "NYR",
+      "team_abbr": "NYR",
+      "player_name": "Mika Zibanejad",
+      "position": "C",
+      "rating": 80,
+      "unique_trait": "An excellent top-tier C, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8480801",
+      "team_name": "OTT",
+      "team_abbr": "OTT",
+      "player_name": "Brady Tkachuk",
+      "position": "L",
+      "rating": 80,
+      "unique_trait": "An excellent top-tier L, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477942",
+      "team_name": "LAK",
+      "team_abbr": "LAK",
+      "player_name": "Kevin Fiala",
+      "position": "L",
+      "rating": 80,
+      "unique_trait": "An excellent top-tier L, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478440",
+      "team_name": "WSH",
+      "team_abbr": "WSH",
+      "player_name": "Dylan Strome",
+      "position": "C",
+      "rating": 80,
+      "unique_trait": "An excellent top-tier C, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8473419",
+      "team_name": "FLA",
+      "team_abbr": "FLA",
+      "player_name": "Brad Marchand",
+      "position": "L",
+      "rating": 80,
+      "unique_trait": "An excellent top-tier L, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475158",
+      "team_name": "NSH",
+      "team_abbr": "NSH",
+      "player_name": "Ryan O'Reilly",
+      "position": "C",
+      "rating": 80,
+      "unique_trait": "An excellent top-tier C, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8483457",
+      "team_name": "MTL",
+      "team_abbr": "MTL",
+      "player_name": "Lane Hutson",
+      "position": "D",
+      "rating": 80,
+      "unique_trait": "An excellent top-tier D, known for high offensive contributions.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479337",
+      "team_name": "DET",
+      "team_abbr": "DET",
+      "player_name": "Alex DeBrincat",
+      "position": "R",
+      "rating": 79,
+      "unique_trait": "Exceptional on the forecheck, known for high takeaway rate.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8482113",
+      "team_name": "FLA",
+      "team_abbr": "FLA",
+      "player_name": "Anton Lundell",
+      "position": "C",
+      "rating": 79,
+      "unique_trait": "Exceptional on the forecheck, known for high takeaway rate.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8482124",
+      "team_name": "LAK",
+      "team_abbr": "LAK",
+      "player_name": "Quinton Byfield",
+      "position": "R",
+      "rating": 79,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8480849",
+      "team_name": "UTA",
+      "team_abbr": "UTA",
+      "player_name": "Barrett Hayton",
+      "position": "C",
+      "rating": 79,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8480027",
+      "team_name": "DAL",
+      "team_abbr": "DAL",
+      "player_name": "Jason Robertson",
+      "position": "L",
+      "rating": 78,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8474600",
+      "team_name": "NSH",
+      "team_abbr": "NSH",
+      "player_name": "Roman Josi",
+      "position": "D",
+      "rating": 78,
+      "unique_trait": "Exceptional on the forecheck, known for high takeaway rate.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8481540",
+      "team_name": "MTL",
+      "team_abbr": "MTL",
+      "player_name": "Cole Caufield",
+      "position": "R",
+      "rating": 78,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8474590",
+      "team_name": "WSH",
+      "team_abbr": "WSH",
+      "player_name": "John Carlson",
+      "position": "D",
+      "rating": 78,
+      "unique_trait": "Exceptional on the forecheck, known for high takeaway rate.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475754",
+      "team_name": "COL",
+      "team_abbr": "COL",
+      "player_name": "Brock Nelson",
+      "position": "C",
+      "rating": 78,
+      "unique_trait": "Exceptional on the forecheck, known for high takeaway rate.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476481",
+      "team_name": "PIT",
+      "team_abbr": "PIT",
+      "player_name": "Bryan Rust",
+      "position": "R",
+      "rating": 78,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476997",
+      "team_name": "OTT",
+      "team_abbr": "OTT",
+      "player_name": "Jakob Chychrun",
+      "position": "D",
+      "rating": 78,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477969",
+      "team_name": "FLA",
+      "team_abbr": "FLA",
+      "player_name": "Aaron Ekblad",
+      "position": "D",
+      "rating": 78,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477433",
+      "team_name": "PHI",
+      "team_abbr": "PHI",
+      "player_name": "Scott Laughton",
+      "position": "C",
+      "rating": 77,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476901",
+      "team_name": "WPG",
+      "team_abbr": "WPG",
+      "player_name": "Sean Couturier",
+      "position": "C",
+      "rating": 77,
+      "unique_trait": "Exceptional on the forecheck, known for high takeaway rate.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478496",
+      "team_name": "NJD",
+      "team_abbr": "NJD",
+      "player_name": "Timo Meier",
+      "position": "L",
+      "rating": 77,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478447",
+      "team_name": "WPG",
+      "team_abbr": "WPG",
+      "player_name": "Josh Morrissey",
+      "position": "D",
+      "rating": 77,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478479",
+      "team_name": "BOS",
+      "team_abbr": "BOS",
+      "player_name": "Charlie McAvoy",
+      "position": "D",
+      "rating": 77,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477490",
+      "team_name": "LAK",
+      "team_abbr": "LAK",
+      "player_name": "Phillip Danault",
+      "position": "C",
+      "rating": 77,
+      "unique_trait": "Exceptional on the forecheck, known for high takeaway rate.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477491",
+      "team_name": "BOS",
+      "team_abbr": "BOS",
+      "player_name": "Elias Lindholm",
+      "position": "C",
+      "rating": 77,
+      "unique_trait": "Exceptional on the forecheck, known for high takeaway rate.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477943",
+      "team_name": "PHI",
+      "team_abbr": "PHI",
+      "player_name": "Morgan Frost",
+      "position": "C",
+      "rating": 77,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478423",
+      "team_name": "VGK",
+      "team_abbr": "VGK",
+      "player_name": "Chandler Stephenson",
+      "position": "C",
+      "rating": 76,
+      "unique_trait": "Exceptional on the forecheck, known for high takeaway rate.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477478",
+      "team_name": "WPG",
+      "team_abbr": "WPG",
+      "player_name": "Nate Schmidt",
+      "position": "D",
+      "rating": 76,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477440",
+      "team_name": "TOR",
+      "team_abbr": "TOR",
+      "player_name": "Morgan Rielly",
+      "position": "D",
+      "rating": 76,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476495",
+      "team_name": "NYR",
+      "team_abbr": "NYR",
+      "player_name": "Jacob Trouba",
+      "position": "D",
+      "rating": 76,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8481523",
+      "team_name": "SEA",
+      "team_abbr": "SEA",
+      "player_name": "Matty Beniers",
+      "position": "C",
+      "rating": 76,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475768",
+      "team_name": "TBL",
+      "team_abbr": "TBL",
+      "player_name": "Steven Stamkos",
+      "position": "R",
+      "rating": 75,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477966",
+      "team_name": "NYI",
+      "team_abbr": "NYI",
+      "player_name": "Noah Dobson",
+      "position": "D",
+      "rating": 75,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478546",
+      "team_name": "PIT",
+      "team_abbr": "PIT",
+      "player_name": "P.O Joseph",
+      "position": "D",
+      "rating": 75,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476882",
+      "team_name": "COL",
+      "team_abbr": "COL",
+      "player_name": "Artturi Lehkonen",
+      "position": "L",
+      "rating": 75,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478444",
+      "team_name": "COL",
+      "team_abbr": "COL",
+      "player_name": "Devon Toews",
+      "position": "D",
+      "rating": 75,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477420",
+      "team_name": "BUF",
+      "team_abbr": "BUF",
+      "player_name": "Jeff Skinner",
+      "position": "L",
+      "rating": 75,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477953",
+      "team_name": "EDM",
+      "team_abbr": "EDM",
+      "player_name": "Kasperi Kapanen",
+      "position": "R",
+      "rating": 75,
+      "unique_trait": "Exceptional on the forecheck, known for high takeaway rate.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475806",
+      "team_name": "WPG",
+      "team_abbr": "WPG",
+      "player_name": "Tyler Toffoli",
+      "position": "R",
+      "rating": 74,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478408",
+      "team_name": "BOS",
+      "team_abbr": "BOS",
+      "player_name": "Hampus Lindholm",
+      "position": "D",
+      "rating": 74,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478055",
+      "team_name": "DET",
+      "team_abbr": "DET",
+      "player_name": "Michael Rasmussen",
+      "position": "C",
+      "rating": 74,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476472",
+      "team_name": "NSH",
+      "team_abbr": "NSH",
+      "player_name": "Gustav Nyquist",
+      "position": "L",
+      "rating": 74,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478487",
+      "team_name": "LAK",
+      "team_abbr": "LAK",
+      "player_name": "Trevor Moore",
+      "position": "L",
+      "rating": 74,
+      "unique_trait": "Exceptional on the forecheck, known for high takeaway rate.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476463",
+      "team_name": "PIT",
+      "team_abbr": "PIT",
+      "player_name": "Reilly Smith",
+      "position": "L",
+      "rating": 74,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478077",
+      "team_name": "DET",
+      "team_abbr": "DET",
+      "player_name": "Robby Fabbri",
+      "position": "L",
+      "rating": 74,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478499",
+      "team_name": "CAR",
+      "team_abbr": "CAR",
+      "player_name": "Brett Pesce",
+      "position": "D",
+      "rating": 74,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477464",
+      "team_name": "VGK",
+      "team_abbr": "VGK",
+      "player_name": "Alex Pietrangelo",
+      "position": "D",
+      "rating": 73,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478028",
+      "team_name": "BOS",
+      "team_abbr": "BOS",
+      "player_name": "Charlie Coyle",
+      "position": "C",
+      "rating": 73,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8480796",
+      "team_name": "COL",
+      "team_abbr": "COL",
+      "player_name": "Valeri Nichushkin",
+      "position": "R",
+      "rating": 73,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478426",
+      "team_name": "PHI",
+      "team_abbr": "PHI",
+      "player_name": "Sean Walker",
+      "position": "D",
+      "rating": 73,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479361",
+      "team_name": "NSH",
+      "team_abbr": "NSH",
+      "player_name": "Cody Glass",
+      "position": "C",
+      "rating": 73,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476904",
+      "team_name": "NYI",
+      "team_abbr": "NYI",
+      "player_name": "Anthony Beauvillier",
+      "position": "L",
+      "rating": 73,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477961",
+      "team_name": "EDM",
+      "team_abbr": "EDM",
+      "player_name": "Ryan Nugent-Hopkins",
+      "position": "C",
+      "rating": 73,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8481542",
+      "team_name": "BUF",
+      "team_abbr": "BUF",
+      "player_name": "Owen Power",
+      "position": "D",
+      "rating": 73,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479532",
+      "team_name": "WPG",
+      "team_abbr": "WPG",
+      "player_name": "Laurent Dauphin",
+      "position": "C",
+      "rating": 73,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478051",
+      "team_name": "NJD",
+      "team_abbr": "NJD",
+      "player_name": "Kevin Bahl",
+      "position": "D",
+      "rating": 73,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478548",
+      "team_name": "CAR",
+      "team_abbr": "CAR",
+      "player_name": "Martin Necas",
+      "position": "C",
+      "rating": 72,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477931",
+      "team_name": "NYI",
+      "team_abbr": "NYI",
+      "player_name": "Anders Lee",
+      "position": "L",
+      "rating": 72,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478058",
+      "team_name": "DET",
+      "team_abbr": "DET",
+      "player_name": "Moritz Seider",
+      "position": "D",
+      "rating": 72,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478475",
+      "team_name": "WSH",
+      "team_abbr": "WSH",
+      "player_name": "Evgeny Kuznetsov",
+      "position": "C",
+      "rating": 72,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478494",
+      "team_name": "NJD",
+      "team_abbr": "NJD",
+      "player_name": "Jesper Boqvist",
+      "position": "C",
+      "rating": 72,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478873",
+      "team_name": "VGK",
+      "team_abbr": "VGK",
+      "player_name": "Ivan Barbashev",
+      "position": "C",
+      "rating": 72,
+      "unique_trait": "Exceptional on the forecheck, known for high takeaway rate.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476461",
+      "team_name": "TBL",
+      "team_abbr": "TBL",
+      "player_name": "Anthony Cirelli",
+      "position": "C",
+      "rating": 72,
+      "unique_trait": "Exceptional on the forecheck, known for high takeaway rate.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478851",
+      "team_name": "PIT",
+      "team_abbr": "PIT",
+      "player_name": "Marcus Pettersson",
+      "position": "D",
+      "rating": 72,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478889",
+      "team_name": "EDM",
+      "team_abbr": "EDM",
+      "player_name": "Darnell Nurse",
+      "position": "D",
+      "rating": 71,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478498",
+      "team_name": "CAR",
+      "team_abbr": "CAR",
+      "player_name": "Brady Skjei",
+      "position": "D",
+      "rating": 71,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477435",
+      "team_name": "SJS",
+      "team_abbr": "SJS",
+      "player_name": "Kevin Labanc",
+      "position": "R",
+      "rating": 71,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479340",
+      "team_name": "BOS",
+      "team_abbr": "BOS",
+      "player_name": "Matt Grzelcyk",
+      "position": "D",
+      "rating": 71,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476885",
+      "team_name": "PHI",
+      "team_abbr": "PHI",
+      "player_name": "Travis Sanheim",
+      "position": "D",
+      "rating": 71,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477941",
+      "team_name": "BOS",
+      "team_abbr": "BOS",
+      "player_name": "Morgan Geekie",
+      "position": "C",
+      "rating": 71,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479533",
+      "team_name": "BUF",
+      "team_abbr": "BUF",
+      "player_name": "Henri Jokiharju",
+      "position": "D",
+      "rating": 71,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479410",
+      "team_name": "LAK",
+      "team_abbr": "LAK",
+      "player_name": "Gabriel Vilardi",
+      "position": "C",
+      "rating": 70,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478495",
+      "team_name": "WPG",
+      "team_abbr": "WPG",
+      "player_name": "Rasmus Andersson",
+      "position": "D",
+      "rating": 70,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478453",
+      "team_name": "CGY",
+      "team_abbr": "CGY",
+      "player_name": "MacKenzie Weegar",
+      "position": "D",
+      "rating": 70,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478061",
+      "team_name": "MIN",
+      "team_abbr": "MIN",
+      "player_name": "Jonas Brodin",
+      "position": "D",
+      "rating": 70,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476891",
+      "team_name": "LAK",
+      "team_abbr": "LAK",
+      "player_name": "Alex Iafallo",
+      "position": "L",
+      "rating": 70,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477484",
+      "team_name": "NYI",
+      "team_abbr": "NYI",
+      "player_name": "Brock Nelson",
+      "position": "C",
+      "rating": 70,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475765",
+      "team_name": "CGY",
+      "team_abbr": "CGY",
+      "player_name": "Mikael Backlund",
+      "position": "C",
+      "rating": 70,
+      "unique_trait": "Exceptional on the forecheck, known for high takeaway rate.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8480798",
+      "team_name": "BUF",
+      "team_abbr": "BUF",
+      "player_name": "Casey Mittelstadt",
+      "position": "C",
+      "rating": 70,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479536",
+      "team_name": "VAN",
+      "team_abbr": "VAN",
+      "player_name": "Elias Pettersson",
+      "position": "C",
+      "rating": 69,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477439",
+      "team_name": "WSH",
+      "team_abbr": "WSH",
+      "player_name": "T.J. Oshie",
+      "position": "R",
+      "rating": 69,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8482117",
+      "team_name": "BOS",
+      "team_abbr": "BOS",
+      "player_name": "Pavel Zacha",
+      "position": "C",
+      "rating": 69,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478857",
+      "team_name": "VAN",
+      "team_abbr": "VAN",
+      "player_name": "Elias Lindholm",
+      "position": "C",
+      "rating": 69,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475854",
+      "team_name": "CAR",
+      "team_abbr": "CAR",
+      "player_name": "Teuvo Teravainen",
+      "position": "R",
+      "rating": 69,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477965",
+      "team_name": "MIN",
+      "team_abbr": "MIN",
+      "player_name": "Jared Spurgeon",
+      "position": "D",
+      "rating": 68,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478443",
+      "team_name": "EDM",
+      "team_abbr": "EDM",
+      "player_name": "Mattias Ekholm",
+      "position": "D",
+      "rating": 68,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476485",
+      "team_name": "NSH",
+      "team_abbr": "NSH",
+      "player_name": "Luke Schenn",
+      "position": "D",
+      "rating": 68,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477938",
+      "team_name": "VGK",
+      "team_abbr": "VGK",
+      "player_name": "Alex Tuch",
+      "position": "R",
+      "rating": 68,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478442",
+      "team_name": "NSH",
+      "team_abbr": "NSH",
+      "player_name": "Ryan McDonagh",
+      "position": "D",
+      "rating": 68,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478508",
+      "team_name": "CAR",
+      "team_abbr": "CAR",
+      "player_name": "Jaccob Slavin",
+      "position": "D",
+      "rating": 68,
+      "unique_trait": "Exceptional on the forecheck, known for high takeaway rate.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476884",
+      "team_name": "WPG",
+      "team_abbr": "WPG",
+      "player_name": "Sam Gagner",
+      "position": "C",
+      "rating": 67,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476466",
+      "team_name": "LAK",
+      "team_abbr": "LAK",
+      "player_name": "Drew Doughty",
+      "position": "D",
+      "rating": 67,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8481537",
+      "team_name": "PHI",
+      "team_abbr": "PHI",
+      "player_name": "Joel Farabee",
+      "position": "L",
+      "rating": 67,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475764",
+      "team_name": "PHI",
+      "team_abbr": "PHI",
+      "player_name": "Cam Atkinson",
+      "position": "R",
+      "rating": 67,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479531",
+      "team_name": "SEA",
+      "team_abbr": "SEA",
+      "player_name": "Vince Dunn",
+      "position": "D",
+      "rating": 67,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477967",
+      "team_name": "DET",
+      "team_abbr": "DET",
+      "player_name": "Lucas Raymond",
+      "position": "L",
+      "rating": 66,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479357",
+      "team_name": "BOS",
+      "team_abbr": "BOS",
+      "player_name": "Danton Heinen",
+      "position": "L",
+      "rating": 66,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8480927",
+      "team_name": "OTT",
+      "team_abbr": "OTT",
+      "player_name": "Josh Norris",
+      "position": "C",
+      "rating": 66,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477432",
+      "team_name": "CGY",
+      "team_abbr": "CGY",
+      "player_name": "Elias Lindholm",
+      "position": "C",
+      "rating": 66,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477488",
+      "team_name": "PHI",
+      "team_abbr": "PHI",
+      "player_name": "Nick Seeler",
+      "position": "D",
+      "rating": 65,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478474",
+      "team_name": "EDM",
+      "team_abbr": "EDM",
+      "player_name": "Cody Ceci",
+      "position": "D",
+      "rating": 65,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478401",
+      "team_name": "DET",
+      "team_abbr": "DET",
+      "player_name": "Ben Chiarot",
+      "position": "D",
+      "rating": 65,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478859",
+      "team_name": "SEA",
+      "team_abbr": "SEA",
+      "player_name": "Jordan Eberle",
+      "position": "R",
+      "rating": 65,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478491",
+      "team_name": "EDM",
+      "team_abbr": "EDM",
+      "player_name": "Evander Kane",
+      "position": "L",
+      "rating": 65,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8480809",
+      "team_name": "WPG",
+      "team_abbr": "WPG",
+      "player_name": "Mason Appleton",
+      "position": "R",
+      "rating": 65,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476479",
+      "team_name": "NSH",
+      "team_abbr": "NSH",
+      "player_name": "Luke Schenn",
+      "position": "D",
+      "rating": 64,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479354",
+      "team_name": "COL",
+      "team_abbr": "COL",
+      "player_name": "Samuel Girard",
+      "position": "D",
+      "rating": 64,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478547",
+      "team_name": "VGK",
+      "team_abbr": "VGK",
+      "player_name": "William Karlsson",
+      "position": "C",
+      "rating": 64,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476477",
+      "team_name": "TBL",
+      "team_abbr": "TBL",
+      "player_name": "Mikhail Sergachev",
+      "position": "D",
+      "rating": 64,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475759",
+      "team_name": "SJS",
+      "team_abbr": "SJS",
+      "player_name": "Mike Hoffman",
+      "position": "L",
+      "rating": 64,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478519",
+      "team_name": "LAK",
+      "team_abbr": "LAK",
+      "player_name": "Vladislav Gavrikov",
+      "position": "D",
+      "rating": 64,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476484",
+      "team_name": "WSH",
+      "team_abbr": "WSH",
+      "player_name": "Rasmus Sandin",
+      "position": "D",
+      "rating": 64,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476480",
+      "team_name": "CAR",
+      "team_abbr": "CAR",
+      "player_name": "Jake Guentzel",
+      "position": "L",
+      "rating": 63,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475147",
+      "team_name": "BUF",
+      "team_abbr": "BUF",
+      "player_name": "Erik Johnson",
+      "position": "D",
+      "rating": 63,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477434",
+      "team_name": "CGY",
+      "team_abbr": "CGY",
+      "player_name": "Blake Coleman",
+      "position": "R",
+      "rating": 63,
+      "unique_trait": "Exceptional on the forecheck, known for high takeaway rate.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475762",
+      "team_name": "SJS",
+      "team_abbr": "SJS",
+      "player_name": "Anthony Duclair",
+      "position": "L",
+      "rating": 63,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478053",
+      "team_name": "BOS",
+      "team_abbr": "BOS",
+      "player_name": "Brandon Carlo",
+      "position": "D",
+      "rating": 63,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8481546",
+      "team_name": "VAN",
+      "team_abbr": "VAN",
+      "player_name": "Vasili Podkolzin",
+      "position": "R",
+      "rating": 63,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477468",
+      "team_name": "NYI",
+      "team_abbr": "NYI",
+      "player_name": "Mathew Barzal",
+      "position": "C",
+      "rating": 63,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477963",
+      "team_name": "NYI",
+      "team_abbr": "NYI",
+      "player_name": "Ryan Pulock",
+      "position": "D",
+      "rating": 63,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478400",
+      "team_name": "TOR",
+      "team_abbr": "TOR",
+      "player_name": "Ilya Lyubushkin",
+      "position": "D",
+      "rating": 62,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8483597",
+      "team_name": "LAK",
+      "team_abbr": "LAK",
+      "player_name": "Brandt Clarke",
+      "position": "D",
+      "rating": 62,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478445",
+      "team_name": "NYR",
+      "team_abbr": "NYR",
+      "player_name": "K'Andre Miller",
+      "position": "D",
+      "rating": 62,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477436",
+      "team_name": "EDM",
+      "team_abbr": "EDM",
+      "player_name": "Zach Hyman",
+      "position": "L",
+      "rating": 62,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475767",
+      "team_name": "DAL",
+      "team_abbr": "DAL",
+      "player_name": "Jamie Benn",
+      "position": "L",
+      "rating": 61,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8481525",
+      "team_name": "COL",
+      "team_abbr": "COL",
+      "player_name": "Sam Malinski",
+      "position": "D",
+      "rating": 61,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478044",
+      "team_name": "NYR",
+      "team_abbr": "NYR",
+      "player_name": "Ryan Lindgren",
+      "position": "D",
+      "rating": 61,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475775",
+      "team_name": "BOS",
+      "team_abbr": "BOS",
+      "player_name": "James van Riemsdyk",
+      "position": "L",
+      "rating": 61,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476482",
+      "team_name": "DET",
+      "team_abbr": "DET",
+      "player_name": "David Perron",
+      "position": "R",
+      "rating": 61,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8481561",
+      "team_name": "CAR",
+      "team_abbr": "CAR",
+      "player_name": "Ethan Bear",
+      "position": "D",
+      "rating": 61,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478054",
+      "team_name": "NYI",
+      "team_abbr": "NYI",
+      "player_name": "Scott Mayfield",
+      "position": "D",
+      "rating": 61,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476497",
+      "team_name": "TBL",
+      "team_abbr": "TBL",
+      "player_name": "Anthony Cirelli",
+      "position": "C",
+      "rating": 60,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476498",
+      "team_name": "NSH",
+      "team_abbr": "NSH",
+      "player_name": "Ryan O'Reilly",
+      "position": "C",
+      "rating": 60,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477430",
+      "team_name": "NSH",
+      "team_abbr": "NSH",
+      "player_name": "Jeremy Lauzon",
+      "position": "D",
+      "rating": 60,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478477",
+      "team_name": "EDM",
+      "team_abbr": "EDM",
+      "player_name": "Darnell Nurse",
+      "position": "D",
+      "rating": 60,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475769",
+      "team_name": "NYR",
+      "team_abbr": "NYR",
+      "player_name": "Artemi Panarin",
+      "position": "L",
+      "rating": 60,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475143",
+      "team_name": "DAL",
+      "team_abbr": "DAL",
+      "player_name": "Ryan Suter",
+      "position": "D",
+      "rating": 59,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478446",
+      "team_name": "MIN",
+      "team_abbr": "MIN",
+      "player_name": "Alex Goligoski",
+      "position": "D",
+      "rating": 59,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478404",
+      "team_name": "COL",
+      "team_abbr": "COL",
+      "player_name": "Josh Manson",
+      "position": "D",
+      "rating": 59,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478549",
+      "team_name": "COL",
+      "team_abbr": "COL",
+      "player_name": "Logan O'Connor",
+      "position": "R",
+      "rating": 59,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475773",
+      "team_name": "SEA",
+      "team_abbr": "SEA",
+      "player_name": "Oliver Bjorkstrand",
+      "position": "R",
+      "rating": 59,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8481549",
+      "team_name": "PHI",
+      "team_abbr": "PHI",
+      "player_name": "Cam York",
+      "position": "D",
+      "rating": 59,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478486",
+      "team_name": "DET",
+      "team_abbr": "DET",
+      "player_name": "Jake Walman",
+      "position": "D",
+      "rating": 59,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478855",
+      "team_name": "VGK",
+      "team_abbr": "VGK",
+      "player_name": "Nicolas Roy",
+      "position": "C",
+      "rating": 59,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477487",
+      "team_name": "TBL",
+      "team_abbr": "TBL",
+      "player_name": "Brandon Hagel",
+      "position": "L",
+      "rating": 58,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478458",
+      "team_name": "PHI",
+      "team_abbr": "PHI",
+      "player_name": "Travis Konecny",
+      "position": "R",
+      "rating": 58,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478059",
+      "team_name": "NYI",
+      "team_abbr": "NYI",
+      "player_name": "Noah Dobson",
+      "position": "D",
+      "rating": 58,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479363",
+      "team_name": "SEA",
+      "team_abbr": "SEA",
+      "player_name": "Eeli Tolvanen",
+      "position": "L",
+      "rating": 58,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479359",
+      "team_name": "NYR",
+      "team_abbr": "NYR",
+      "player_name": "Filip Chytil",
+      "position": "C",
+      "rating": 58,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8480928",
+      "team_name": "COL",
+      "team_abbr": "COL",
+      "player_name": "Joel Kiviranta",
+      "position": "L",
+      "rating": 58,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477962",
+      "team_name": "VAN",
+      "team_abbr": "VAN",
+      "player_name": "J.T. Miller",
+      "position": "C",
+      "rating": 57,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478466",
+      "team_name": "NYR",
+      "team_abbr": "NYR",
+      "player_name": "Ryan Lindgren",
+      "position": "D",
+      "rating": 57,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477467",
+      "team_name": "TBL",
+      "team_abbr": "TBL",
+      "player_name": "Brayden Point",
+      "position": "C",
+      "rating": 57,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478854",
+      "team_name": "BUF",
+      "team_abbr": "BUF",
+      "player_name": "Tage Thompson",
+      "position": "C",
+      "rating": 57,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475766",
+      "team_name": "VGK",
+      "team_abbr": "VGK",
+      "player_name": "Ivan Barbashev",
+      "position": "C",
+      "rating": 57,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479427",
+      "team_name": "LAK",
+      "team_abbr": "LAK",
+      "player_name": "Drew Doughty",
+      "position": "D",
+      "rating": 56,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478471",
+      "team_name": "MIN",
+      "team_abbr": "MIN",
+      "player_name": "Matt Dumba",
+      "position": "D",
+      "rating": 56,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475171",
+      "team_name": "PHI",
+      "team_abbr": "PHI",
+      "player_name": "Sean Couturier",
+      "position": "C",
+      "rating": 56,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475146",
+      "team_name": "CGY",
+      "team_abbr": "CGY",
+      "player_name": "Jonathan Huberdeau",
+      "position": "L",
+      "rating": 56,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476476",
+      "team_name": "EDM",
+      "team_abbr": "EDM",
+      "player_name": "Zach Hyman",
+      "position": "L",
+      "rating": 56,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475757",
+      "team_name": "VGK",
+      "team_abbr": "VGK",
+      "player_name": "Mark Stone",
+      "position": "R",
+      "rating": 56,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477402",
+      "team_name": "NYI",
+      "team_abbr": "NYI",
+      "player_name": "Kyle Palmieri",
+      "position": "R",
+      "rating": 56,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477937",
+      "team_name": "CGY",
+      "team_abbr": "CGY",
+      "player_name": "Andrew Mangiapane",
+      "position": "L",
+      "rating": 56,
+      "unique_trait": "Exceptional on the forecheck, known for high takeaway rate.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476471",
+      "team_name": "LAK",
+      "team_abbr": "LAK",
+      "player_name": "Alex Iafallo",
+      "position": "L",
+      "rating": 55,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478052",
+      "team_name": "BUF",
+      "team_abbr": "BUF",
+      "player_name": "Alex Tuch",
+      "position": "R",
+      "rating": 55,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477437",
+      "team_name": "PHI",
+      "team_abbr": "PHI",
+      "player_name": "Nick Seeler",
+      "position": "D",
+      "rating": 55,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479365",
+      "team_name": "VAN",
+      "team_abbr": "VAN",
+      "player_name": "Quinn Hughes",
+      "position": "D",
+      "rating": 55,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477431",
+      "team_name": "DET",
+      "team_abbr": "DET",
+      "player_name": "David Perron",
+      "position": "R",
+      "rating": 55,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479339",
+      "team_name": "MIN",
+      "team_abbr": "MIN",
+      "player_name": "Brock Faber",
+      "position": "D",
+      "rating": 55,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478048",
+      "team_name": "NYI",
+      "team_abbr": "NYI",
+      "player_name": "Brock Nelson",
+      "position": "C",
+      "rating": 55,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478441",
+      "team_name": "NSH",
+      "team_abbr": "NSH",
+      "player_name": "Luke Schenn",
+      "position": "D",
+      "rating": 54,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478034",
+      "team_name": "PHI",
+      "team_abbr": "PHI",
+      "player_name": "Travis Sanheim",
+      "position": "D",
+      "rating": 54,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477438",
+      "team_name": "DET",
+      "team_abbr": "DET",
+      "player_name": "J.T. Miller",
+      "position": "C",
+      "rating": 54,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477466",
+      "team_name": "COL",
+      "team_abbr": "COL",
+      "player_name": "Miles Wood",
+      "position": "L",
+      "rating": 54,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476465",
+      "team_name": "DET",
+      "team_abbr": "DET",
+      "player_name": "David Perron",
+      "position": "R",
+      "rating": 54,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478050",
+      "team_name": "SEA",
+      "team_abbr": "SEA",
+      "player_name": "Yanni Gourde",
+      "position": "C",
+      "rating": 54,
+      "unique_trait": "Exceptional on the forecheck, known for high takeaway rate.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476886",
+      "team_name": "MIN",
+      "team_abbr": "MIN",
+      "player_name": "Jonas Brodin",
+      "position": "D",
+      "rating": 53,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478476",
+      "team_name": "EDM",
+      "team_abbr": "EDM",
+      "player_name": "Evander Kane",
+      "position": "L",
+      "rating": 53,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478078",
+      "team_name": "EDM",
+      "team_abbr": "EDM",
+      "player_name": "Darnell Nurse",
+      "position": "D",
+      "rating": 53,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478079",
+      "team_name": "SJS",
+      "team_abbr": "SJS",
+      "player_name": "Mike Hoffman",
+      "position": "L",
+      "rating": 53,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475756",
+      "team_name": "DAL",
+      "team_abbr": "DAL",
+      "player_name": "Ryan Suter",
+      "position": "D",
+      "rating": 52,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477401",
+      "team_name": "NYI",
+      "team_abbr": "NYI",
+      "player_name": "Kyle Palmieri",
+      "position": "R",
+      "rating": 52,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477489",
+      "team_name": "MTL",
+      "team_abbr": "MTL",
+      "player_name": "Mike Matheson",
+      "position": "D",
+      "rating": 52,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478057",
+      "team_name": "VGK",
+      "team_abbr": "VGK",
+      "player_name": "Chandler Stephenson",
+      "position": "C",
+      "rating": 52,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475760",
+      "team_name": "LAK",
+      "team_abbr": "LAK",
+      "player_name": "Drew Doughty",
+      "position": "D",
+      "rating": 51,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478484",
+      "team_name": "CGY",
+      "team_abbr": "CGY",
+      "player_name": "MacKenzie Weegar",
+      "position": "D",
+      "rating": 51,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478473",
+      "team_name": "WSH",
+      "team_abbr": "WSH",
+      "player_name": "John Carlson",
+      "position": "D",
+      "rating": 51,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478490",
+      "team_name": "TBL",
+      "team_abbr": "TBL",
+      "player_name": "Steven Stamkos",
+      "position": "R",
+      "rating": 51,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475755",
+      "team_name": "DAL",
+      "team_abbr": "DAL",
+      "player_name": "Jamie Benn",
+      "position": "L",
+      "rating": 51,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478461",
+      "team_name": "BUF",
+      "team_abbr": "BUF",
+      "player_name": "Rasmus Dahlin",
+      "position": "D",
+      "rating": 50,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478076",
+      "team_name": "SJS",
+      "team_abbr": "SJS",
+      "player_name": "Anthony Duclair",
+      "position": "L",
+      "rating": 50,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478489",
+      "team_name": "MIN",
+      "team_abbr": "MIN",
+      "player_name": "Jared Spurgeon",
+      "position": "D",
+      "rating": 50,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479537",
+      "team_name": "VAN",
+      "team_abbr": "VAN",
+      "player_name": "Elias Pettersson",
+      "position": "C",
+      "rating": 50,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476474",
+      "team_name": "SJS",
+      "team_abbr": "SJS",
+      "player_name": "Kevin Labanc",
+      "position": "R",
+      "rating": 50,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477439",
+      "team_name": "PHI",
+      "team_abbr": "PHI",
+      "player_name": "Nick Seeler",
+      "position": "D",
+      "rating": 50,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476458",
+      "team_name": "NSH",
+      "team_abbr": "NSH",
+      "player_name": "Roman Josi",
+      "position": "D",
+      "rating": 50,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478545",
+      "team_name": "CAR",
+      "team_abbr": "CAR",
+      "player_name": "Brent Burns",
+      "position": "D",
+      "rating": 50,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476499",
+      "team_name": "CGY",
+      "team_abbr": "CGY",
+      "player_name": "Elias Lindholm",
+      "position": "C",
+      "rating": 50,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478422",
+      "team_name": "SJS",
+      "team_abbr": "SJS",
+      "player_name": "Anthony Duclair",
+      "position": "L",
+      "rating": 49,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477465",
+      "team_name": "PIT",
+      "team_abbr": "PIT",
+      "player_name": "Sidney Crosby",
+      "position": "C",
+      "rating": 49,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478505",
+      "team_name": "EDM",
+      "team_abbr": "EDM",
+      "player_name": "Leon Draisaitl",
+      "position": "C",
+      "rating": 49,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477944",
+      "team_name": "NYR",
+      "team_abbr": "NYR",
+      "player_name": "K'Andre Miller",
+      "position": "D",
+      "rating": 49,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479383",
+      "team_name": "SEA",
+      "team_abbr": "SEA",
+      "player_name": "Oliver Bjorkstrand",
+      "position": "R",
+      "rating": 49,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477936",
+      "team_name": "VGK",
+      "team_abbr": "VGK",
+      "player_name": "Alex Tuch",
+      "position": "R",
+      "rating": 49,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478056",
+      "team_name": "BUF",
+      "team_abbr": "BUF",
+      "player_name": "Jeff Skinner",
+      "position": "L",
+      "rating": 49,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477479",
+      "team_name": "BOS",
+      "team_abbr": "BOS",
+      "player_name": "Pavel Zacha",
+      "position": "C",
+      "rating": 49,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478450",
+      "team_name": "MIN",
+      "team_abbr": "MIN",
+      "player_name": "Brock Faber",
+      "position": "D",
+      "rating": 48,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478424",
+      "team_name": "VAN",
+      "team_abbr": "VAN",
+      "player_name": "Elias Lindholm",
+      "position": "C",
+      "rating": 48,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475761",
+      "team_name": "EDM",
+      "team_abbr": "EDM",
+      "player_name": "Mattias Ekholm",
+      "position": "D",
+      "rating": 48,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478480",
+      "team_name": "PHI",
+      "team_abbr": "PHI",
+      "player_name": "Travis Konecny",
+      "position": "R",
+      "rating": 48,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477464",
+      "team_name": "TBL",
+      "team_abbr": "TBL",
+      "player_name": "Mikhail Sergachev",
+      "position": "D",
+      "rating": 48,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479535",
+      "team_name": "PHI",
+      "team_abbr": "PHI",
+      "player_name": "Cam York",
+      "position": "D",
+      "rating": 48,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477498",
+      "team_name": "NYI",
+      "team_abbr": "NYI",
+      "player_name": "Anders Lee",
+      "position": "L",
+      "rating": 47,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477495",
+      "team_name": "DET",
+      "team_abbr": "DET",
+      "player_name": "Dylan Larkin",
+      "position": "C",
+      "rating": 47,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477443",
+      "team_name": "WSH",
+      "team_abbr": "WSH",
+      "player_name": "Tom Wilson",
+      "position": "R",
+      "rating": 47,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478457",
+      "team_name": "PHI",
+      "team_abbr": "PHI",
+      "player_name": "Travis Sanheim",
+      "position": "D",
+      "rating": 47,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478478",
+      "team_name": "CAR",
+      "team_abbr": "CAR",
+      "player_name": "Brady Skjei",
+      "position": "D",
+      "rating": 47,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478053",
+      "team_name": "CGY",
+      "team_abbr": "CGY",
+      "player_name": "Nazem Kadri",
+      "position": "C",
+      "rating": 47,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479338",
+      "team_name": "CGY",
+      "team_abbr": "CGY",
+      "player_name": "MacKenzie Weegar",
+      "position": "D",
+      "rating": 47,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479541",
+      "team_name": "VAN",
+      "team_abbr": "VAN",
+      "player_name": "J.T. Miller",
+      "position": "C",
+      "rating": 47,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478050",
+      "team_name": "BOS",
+      "team_abbr": "BOS",
+      "player_name": "Charlie McAvoy",
+      "position": "D",
+      "rating": 46,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477481",
+      "team_name": "NYI",
+      "team_abbr": "NYI",
+      "player_name": "Mathew Barzal",
+      "position": "C",
+      "rating": 46,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477477",
+      "team_name": "NYI",
+      "team_abbr": "NYI",
+      "player_name": "Scott Mayfield",
+      "position": "D",
+      "rating": 46,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477485",
+      "team_name": "MTL",
+      "team_abbr": "MTL",
+      "player_name": "Mike Matheson",
+      "position": "D",
+      "rating": 46,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476888",
+      "team_name": "SEA",
+      "team_abbr": "SEA",
+      "player_name": "Jared McCann",
+      "position": "L",
+      "rating": 46,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476496",
+      "team_name": "WPG",
+      "team_abbr": "WPG",
+      "player_name": "Josh Morrissey",
+      "position": "D",
+      "rating": 46,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478544",
+      "team_name": "COL",
+      "team_abbr": "COL",
+      "player_name": "Devon Toews",
+      "position": "D",
+      "rating": 46,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477935",
+      "team_name": "VAN",
+      "team_abbr": "VAN",
+      "player_name": "Quinn Hughes",
+      "position": "D",
+      "rating": 46,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476880",
+      "team_name": "NYR",
+      "team_abbr": "NYR",
+      "player_name": "Jacob Trouba",
+      "position": "D",
+      "rating": 46,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477496",
+      "team_name": "DET",
+      "team_abbr": "DET",
+      "player_name": "Ben Chiarot",
+      "position": "D",
+      "rating": 45,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477482",
+      "team_name": "CGY",
+      "team_abbr": "CGY",
+      "player_name": "Nazem Kadri",
+      "position": "C",
+      "rating": 45,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8479350",
+      "team_name": "MIN",
+      "team_abbr": "MIN",
+      "player_name": "Jared Spurgeon",
+      "position": "D",
+      "rating": 45,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478456",
+      "team_name": "BOS",
+      "team_abbr": "BOS",
+      "player_name": "Brandon Carlo",
+      "position": "D",
+      "rating": 45,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478052",
+      "team_name": "NYI",
+      "team_abbr": "NYI",
+      "player_name": "Ryan Pulock",
+      "position": "D",
+      "rating": 45,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478493",
+      "team_name": "CGY",
+      "team_abbr": "CGY",
+      "player_name": "Rasmus Andersson",
+      "position": "D",
+      "rating": 45,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478469",
+      "team_name": "NYR",
+      "team_abbr": "NYR",
+      "player_name": "Adam Fox",
+      "position": "D",
+      "rating": 44,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476494",
+      "team_name": "TBL",
+      "team_abbr": "TBL",
+      "player_name": "Steven Stamkos",
+      "position": "R",
+      "rating": 44,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475763",
+      "team_name": "SEA",
+      "team_abbr": "SEA",
+      "player_name": "Yanni Gourde",
+      "position": "C",
+      "rating": 44,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478472",
+      "team_name": "DAL",
+      "team_abbr": "DAL",
+      "player_name": "Ryan Suter",
+      "position": "D",
+      "rating": 44,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478060",
+      "team_name": "WSH",
+      "team_abbr": "WSH",
+      "player_name": "Evgeny Kuznetsov",
+      "position": "C",
+      "rating": 44,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478497",
+      "team_name": "CGY",
+      "team_abbr": "CGY",
+      "player_name": "Andrew Mangiapane",
+      "position": "L",
+      "rating": 44,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478448",
+      "team_name": "NSH",
+      "team_abbr": "NSH",
+      "player_name": "Roman Josi",
+      "position": "D",
+      "rating": 44,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478465",
+      "team_name": "COL",
+      "team_abbr": "COL",
+      "player_name": "Josh Manson",
+      "position": "D",
+      "rating": 43,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478045",
+      "team_name": "WPG",
+      "team_abbr": "WPG",
+      "player_name": "Josh Morrissey",
+      "position": "D",
+      "rating": 43,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477430",
+      "team_name": "MTL",
+      "team_abbr": "MTL",
+      "player_name": "Nick Suzuki",
+      "position": "C",
+      "rating": 43,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8475145",
+      "team_name": "NYR",
+      "team_abbr": "NYR",
+      "player_name": "Adam Fox",
+      "position": "D",
+      "rating": 43,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478492",
+      "team_name": "NYR",
+      "team_abbr": "NYR",
+      "player_name": "Jacob Trouba",
+      "position": "D",
+      "rating": 43,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477477",
+      "team_name": "WSH",
+      "team_abbr": "WSH",
+      "player_name": "Tom Wilson",
+      "position": "R",
+      "rating": 43,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478451",
+      "team_name": "NSH",
+      "team_abbr": "NSH",
+      "player_name": "Ryan McDonagh",
+      "position": "D",
+      "rating": 43,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478406",
+      "team_name": "BOS",
+      "team_abbr": "BOS",
+      "player_name": "Charlie McAvoy",
+      "position": "D",
+      "rating": 42,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477403",
+      "team_name": "NYI",
+      "team_abbr": "NYI",
+      "player_name": "Ryan Pulock",
+      "position": "D",
+      "rating": 42,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478054",
+      "team_name": "DAL",
+      "team_abbr": "DAL",
+      "player_name": "Jamie Benn",
+      "position": "L",
+      "rating": 42,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477968",
+      "team_name": "CAR",
+      "team_abbr": "CAR",
+      "player_name": "Brady Skjei",
+      "position": "D",
+      "rating": 42,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478051",
+      "team_name": "PHI",
+      "team_abbr": "PHI",
+      "player_name": "Travis Sanheim",
+      "position": "D",
+      "rating": 42,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478452",
+      "team_name": "CGY",
+      "team_abbr": "CGY",
+      "player_name": "Elias Lindholm",
+      "position": "C",
+      "rating": 41,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476486",
+      "team_name": "DET",
+      "team_abbr": "DET",
+      "player_name": "Dylan Larkin",
+      "position": "C",
+      "rating": 41,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478467",
+      "team_name": "BUF",
+      "team_abbr": "BUF",
+      "player_name": "Rasmus Dahlin",
+      "position": "D",
+      "rating": 41,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478056",
+      "team_name": "SEA",
+      "team_abbr": "SEA",
+      "player_name": "Vince Dunn",
+      "position": "D",
+      "rating": 41,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8476484",
+      "team_name": "WSH",
+      "team_abbr": "WSH",
+      "player_name": "John Carlson",
+      "position": "D",
+      "rating": 40,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478454",
+      "team_name": "MIN",
+      "team_abbr": "MIN",
+      "player_name": "Jonas Brodin",
+      "position": "D",
+      "rating": 40,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478059",
+      "team_name": "TBL",
+      "team_abbr": "TBL",
+      "player_name": "Victor Hedman",
+      "position": "D",
+      "rating": 40,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478479",
+      "team_name": "NYI",
+      "team_abbr": "NYI",
+      "player_name": "Noah Dobson",
+      "position": "D",
+      "rating": 40,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477486",
+      "team_name": "SEA",
+      "team_abbr": "SEA",
+      "player_name": "Jared McCann",
+      "position": "L",
+      "rating": 40,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478458",
+      "team_name": "VGK",
+      "team_abbr": "VGK",
+      "player_name": "Shea Theodore",
+      "position": "D",
+      "rating": 40,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478058",
+      "team_name": "BUF",
+      "team_abbr": "BUF",
+      "player_name": "Owen Power",
+      "position": "D",
+      "rating": 39,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478455",
+      "team_name": "TOR",
+      "team_abbr": "TOR",
+      "player_name": "Morgan Rielly",
+      "position": "D",
+      "rating": 39,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477467",
+      "team_name": "WPG",
+      "team_abbr": "WPG",
+      "player_name": "Nate Schmidt",
+      "position": "D",
+      "rating": 38,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478057",
+      "team_name": "CAR",
+      "team_abbr": "CAR",
+      "player_name": "Brett Pesce",
+      "position": "D",
+      "rating": 38,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477483",
+      "team_name": "PHI",
+      "team_abbr": "PHI",
+      "player_name": "Nick Seeler",
+      "position": "D",
+      "rating": 38,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478407",
+      "team_name": "EDM",
+      "team_abbr": "EDM",
+      "player_name": "Darnell Nurse",
+      "position": "D",
+      "rating": 37,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478459",
+      "team_name": "OTT",
+      "team_abbr": "OTT",
+      "player_name": "Jakob Chychrun",
+      "position": "D",
+      "rating": 37,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478470",
+      "team_name": "MTL",
+      "team_abbr": "MTL",
+      "player_name": "Mike Matheson",
+      "position": "D",
+      "rating": 37,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478055",
+      "team_name": "LAK",
+      "team_abbr": "LAK",
+      "player_name": "Drew Doughty",
+      "position": "D",
+      "rating": 37,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478475",
+      "team_name": "VGK",
+      "team_abbr": "VGK",
+      "player_name": "Alex Pietrangelo",
+      "position": "D",
+      "rating": 36,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478498",
+      "team_name": "TBL",
+      "team_abbr": "TBL",
+      "player_name": "Victor Hedman",
+      "position": "D",
+      "rating": 35,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478457",
+      "team_name": "SEA",
+      "team_abbr": "SEA",
+      "player_name": "Vince Dunn",
+      "position": "D",
+      "rating": 35,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478494",
+      "team_name": "LAK",
+      "team_abbr": "LAK",
+      "player_name": "Vladislav Gavrikov",
+      "position": "D",
+      "rating": 35,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8477488",
+      "team_name": "TOR",
+      "team_abbr": "TOR",
+      "player_name": "Morgan Rielly",
+      "position": "D",
+      "rating": 35,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478055",
+      "team_name": "NYR",
+      "team_abbr": "NYR",
+      "player_name": "K'Andre Miller",
+      "position": "D",
+      "rating": 34,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478495",
+      "team_name": "COL",
+      "team_abbr": "COL",
+      "player_name": "Samuel Girard",
+      "position": "D",
+      "rating": 34,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478051",
+      "team_name": "DAL",
+      "team_abbr": "DAL",
+      "player_name": "Ryan Suter",
+      "position": "D",
+      "rating": 33,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478044",
+      "team_name": "SJS",
+      "team_abbr": "SJS",
+      "player_name": "Anthony Duclair",
+      "position": "L",
+      "rating": 33,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478401",
+      "team_name": "VAN",
+      "team_abbr": "VAN",
+      "player_name": "Quinn Hughes",
+      "position": "D",
+      "rating": 33,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478491",
+      "team_name": "CGY",
+      "team_abbr": "CGY",
+      "player_name": "Rasmus Andersson",
+      "position": "D",
+      "rating": 33,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478490",
+      "team_name": "VGK",
+      "team_abbr": "VGK",
+      "player_name": "Shea Theodore",
+      "position": "D",
+      "rating": 33,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478044",
+      "team_name": "CAR",
+      "team_abbr": "CAR",
+      "player_name": "Brady Skjei",
+      "position": "D",
+      "rating": 33,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478052",
+      "team_name": "BOS",
+      "team_abbr": "BOS",
+      "player_name": "Hampus Lindholm",
+      "position": "D",
+      "rating": 32,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478476",
+      "team_name": "PHI",
+      "team_abbr": "PHI",
+      "player_name": "Travis Sanheim",
+      "position": "D",
+      "rating": 32,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478474",
+      "team_name": "WSH",
+      "team_abbr": "WSH",
+      "player_name": "Rasmus Sandin",
+      "position": "D",
+      "rating": 31,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478478",
+      "team_name": "NYR",
+      "team_abbr": "NYR",
+      "player_name": "Jacob Trouba",
+      "position": "D",
+      "rating": 31,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478477",
+      "team_name": "LAK",
+      "team_abbr": "LAK",
+      "player_name": "Vladislav Gavrikov",
+      "position": "D",
+      "rating": 31,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478496",
+      "team_name": "VGK",
+      "team_abbr": "VGK",
+      "player_name": "Alex Pietrangelo",
+      "position": "D",
+      "rating": 30,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478497",
+      "team_name": "OTT",
+      "team_abbr": "OTT",
+      "player_name": "Jakob Chychrun",
+      "position": "D",
+      "rating": 30,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478494",
+      "team_name": "BUF",
+      "team_abbr": "BUF",
+      "player_name": "Owen Power",
+      "position": "D",
+      "rating": 30,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478058",
+      "team_name": "EDM",
+      "team_abbr": "EDM",
+      "player_name": "Cody Ceci",
+      "position": "D",
+      "rating": 29,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478056",
+      "team_name": "MTL",
+      "team_abbr": "MTL",
+      "player_name": "Mike Matheson",
+      "position": "D",
+      "rating": 29,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478493",
+      "team_name": "TOR",
+      "team_abbr": "TOR",
+      "player_name": "Ilya Lyubushkin",
+      "position": "D",
+      "rating": 28,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478495",
+      "team_name": "TBL",
+      "team_abbr": "TBL",
+      "player_name": "Mikhail Sergachev",
+      "position": "D",
+      "rating": 28,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478479",
+      "team_name": "WPG",
+      "team_abbr": "WPG",
+      "player_name": "Nate Schmidt",
+      "position": "D",
+      "rating": 27,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478051",
+      "team_name": "NSH",
+      "team_abbr": "NSH",
+      "player_name": "Luke Schenn",
+      "position": "D",
+      "rating": 27,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478470",
+      "team_name": "WSH",
+      "team_abbr": "WSH",
+      "player_name": "Rasmus Sandin",
+      "position": "D",
+      "rating": 26,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478471",
+      "team_name": "EDM",
+      "team_abbr": "EDM",
+      "player_name": "Mattias Ekholm",
+      "position": "D",
+      "rating": 26,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478472",
+      "team_name": "MIN",
+      "team_abbr": "MIN",
+      "player_name": "Matt Dumba",
+      "position": "D",
+      "rating": 25,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478053",
+      "team_name": "TBL",
+      "team_abbr": "TBL",
+      "player_name": "Mikhail Sergachev",
+      "position": "D",
+      "rating": 25,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478496",
+      "team_name": "NYI",
+      "team_abbr": "NYI",
+      "player_name": "Scott Mayfield",
+      "position": "D",
+      "rating": 25,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478497",
+      "team_name": "CGY",
+      "team_abbr": "CGY",
+      "player_name": "MacKenzie Weegar",
+      "position": "D",
+      "rating": 25,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478054",
+      "team_name": "DET",
+      "team_abbr": "DET",
+      "player_name": "Ben Chiarot",
+      "position": "D",
+      "rating": 24,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478056",
+      "team_name": "LAK",
+      "team_abbr": "LAK",
+      "player_name": "Vladislav Gavrikov",
+      "position": "D",
+      "rating": 24,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478473",
+      "team_name": "CAR",
+      "team_abbr": "CAR",
+      "player_name": "Brett Pesce",
+      "position": "D",
+      "rating": 24,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478498",
+      "team_name": "MIN",
+      "team_abbr": "MIN",
+      "player_name": "Matt Dumba",
+      "position": "D",
+      "rating": 23,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478499",
+      "team_name": "OTT",
+      "team_abbr": "OTT",
+      "player_name": "Jakob Chychrun",
+      "position": "D",
+      "rating": 23,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478055",
+      "team_name": "COL",
+      "team_abbr": "COL",
+      "player_name": "Cale Makar",
+      "position": "D",
+      "rating": 23,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478057",
+      "team_name": "EDM",
+      "team_abbr": "EDM",
+      "player_name": "Cody Ceci",
+      "position": "D",
+      "rating": 22,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478491",
+      "team_name": "WPG",
+      "team_abbr": "WPG",
+      "player_name": "Nate Schmidt",
+      "position": "D",
+      "rating": 21,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478492",
+      "team_name": "PHI",
+      "team_abbr": "PHI",
+      "player_name": "Nick Seeler",
+      "position": "D",
+      "rating": 21,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478476",
+      "team_name": "NYI",
+      "team_abbr": "NYI",
+      "player_name": "Noah Dobson",
+      "position": "D",
+      "rating": 21,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478477",
+      "team_name": "COL",
+      "team_abbr": "COL",
+      "player_name": "Samuel Girard",
+      "position": "D",
+      "rating": 20,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478493",
+      "team_name": "EDM",
+      "team_abbr": "EDM",
+      "player_name": "Mattias Ekholm",
+      "position": "D",
+      "rating": 20,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478494",
+      "team_name": "TBL",
+      "team_abbr": "TBL",
+      "player_name": "Mikhail Sergachev",
+      "position": "D",
+      "rating": 20,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478051",
+      "team_name": "BOS",
+      "team_abbr": "BOS",
+      "player_name": "Brandon Carlo",
+      "position": "D",
+      "rating": 20,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478052",
+      "team_name": "VGK",
+      "team_abbr": "VGK",
+      "player_name": "Alex Pietrangelo",
+      "position": "D",
+      "rating": 19,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478053",
+      "team_name": "CGY",
+      "team_abbr": "CGY",
+      "player_name": "Rasmus Andersson",
+      "position": "D",
+      "rating": 19,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478054",
+      "team_name": "BUF",
+      "team_abbr": "BUF",
+      "player_name": "Owen Power",
+      "position": "D",
+      "rating": 18,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478055",
+      "team_name": "DET",
+      "team_abbr": "DET",
+      "player_name": "Ben Chiarot",
+      "position": "D",
+      "rating": 18,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478056",
+      "team_name": "NSH",
+      "team_abbr": "NSH",
+      "player_name": "Luke Schenn",
+      "position": "D",
+      "rating": 17,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478057",
+      "team_name": "TOR",
+      "team_abbr": "TOR",
+      "player_name": "Morgan Rielly",
+      "position": "D",
+      "rating": 16,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478058",
+      "team_name": "OTT",
+      "team_abbr": "OTT",
+      "player_name": "Jakob Chychrun",
+      "position": "D",
+      "rating": 15,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478059",
+      "team_name": "WSH",
+      "team_abbr": "WSH",
+      "player_name": "Rasmus Sandin",
+      "position": "D",
+      "rating": 14,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478060",
+      "team_name": "CAR",
+      "team_abbr": "CAR",
+      "player_name": "Brett Pesce",
+      "position": "D",
+      "rating": 13,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478061",
+      "team_name": "SEA",
+      "team_abbr": "SEA",
+      "player_name": "Vince Dunn",
+      "position": "D",
+      "rating": 12,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478062",
+      "team_name": "MTL",
+      "team_abbr": "MTL",
+      "player_name": "Mike Matheson",
+      "position": "D",
+      "rating": 11,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478063",
+      "team_name": "SJS",
+      "team_abbr": "SJS",
+      "player_name": "Mike Hoffman",
+      "position": "L",
+      "rating": 10,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478064",
+      "team_name": "PHI",
+      "team_abbr": "PHI",
+      "player_name": "Travis Konecny",
+      "position": "R",
+      "rating": 9,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478065",
+      "team_name": "MIN",
+      "team_abbr": "MIN",
+      "player_name": "Jonas Brodin",
+      "position": "D",
+      "rating": 8,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478066",
+      "team_name": "WPG",
+      "team_abbr": "WPG",
+      "player_name": "Josh Morrissey",
+      "position": "D",
+      "rating": 7,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478067",
+      "team_name": "CGY",
+      "team_abbr": "CGY",
+      "player_name": "Andrew Mangiapane",
+      "position": "L",
+      "rating": 6,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478068",
+      "team_name": "DAL",
+      "team_abbr": "DAL",
+      "player_name": "Jamie Benn",
+      "position": "L",
+      "rating": 5,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478069",
+      "team_name": "VAN",
+      "team_abbr": "VAN",
+      "player_name": "J.T. Miller",
+      "position": "C",
+      "rating": 4,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478070",
+      "team_name": "COL",
+      "team_abbr": "COL",
+      "player_name": "Miles Wood",
+      "position": "L",
+      "rating": 3,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478071",
+      "team_name": "PIT",
+      "team_abbr": "PIT",
+      "player_name": "Sidney Crosby",
+      "position": "C",
+      "rating": 2,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478072",
+      "team_name": "LAK",
+      "team_abbr": "LAK",
+      "player_name": "Anze Kopitar",
+      "position": "C",
+      "rating": 1,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    },
+    {
+      "id": "8478073",
+      "team_name": "NYR",
+      "team_abbr": "NYR",
+      "player_name": "Artemi Panarin",
+      "position": "L",
+      "rating": 0,
+      "unique_trait": "Solid rotational player with consistent play.",
+      "is_unique_fact": true
+    }
+  ]

@@ -1,0 +1,2496 @@
+[
+    {
+      "team_abbr": "ANA",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Mason McTavish",
+            "rating": 69,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Troy Terry",
+            "rating": 75,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Cutter Gauthier",
+            "rating": 67,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Jackson LaCombe",
+            "rating": 70,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Olen Zellweger",
+            "rating": 64,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Ryan Strome",
+            "rating": 68,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Frank Vatrano",
+            "rating": 66,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Alex Killorn",
+            "rating": 64,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Pavel Mintyukov",
+            "rating": 62,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Radko Gudas",
+            "rating": 56,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Leo Carlsson",
+            "rating": 65,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Brett Leason",
+            "rating": 58,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Sam Colangelo",
+            "rating": 55,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Jacob Trouba",
+            "rating": 55,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Drew Helleson",
+            "rating": 54,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "BOS",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Elias Lindholm",
+            "rating": 73,
+            "position": "C"
+          },
+          "W1": {
+            "name": "David Pastrnak",
+            "rating": 89,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Cole Koepke",
+            "rating": 57,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Charlie McAvoy",
+            "rating": 68,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Hampus Lindholm",
+            "rating": 61,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Morgan Geekie",
+            "rating": 71,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Fabian Lysell",
+            "rating": 54,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Oliver Wahlstrom",
+            "rating": 53,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Nikita Zadorov",
+            "rating": 60,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Mason Lohrei",
+            "rating": 59,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Pavel Zacha",
+            "rating": 65,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Jeffrey Viel",
+            "rating": 51,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Riley Tufte",
+            "rating": 51,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Henri Jokiharju",
+            "rating": 56,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Andrew Peeke",
+            "rating": 56,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "BUF",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Tage Thompson",
+            "rating": 85,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Alex Tuch",
+            "rating": 83,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Jason Zucker",
+            "rating": 76,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Rasmus Dahlin",
+            "rating": 85,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Owen Power",
+            "rating": 73,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Ryan McLeod",
+            "rating": 69,
+            "position": "C"
+          },
+          "W1": {
+            "name": "JJ Peterka",
+            "rating": 72,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Zach Benson",
+            "rating": 66,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Bowen Byram",
+            "rating": 67,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Mattias Samuelsson",
+            "rating": 57,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Josh Norris",
+            "rating": 65,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Jack Quinn",
+            "rating": 66,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Jordan Greenway",
+            "rating": 57,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Jacob Bernard-Docker",
+            "rating": 56,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Connor Clifton",
+            "rating": 56,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "CAR",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Seth Jarvis",
+            "rating": 92,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Andrei Svechnikov",
+            "rating": 80,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Eric Robinson",
+            "rating": 69,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Shayne Gostisbehere",
+            "rating": 81,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Brent Burns",
+            "rating": 74,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Sebastian Aho",
+            "rating": 91,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Jordan Martinook",
+            "rating": 68,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Taylor Hall",
+            "rating": 68,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Dmitry Orlov",
+            "rating": 69,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Jaccob Slavin",
+            "rating": 67,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Jack Roslovic",
+            "rating": 75,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Jackson Blake",
+            "rating": 66,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Bradly Nadeau",
+            "rating": 62,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Sean Walker",
+            "rating": 65,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Jalen Chatfield",
+            "rating": 64,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "CBJ",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Sean Monahan",
+            "rating": 87,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Kirill Marchenko",
+            "rating": 86,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Dmitri Voronkov",
+            "rating": 73,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Zach Werenski",
+            "rating": 82,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Damon Severson",
+            "rating": 66,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Kent Johnson",
+            "rating": 82,
+            "position": "C"
+          },
+          "W1": {
+            "name": "James van Riemsdyk",
+            "rating": 65,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Yegor Chinakhov",
+            "rating": 61,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Dante Fabbro",
+            "rating": 63,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Ivan Provorov",
+            "rating": 62,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Luca Del Bel Belluz",
+            "rating": 74,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Justin Danforth",
+            "rating": 61,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Kevin Labanc",
+            "rating": 61,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Denton Mateychuk",
+            "rating": 60,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Jake Christiansen",
+            "rating": 54,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "CGY",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Nazem Kadri",
+            "rating": 83,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Jonathan Huberdeau",
+            "rating": 77,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Matt Coronato",
+            "rating": 70,
+            "position": "R"
+          },
+          "D1": {
+            "name": "MacKenzie Weegar",
+            "rating": 73,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Rasmus Andersson",
+            "rating": 65,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Yegor Sharangovich",
+            "rating": 67,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Blake Coleman",
+            "rating": 68,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Anthony Mantha",
+            "rating": 64,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Kevin Bahl",
+            "rating": 59,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Daniil Miromanov",
+            "rating": 58,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Mikael Backlund",
+            "rating": 65,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Joel Farabee",
+            "rating": 62,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Adam Klapka",
+            "rating": 60,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Joel Hanley",
+            "rating": 57,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Brayden Pachal",
+            "rating": 56,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "CHI",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Ryan Donato",
+            "rating": 70,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Tyler Bertuzzi",
+            "rating": 64,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Nick Foligno",
+            "rating": 63,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Sam Rinzel",
+            "rating": 65,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Alex Vlasic",
+            "rating": 58,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Teuvo Teravainen",
+            "rating": 70,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Ilya Mikheyev",
+            "rating": 62,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Lukas Reichel",
+            "rating": 57,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Nolan Allan",
+            "rating": 57,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Ethan Del Mastro",
+            "rating": 56,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Connor Bedard",
+            "rating": 66,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Patrick Maroon",
+            "rating": 54,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Landon Slaggert",
+            "rating": 52,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Connor Murphy",
+            "rating": 55,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Alec Martinez",
+            "rating": 54,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "COL",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Nathan MacKinnon",
+            "rating": 100,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Jonathan Drouin",
+            "rating": 93,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Artturi Lehkonen",
+            "rating": 75,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Cale Makar",
+            "rating": 96,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Devon Toews",
+            "rating": 75,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Martin Necas",
+            "rating": 93,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Valeri Nichushkin",
+            "rating": 73,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Logan O'Connor",
+            "rating": 59,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Samuel Girard",
+            "rating": 64,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Sam Malinski",
+            "rating": 61,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Brock Nelson",
+            "rating": 78,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Joel Kiviranta",
+            "rating": 58,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Miles Wood",
+            "rating": 54,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Josh Manson",
+            "rating": 59,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Ryan Lindgren",
+            "rating": 57,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "DAL",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Tyler Seguin",
+            "rating": 87,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Mikko Rantanen",
+            "rating": 89,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Mason Marchment",
+            "rating": 80,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Thomas Harley",
+            "rating": 74,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Miro Heiskanen",
+            "rating": 68,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Wyatt Johnston",
+            "rating": 85,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Jason Robertson",
+            "rating": 78,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Jamie Benn",
+            "rating": 71,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Esa Lindell",
+            "rating": 64,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Brendan Smith",
+            "rating": 63,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Matt Duchene",
+            "rating": 84,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Evgenii Dadonov",
+            "rating": 66,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Matj  Blmel",
+            "rating": 51,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Nils Lundkvist",
+            "rating": 56,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Mathew Dumba",
+            "rating": 56,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "DET",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Dylan Larkin",
+            "rating": 84,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Lucas Raymond",
+            "rating": 90,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Alex DeBrincat",
+            "rating": 79,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Moritz Seider",
+            "rating": 69,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Simon Edvinsson",
+            "rating": 65,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Andrew Copp",
+            "rating": 66,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Patrick Kane",
+            "rating": 70,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Elmer Soderblom",
+            "rating": 64,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Erik Gustafsson",
+            "rating": 60,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Justin Holl",
+            "rating": 55,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Marco Kasper",
+            "rating": 66,
+            "position": "C"
+          },
+          "W1": {
+            "name": "J.T. Compher",
+            "rating": 62,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Vladimir Tarasenko",
+            "rating": 61,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Albert Johansson",
+            "rating": 55,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Jeff Petry",
+            "rating": 54,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "EDM",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Leon Draisaitl",
+            "rating": 96,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Zach Hyman",
+            "rating": 72,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Jeff Skinner",
+            "rating": 69,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Evan Bouchard",
+            "rating": 87,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Jake Walman",
+            "rating": 75,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Connor McDavid",
+            "rating": 92,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Corey Perry",
+            "rating": 68,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Viktor Arvidsson",
+            "rating": 64,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Mattias Ekholm",
+            "rating": 72,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Darnell Nurse",
+            "rating": 69,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Ryan Nugent-Hopkins",
+            "rating": 74,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Connor Brown",
+            "rating": 64,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Vasily Podkolzin",
+            "rating": 59,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Brett Kulak",
+            "rating": 66,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Ty Emberson",
+            "rating": 56,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "FLA",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Aleksander Barkov",
+            "rating": 94,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Matthew Tkachuk",
+            "rating": 86,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Brad Marchand",
+            "rating": 79,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Aaron Ekblad",
+            "rating": 75,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Seth Jones",
+            "rating": 70,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Sam Reinhart",
+            "rating": 91,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Mackie Samoskevich",
+            "rating": 69,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Tomas Nosek",
+            "rating": 57,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Niko Mikkola",
+            "rating": 66,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Gustav Forsling",
+            "rating": 65,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Anton Lundell",
+            "rating": 78,
+            "position": "C"
+          },
+          "W1": {
+            "name": "A.J. Greer",
+            "rating": 56,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Jesse Puljujarvi",
+            "rating": 55,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Nate Schmidt",
+            "rating": 64,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Uvis Balinskis",
+            "rating": 64,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "LAK",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Anze Kopitar",
+            "rating": 82,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Adrian Kempe",
+            "rating": 86,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Andrei Kuzmenko",
+            "rating": 80,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Brandt Clarke",
+            "rating": 75,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Jordan Spence",
+            "rating": 70,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Phillip Danault",
+            "rating": 72,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Kevin Fiala",
+            "rating": 79,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Quinton Byfield",
+            "rating": 78,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Drew Doughty",
+            "rating": 67,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Vladislav Gavrikov",
+            "rating": 64,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Alex Turcotte",
+            "rating": 67,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Warren Foegele",
+            "rating": 77,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Trevor Moore",
+            "rating": 73,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Mikey Anderson",
+            "rating": 61,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Joel Edmundson",
+            "rating": 60,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "MIN",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Marco Rossi",
+            "rating": 72,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Kirill Kaprizov",
+            "rating": 84,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Matt Boldy",
+            "rating": 82,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Jared Spurgeon",
+            "rating": 72,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Jonas Brodin",
+            "rating": 60,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Joel Eriksson Ek",
+            "rating": 68,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Mats Zuccarello",
+            "rating": 73,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Marcus Foligno",
+            "rating": 65,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Brock Faber",
+            "rating": 60,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Declan Chisholm",
+            "rating": 57,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Frederick Gaudreau",
+            "rating": 63,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Ryan Hartman",
+            "rating": 64,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Pat Maroon",
+            "rating": 59,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Jon Merrill",
+            "rating": 56,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Alex Goligoski",
+            "rating": 55,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "MTL",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Nick Suzuki",
+            "rating": 83,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Cole Caufield",
+            "rating": 78,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Alex Newhook",
+            "rating": 69,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Kaiden Guhle",
+            "rating": 67,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Arber Xhekaj",
+            "rating": 56,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Kirby Dach",
+            "rating": 70,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Juraj Slafkovsky",
+            "rating": 65,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Brendan Gallagher",
+            "rating": 63,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Mike Matheson",
+            "rating": 63,
+            "position": "D"
+          },
+          "D2": {
+            "name": "David Savard",
+            "rating": 56,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Alex Kerfoot",
+            "rating": 66,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Joshua Roy",
+            "rating": 62,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Joel Armia",
+            "rating": 59,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Logan Mailloux",
+            "rating": 56,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Justin Barron",
+            "rating": 55,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "NJD",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Nico Hischier",
+            "rating": 94,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Jesper Bratt",
+            "rating": 95,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Dawson Mercer",
+            "rating": 79,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Luke Hughes",
+            "rating": 74,
+            "position": "D"
+          },
+          "D2": {
+            "name": "John Marino",
+            "rating": 69,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Jack Hughes",
+            "rating": 89,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Timo Meier",
+            "rating": 82,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Ondrej Palat",
+            "rating": 76,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Simon Nemec",
+            "rating": 70,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Kevin Bahl",
+            "rating": 62,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Erik Haula",
+            "rating": 71,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Tyler Toffoli",
+            "rating": 74,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Curtis Lazar",
+            "rating": 62,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Dougie Hamilton",
+            "rating": 61,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Jonas Siegenthaler",
+            "rating": 60,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "NSH",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Ryan O'Reilly",
+            "rating": 82,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Filip Forsberg",
+            "rating": 88,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Cody Glass",
+            "rating": 73,
+            "position": "C"
+          },
+          "D1": {
+            "name": "Roman Josi",
+            "rating": 83,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Jeremy Lauzon",
+            "rating": 74,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Tommy Novak",
+            "rating": 81,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Michael Bunting",
+            "rating": 78,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Gustav Nyquist",
+            "rating": 73,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Alexandre Carrier",
+            "rating": 65,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Tyson Barrie",
+            "rating": 64,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Juuso Prkkinen",
+            "rating": 70,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Luke Evangelista",
+            "rating": 67,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Kieffer Bellows",
+            "rating": 64,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Spencer Stastney",
+            "rating": 61,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Ryan McDonagh",
+            "rating": 60,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "NYR",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Mika Zibanejad",
+            "rating": 90,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Artemi Panarin",
+            "rating": 93,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Filip Chytil",
+            "rating": 78,
+            "position": "C"
+          },
+          "D1": {
+            "name": "Adam Fox",
+            "rating": 89,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Jacob Trouba",
+            "rating": 74,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Vincent Trocheck",
+            "rating": 80,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Chris Kreider",
+            "rating": 77,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Alexis Lafreniere",
+            "rating": 76,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Ryan Lindgren",
+            "rating": 68,
+            "position": "D"
+          },
+          "D2": {
+            "name": "K'Andre Miller",
+            "rating": 67,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Jonny Brodzinski",
+            "rating": 65,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Kaapo Kakko",
+            "rating": 73,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Will Cuylle",
+            "rating": 62,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Chad Ruhwedel",
+            "rating": 65,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Erik Gustafsson",
+            "rating": 64,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "OTT",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Tim Sttzle",
+            "rating": 90,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Brady Tkachuk",
+            "rating": 85,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Claude Giroux",
+            "rating": 78,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Thomas Chabot",
+            "rating": 78,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Jakob Chychrun",
+            "rating": 67,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Shane Pinto",
+            "rating": 81,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Vladimir Tarasenko",
+            "rating": 67,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Josh Norris",
+            "rating": 64,
+            "position": "C"
+          },
+          "D1": {
+            "name": "Erik Brnnstrm",
+            "rating": 64,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Jake Sanderson",
+            "rating": 63,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Ridly Greig",
+            "rating": 68,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Mathieu Joseph",
+            "rating": 66,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Angus Crookshank",
+            "rating": 61,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Artem Zub",
+            "rating": 61,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Travis Hamonic",
+            "rating": 56,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "PHI",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Noah Cates",
+            "rating": 74,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Travis Konecny",
+            "rating": 81,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Cam Atkinson",
+            "rating": 70,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Cam York",
+            "rating": 75,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Jamie Drysdale",
+            "rating": 73,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Scott Laughton",
+            "rating": 67,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Bobby Brink",
+            "rating": 64,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Owen Tippett",
+            "rating": 64,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Travis Sanheim",
+            "rating": 69,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Rasmus Ristolainen",
+            "rating": 66,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Morgan Frost",
+            "rating": 66,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Ryan Poehling",
+            "rating": 63,
+            "position": "C"
+          },
+          "W2": {
+            "name": "Garnet Hathaway",
+            "rating": 61,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Nick Seeler",
+            "rating": 61,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Victor Mete",
+            "rating": 55,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "PIT",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Sidney Crosby",
+            "rating": 94,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Jake Guentzel",
+            "rating": 89,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Rickard Rakell",
+            "rating": 80,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Kris Letang",
+            "rating": 80,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Marcus Pettersson",
+            "rating": 69,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Evgeni Malkin",
+            "rating": 89,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Bryan Rust",
+            "rating": 77,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Jesse Puljujarvi",
+            "rating": 69,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Ryan Graves",
+            "rating": 64,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Jeff Petry",
+            "rating": 63,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Lars Eller",
+            "rating": 72,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Reilly Smith",
+            "rating": 74,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Matt Nieto",
+            "rating": 60,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Alex Nedeljkovic",
+            "rating": 60,
+            "position": "D"
+          },
+          "D2": {
+            "name": "P.O Joseph",
+            "rating": 57,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "SEA",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Matty Beniers",
+            "rating": 77,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Jared McCann",
+            "rating": 77,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Jordan Eberle",
+            "rating": 75,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Jamie Oleksiak",
+            "rating": 70,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Ryker Evans",
+            "rating": 60,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Alex Wennberg",
+            "rating": 70,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Andre Burakovsky",
+            "rating": 74,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Brandon Tanev",
+            "rating": 65,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Vince Dunn",
+            "rating": 68,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Justin Schultz",
+            "rating": 65,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Tye Kartye",
+            "rating": 64,
+            "position": "L"
+          },
+          "W1": {
+            "name": "Yanni Gourde",
+            "rating": 69,
+            "position": "C"
+          },
+          "W2": {
+            "name": "Oliver Bjorkstrand",
+            "rating": 64,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Will Borgen",
+            "rating": 64,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Cale Fleury",
+            "rating": 57,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "SJS",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Mikael Granlund",
+            "rating": 76,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Anthony Duclair",
+            "rating": 70,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Kevin Labanc",
+            "rating": 62,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Mario Ferraro",
+            "rating": 68,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Henry Thrun",
+            "rating": 63,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Logan Couture",
+            "rating": 73,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Luke Kunin",
+            "rating": 64,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Jacob MacDonald",
+            "rating": 57,
+            "position": "D"
+          },
+          "D1": {
+            "name": "Calen Addison",
+            "rating": 62,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Jan Rutta",
+            "rating": 58,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Nico Sturm",
+            "rating": 67,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Thomas Bordeleau",
+            "rating": 60,
+            "position": "C"
+          },
+          "W2": {
+            "name": "Alexander Barabanov",
+            "rating": 55,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Kyle Burroughs",
+            "rating": 57,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Radim Simek",
+            "rating": 55,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "STL",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Robert Thomas",
+            "rating": 89,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Pavel Buchnevich",
+            "rating": 85,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Brandon Saad",
+            "rating": 73,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Torey Krug",
+            "rating": 69,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Colton Parayko",
+            "rating": 66,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Jordan Kyrou",
+            "rating": 83,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Jake Neighbours",
+            "rating": 71,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Kasperi Kapanen",
+            "rating": 65,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Justin Faulk",
+            "rating": 64,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Scott Perunovich",
+            "rating": 61,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Kevin Hayes",
+            "rating": 73,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Oskar Sundqvist",
+            "rating": 65,
+            "position": "C"
+          },
+          "W2": {
+            "name": "Alexey Toropchenko",
+            "rating": 60,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Marco Scandella",
+            "rating": 60,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Nick Leddy",
+            "rating": 55,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "TBL",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Brayden Point",
+            "rating": 93,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Nikita Kucherov",
+            "rating": 94,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Anthony Cirelli",
+            "rating": 75,
+            "position": "C"
+          },
+          "D1": {
+            "name": "Victor Hedman",
+            "rating": 81,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Calvin de Haan",
+            "rating": 67,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Steven Stamkos",
+            "rating": 84,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Michael Eyssimont",
+            "rating": 65,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Tyler Motte",
+            "rating": 60,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Nick Perbix",
+            "rating": 65,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Emil Martinsen Lilleberg",
+            "rating": 57,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Conor Sheary",
+            "rating": 69,
+            "position": "L"
+          },
+          "W1": {
+            "name": "Waltteri Merel",
+            "rating": 64,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Mitchell Chaffee",
+            "rating": 60,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Haydn Fleury",
+            "rating": 56,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Zack Bogosian",
+            "rating": 54,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "TOR",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Auston Matthews",
+            "rating": 94,
+            "position": "C"
+          },
+          "W1": {
+            "name": "William Nylander",
+            "rating": 94,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Mitch Marner",
+            "rating": 89,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Morgan Rielly",
+            "rating": 81,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Conor Timmins",
+            "rating": 68,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "John Tavares",
+            "rating": 81,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Matthew Knies",
+            "rating": 69,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Calle Jrnkrok",
+            "rating": 67,
+            "position": "C"
+          },
+          "D1": {
+            "name": "T.J. Brodie",
+            "rating": 66,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Ilya Lyubushkin",
+            "rating": 63,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Max Domi",
+            "rating": 74,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Noah Gregor",
+            "rating": 65,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Ryan Reaves",
+            "rating": 62,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Simon Benoît",
+            "rating": 63,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Mark Giordano",
+            "rating": 62,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "VAN",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Elias Pettersson",
+            "rating": 91,
+            "position": "C"
+          },
+          "W1": {
+            "name": "J.T. Miller",
+            "rating": 84,
+            "position": "C"
+          },
+          "W2": {
+            "name": "Brock Boeser",
+            "rating": 78,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Quinn Hughes",
+            "rating": 93,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Filip Hronek",
+            "rating": 70,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Elias Lindholm",
+            "rating": 79,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Sam Lafferty",
+            "rating": 67,
+            "position": "C"
+          },
+          "W2": {
+            "name": "Pius Suter",
+            "rating": 66,
+            "position": "C"
+          },
+          "D1": {
+            "name": "Carson Soucy",
+            "rating": 68,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Nikita Zadorov",
+            "rating": 64,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Teddy Blueger",
+            "rating": 69,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Vasily Podkolzin",
+            "rating": 66,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Conor Garland",
+            "rating": 64,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Tyler Myers",
+            "rating": 61,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Noah Juulsen",
+            "rating": 59,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "VGK",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Jack Eichel",
+            "rating": 92,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Jonathan Marchessault",
+            "rating": 78,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Pavel Dorofeyev",
+            "rating": 71,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Noah Hanifin",
+            "rating": 82,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Shea Theodore",
+            "rating": 75,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "William Karlsson",
+            "rating": 84,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Ivan Barbashev",
+            "rating": 76,
+            "position": "C"
+          },
+          "W2": {
+            "name": "Brett Howden",
+            "rating": 70,
+            "position": "C"
+          },
+          "D1": {
+            "name": "Alex Pietrangelo",
+            "rating": 74,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Brayden McNabb",
+            "rating": 69,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Chandler Stephenson",
+            "rating": 77,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Paul Cotter",
+            "rating": 68,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Michael Amadio",
+            "rating": 66,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Nicolas Hague",
+            "rating": 63,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Zach Whitecloud",
+            "rating": 56,
+            "position": "D"
+          }
+        }
+      }
+    },
+    {
+      "team_abbr": "WPG",
+      "lines": {
+        "Line 1": {
+          "C": {
+            "name": "Mark Scheifele",
+            "rating": 88,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Kyle Connor",
+            "rating": 85,
+            "position": "L"
+          },
+          "W2": {
+            "name": "Nikolaj Ehlers",
+            "rating": 82,
+            "position": "L"
+          },
+          "D1": {
+            "name": "Josh Morrissey",
+            "rating": 86,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Neal Pionk",
+            "rating": 71,
+            "position": "D"
+          }
+        },
+        "Line 2": {
+          "C": {
+            "name": "Sean Monahan",
+            "rating": 78,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Gabriel Vilardi",
+            "rating": 75,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Tyler Toffoli",
+            "rating": 73,
+            "position": "R"
+          },
+          "D1": {
+            "name": "Brenden Dillon",
+            "rating": 65,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Dylan DeMelo",
+            "rating": 64,
+            "position": "D"
+          }
+        },
+        "Line 3": {
+          "C": {
+            "name": "Adam Lowry",
+            "rating": 70,
+            "position": "C"
+          },
+          "W1": {
+            "name": "Mason Appleton",
+            "rating": 65,
+            "position": "R"
+          },
+          "W2": {
+            "name": "Cole Perfetti",
+            "rating": 64,
+            "position": "C"
+          },
+          "D1": {
+            "name": "Colin Miller",
+            "rating": 63,
+            "position": "D"
+          },
+          "D2": {
+            "name": "Logan Stanley",
+            "rating": 58,
+            "position": "D"
+          }
+        }
+      }
+    }
+  ]

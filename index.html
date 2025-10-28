@@ -3,56 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Shift: Roster IQ</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    
-    <script>
-        // Custom Tailwind Configuration for Classic Rink theme
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary-dark': '#051C2C', // Dark Rink / Navy (60%)
-                        'secondary-light': '#E1F5FE', // Ice Blue / Off-White (30%)
-                        'accent-red': '#C8102E', // Red / Warm Accent (10%)
-                        'error-red': '#FF3131', // Bright red for feedback
-                        'rank-gold': '#FFD700', // Gold for top ranks
-                    },
-                    fontFamily: {
-                        sans: ['Roboto', 'sans-serif'], // Clean, readable font
-                    },
-                }
-            }
-        }
-    </script>
+    <title>The Daily Lineup | GLITCH RINK</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Wallpoet&display=swap" rel="stylesheet">
 </head>
-<body class="bg-primary-dark text-secondary-light min-h-screen flex items-center justify-center p-4">
-
-    <div id="app-container" class="w-full max-w-2xl bg-primary-dark/95 shadow-2xl rounded-xl p-6 md:p-8 border-4 border-secondary-light/30">
-        
-        <header class="text-center mb-6">
-            <h1 class="text-3xl md:text-5xl font-bold text-secondary-light border-b border-secondary-light/50 pb-2">
-                THE SHIFT: ROSTER IQ
-            </h1>
-            <p class="text-sm text-secondary-light/70 mt-1">MASTER YOUR HOCKEY ROSTER KNOWLEDGE</p>
+<body>
+    <div id="app-container">
+        <header class="glitch-header">
+            <h1 class="glitch-title">DAILY LINEUP // **GLITCH RINK**</h1>
+            <div class="metrics">
+                <span id="streak-metric" class="metric-item">STREAK: 0</span>
+                <span id="score-metric" class="metric-item">SCORE: 0</span>
+            </div>
         </header>
 
-        <main id="game-area" class="min-h-[400px]">
-            </main>
-        
-        <footer class="mt-6 pt-4 border-t border-secondary-light/20 text-sm flex justify-between items-center">
-            <div id="overall-rank-display">
-                <span class="text-secondary-light/80">OVERALL RANK: </span>
-                <span id="player-rank" class="text-lg font-bold text-accent-red">ROOKIE</span>
-            </div>
-            <div>
-                <span class="text-secondary-light/80">BEST STREAK: </span><span id="current-streak">0</span>
-            </div>
-        </footer>
-    </div>
+        <div id="start-screen" class="game-screen active">
+            <h2>SYSTEM READY: NEW SHIFT INITIATED</h2>
+            <div class="settings-panel glitch-card">
+                <label for="team-select">TARGET TEAM:</label>
+                <select id="team-select"></select>
 
-    <script src="script.js"></script>
+                <label>LINES TO BUILD:</label>
+                <div class="line-options">
+                    <button class="line-btn" data-lines="1">1st Line Only</button>
+                    <button class="line-btn active" data-lines="2">Top 2 Lines</button>
+                    <button class="line-btn" data-lines="3">Full 3 Lines</button>
+                </div>
+            </div>
+            <button id="start-shift-btn" class="action-btn">INITIATE LINE BUILD DRILL</button>
+        </div>
+
+        <div id="quiz-screen" class="game-screen">
+            <div class="timer-bar-container">
+                <div id="timer-bar"></div>
+                <div id="timer-text">60:00</div>
+            </div>
+            <h3 id="current-team-display">Team: **EDM**</h3>
+            
+            <div class="line-builder-grid">
+                <div id="line-slots-container" class="line-slots-area">
+                    </div>
+
+                <div class="player-pool-area">
+                    <h4 class="pool-header">PLAYER DATA POOL: <span id="pool-count">0</span> Skaters Available</h4>
+                    <div id="player-pool" class="player-pool">
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="debrief-screen" class="game-screen">
+            <h2 id="debrief-title" class="glitch-title">DEBRIEF SCREEN: DATA LOG</h2>
+            <div class="debrief-summary">
+                <p>TIME REMAINING: <span id="debrief-time-bonus">--</span></p>
+                <p>ACCURACY RATING: <span id="debrief-accuracy">--</span></p>
+                <p>POINTS EARNED: <span id="debrief-points" class="accent-text">--</span></p>
+            </div>
+
+            <div class="mistake-review-container">
+                <h4>:: MISTAKE REVIEW LOG ::</h4>
+                <div id="mistake-review-list">
+                    <p class="review-placeholder">No errors detected. Flawless run.</p>
+                </div>
+            </div>
+            
+            <button id="next-shift-btn" class="action-btn">RETURN TO SYSTEM MENU</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
 </body>
 </html>
