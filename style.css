@@ -1,44 +1,47 @@
-/* --- 2.1 Color Theory & Palette (The "Data Console") --- */
+/* --- Color Palette (Data Console) --- */
 :root {
-    --color-primary-dark: #0A0A0A; /* Deep Charcoal / Black (60%) */
-    --color-secondary-light: #EAEAEA; /* Off-White / Light Silver (30%) */
-    --color-accent-cyan: #00FFFF; /* Electric Cyan (10%) */
-    --color-error-red: #FF3131; /* Error Red */
-    --color-background-dark: #101827; /* Dark Navy/Charcoal for depth */
+    --color-primary-dark: #0A0A0A; /* Black */
+    --color-secondary-light: #EAEAEA; /* Silver */
+    --color-accent-cyan: #00FFFF; /* Cyan */
+    --color-error-red: #FF3131;
+    --color-background-dark: #101827; /* Dark Navy */
 }
 
 /* --- Base & Background --- */
 body {
     background-color: var(--color-background-dark);
     color: var(--color-secondary-light);
-    font-family: 'Space Mono', monospace; /* Clean, Monospace body font */
+    font-family: 'Space Mono', monospace;
     margin: 0;
-    padding: 20px;
+    padding: 0; /* Remove body padding */
     height: 100vh;
-    overflow: auto;
-    display: flex;
+    display: flex; /* Use flex for centering */
     justify-content: center;
-    align-items: flex-start;
+    align-items: center; /* Center container vertically */
     font-size: 16px;
+    overflow: hidden; /* Prevent body scroll */
 }
 
 #app-container {
-    width: 100%;
-    max-width: 1400px;
-    min-height: 800px;
+    width: 95%; /* Adjust width */
+    max-width: 1600px;
+    height: 90vh; /* Adjust height */
     border: 2px solid var(--color-accent-cyan);
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.3); /* Soft Cyan glow */
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
     padding: 20px;
     background: var(--color-primary-dark);
     border-radius: 4px;
+    display: flex;
+    flex-direction: column; /* Stack header, content vertically */
 }
 
-/* --- 2.2 Advanced Graphic Design: Kinetic Typography & Contrast --- */
+/* --- Headers --- */
 h1, h2, h3, h4 {
-    font-family: 'Electrolize', sans-serif; /* Clean, Geometric header font */
+    font-family: 'Electrolize', sans-serif;
     text-align: center;
     color: var(--color-accent-cyan);
     text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+    margin: 10px 0; /* Adjust margins */
 }
 
 .data-header {
@@ -47,13 +50,14 @@ h1, h2, h3, h4 {
     align-items: center;
     border-bottom: 1px solid var(--color-secondary-light);
     padding-bottom: 15px;
-    margin-bottom: 30px;
+    margin-bottom: 20px; /* Reduced margin */
+    flex-shrink: 0; /* Prevent header shrinking */
 }
 
 .metrics {
-    font-size: 1.2em;
+    font-size: 1.1em; /* Slightly smaller metrics */
     display: flex;
-    gap: 30px;
+    gap: 20px;
     color: var(--color-secondary-light);
 }
 .metric-item {
@@ -70,21 +74,25 @@ h1, h2, h3, h4 {
 /* --- Screens & Transitions --- */
 .game-screen {
     display: none;
-    padding: 20px 0;
+    flex-grow: 1; /* Allow screen to fill available space */
+    overflow-y: auto; /* Allow scrolling within the screen if needed */
+    padding: 10px 0; /* Reduced padding */
 }
 .game-screen.active {
-    display: block;
+    display: flex; /* Use flex for internal layout */
+    flex-direction: column;
 }
 
-/* --- Timer & Feedback --- */
+/* --- Timer --- */
 .timer-bar-container {
     width: 100%;
     height: 25px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid var(--color-secondary-light);
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* Reduced margin */
     position: relative;
     border-radius: 2px;
+    flex-shrink: 0; /* Prevent timer shrinking */
 }
 #timer-bar {
     height: 100%;
@@ -104,136 +112,193 @@ h1, h2, h3, h4 {
     text-shadow: 1px 1px 0 var(--color-secondary-light);
 }
 
-/* --- Drag & Drop Grid --- */
-.line-builder-grid {
-    display: grid;
-    grid-template-columns: 3fr 1fr; /* More space for the lines */
-    gap: 40px;
-    min-height: 600px;
+/* --- NEW LAYOUT: Line Builder --- */
+#quiz-screen {
+    display: none; /* Hide by default */
+}
+#quiz-screen.active {
+    display: flex; /* Use flex when active */
+    flex-direction: column;
+    justify-content: space-between; /* Push pool to bottom */
+    height: 100%; /* Ensure it tries to fill parent */
+}
+
+.line-builder-content {
+    flex-grow: 1; /* Allow this area to expand */
+    overflow-y: auto; /* Scroll if lines exceed height */
+    padding-bottom: 10px; /* Space above player pool */
 }
 
 .line-slots-area {
-    padding-right: 20px;
+    /* No major changes needed here, contains line-units */
 }
 
+/* --- Player Pool (Horizontal Bench) --- */
 .player-pool-area {
-    padding-left: 20px;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0; /* Prevent shrinking */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 10px;
+    margin-top: 10px;
+    background: rgba(0,0,0,0.3); /* Darker background for contrast */
 }
 
 .pool-header {
     text-align: center;
     color: var(--color-secondary-light);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 10px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    border: none; /* Remove border */
+    font-size: 1em;
 }
 
 .player-pool {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+    display: flex; /* Horizontal layout */
+    flex-wrap: nowrap; /* Prevent wrapping */
+    gap: 10px;
     padding: 10px;
-    height: 500px;
-    overflow-y: auto;
+    height: auto; /* Adjust height based on content */
+    min-height: 150px; /* Ensure minimum height */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: hidden; /* Disable vertical scroll */
+    align-items: center; /* Center cards vertically if they vary */
 }
 
-/* --- Drag Source: Player Card (Glassmorphism/Data Card) --- */
+/* --- Player Card (Redesigned) --- */
 .player-card {
     cursor: grab;
-    width: 120px; /* Reduced width for better pool density */
-    padding: 8px;
+    width: 160px; /* Slightly wider */
+    height: 120px; /* Fixed height */
+    padding: 0; /* Remove padding, control internally */
     border: 1px solid var(--color-secondary-light);
     border-radius: 4px;
-    background: rgba(0, 0, 0, 0.6); 
-    backdrop-filter: blur(5px); /* Frosted Glass effect */
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
-    transition: transform 0.1s, box-shadow 0.2s;
-    font-size: 0.7em;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.1s, box-shadow 0.2s, border-color 0.2s;
     user-select: none;
-    text-align: center;
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between; /* Space out header, details, footer */
+    flex-shrink: 0; /* Prevent cards from shrinking */
 }
+
 .player-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 10px var(--color-accent-cyan);
+    transform: translateY(-3px); /* Lift effect */
+    box-shadow: 0 0 12px var(--color-accent-cyan);
     border-color: var(--color-accent-cyan);
 }
 .player-card.dragging {
     opacity: 0.4;
-    transform: scale(0.9);
-}
-.player-card h5 {
-    font-family: 'Electrolize', sans-serif;
-    margin: 0;
-    font-size: 1.0em;
-    color: var(--color-accent-cyan);
-}
-.player-card p {
-    margin: 2px 0;
-    line-height: 1.2;
-}
-.player-card .rating-tag {
-    color: var(--color-secondary-light);
-    font-weight: bold;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 2px;
-    margin-top: 4px;
+    transform: scale(0.95);
 }
 
-/* --- Drop Target: Line Slots (The Rink Lines) --- */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 8px;
+    background: rgba(0, 255, 255, 0.1); /* Subtle header background */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.player-name {
+    font-family: 'Electrolize', sans-serif;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: var(--color-secondary-light);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Handle long names */
+    max-width: 100px;
+}
+.jersey-number {
+    font-family: 'Electrolize', sans-serif;
+    font-size: 1.1em;
+    color: var(--color-accent-cyan);
+}
+
+.card-details {
+    display: flex;
+    justify-content: space-around;
+    padding: 8px 5px;
+    font-size: 0.8em;
+}
+.card-details span {
+    color: #bbb; /* Slightly dimmer text for details */
+}
+
+.card-footer {
+    padding: 6px 8px;
+    text-align: center;
+    font-size: 0.9em;
+    font-weight: bold;
+    background: rgba(0,0,0,0.5); /* Darker footer */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.rating-tag { /* Applied to card-footer */
+    color: var(--color-accent-cyan);
+}
+
+
+/* --- Drop Target: Line Slots --- */
 .line-unit {
-    border: 3px solid var(--color-accent-cyan); /* Stronger border to signify importance */
-    border-radius: 6px;
-    padding: 15px;
-    margin-bottom: 25px;
-    background: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    border: 2px solid var(--color-accent-cyan); /* Slightly thinner border */
+    border-radius: 4px;
+    padding: 10px 15px; /* Adjust padding */
+    margin-bottom: 15px; /* Adjust margin */
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
 }
 .line-unit h4 {
     color: var(--color-secondary-light);
-    border-bottom: 2px solid var(--color-accent-cyan);
-    padding-bottom: 8px;
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 1.3em;
+    border-bottom: 1px solid var(--color-accent-cyan); /* Thinner line */
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    font-size: 1.1em; /* Smaller line headers */
 }
 .line-slots {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* C | W | W | D | D */
-    gap: 15px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px; /* Reduced gap */
 }
 .line-slot {
-    min-height: 120px;
+    min-height: 140px; /* Taller slot to fit new card */
     border: 1px dashed var(--color-secondary-light);
     background: rgba(0, 0, 0, 0.3);
     padding: 5px;
     text-align: center;
     transition: background 0.1s, border-color 0.1s;
+    display: flex; /* Use flex to manage content */
+    flex-direction: column;
+    justify-content: space-between; /* Push label down */
+    align-items: center; /* Center card horizontally */
 }
 .line-slot.drag-over {
     background: rgba(0, 255, 255, 0.15);
     border-color: var(--color-accent-cyan);
-    box-shadow: 0 0 10px var(--color-accent-cyan);
+    box-shadow: inset 0 0 10px var(--color-accent-cyan); /* Inner shadow */
 }
+
 .line-slot .player-card {
-    margin: 0 auto;
+    margin-top: 5px; /* Space between card and top */
+    width: 95%; /* Make card fill most of the slot */
+    height: 120px; /* Keep card height consistent */
     cursor: pointer;
-    width: auto; /* Allow card to fill slot width */
 }
 .line-slot-label {
-    margin-bottom: 5px;
-    color: var(--color-secondary-light);
-    font-size: 1.0em;
+    margin-top: auto; /* Push label to bottom */
+    margin-bottom: 2px; /* Small space from bottom */
+    color: #aaa; /* Dimmer label */
+    font-size: 0.9em;
 }
 
 
-/* --- Buttons & Inputs --- */
+/* --- Buttons & Inputs (Generally unchanged, minor tweaks) --- */
 .action-btn {
     display: block;
-    width: 80%;
+    width: 60%; /* Smaller button */
     margin: 20px auto;
-    padding: 18px;
+    padding: 15px;
     font-family: 'Electrolize', sans-serif;
-    font-size: 1.4em;
+    font-size: 1.2em; /* Smaller font */
     background: var(--color-accent-cyan);
     color: var(--color-primary-dark);
     border: none;
@@ -251,20 +316,20 @@ h1, h2, h3, h4 {
 
 .settings-panel {
     background: rgba(255, 255, 255, 0.05);
-    padding: 30px;
+    padding: 25px; /* Slightly less padding */
     border: 1px solid var(--color-accent-cyan);
-    max-width: 500px;
-    margin: 30px auto;
+    max-width: 450px; /* Smaller panel */
+    margin: 20px auto;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px; /* Reduced gap */
 }
 .settings-panel label {
     color: var(--color-accent-cyan);
-    font-size: 1.1em;
+    font-size: 1em; /* Slightly smaller label */
 }
 #team-select {
-    padding: 12px;
+    padding: 10px; /* Reduced padding */
     background: var(--color-primary-dark);
     color: var(--color-secondary-light);
     border: 1px solid var(--color-accent-cyan);
@@ -276,7 +341,7 @@ h1, h2, h3, h4 {
     justify-content: space-around;
 }
 .line-btn {
-    padding: 10px 15px;
+    padding: 8px 12px; /* Smaller buttons */
     background: var(--color-primary-dark);
     color: var(--color-accent-cyan);
     border: 1px solid var(--color-accent-cyan);
@@ -291,31 +356,31 @@ h1, h2, h3, h4 {
 }
 
 
-/* --- Debrief Screen --- */
+/* --- Debrief Screen (Minor spacing adjustments) --- */
 .debrief-summary {
     text-align: center;
-    font-size: 1.4em;
-    margin: 30px 0;
-    padding: 25px;
+    font-size: 1.3em;
+    margin: 20px 0; /* Reduced margin */
+    padding: 20px;
     border: 2px solid var(--color-accent-cyan);
     background: rgba(0, 255, 255, 0.05);
 }
 
 .mistake-review-container {
-    padding: 20px;
+    padding: 15px; /* Reduced padding */
     border: 1px solid var(--color-secondary-light);
     background: var(--color-primary-dark);
+    flex-grow: 1; /* Allow to fill space */
+    overflow-y: auto; /* Scroll if needed */
 }
 
 #mistake-review-list {
-    max-height: 300px;
-    overflow-y: auto;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 .mistake-item {
-    padding: 12px;
+    padding: 10px;
     border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-    background: rgba(255, 49, 49, 0.1); 
+    background: rgba(255, 49, 49, 0.1);
     margin-bottom: 5px;
 }
 .mistake-item strong {
@@ -330,7 +395,8 @@ h1, h2, h3, h4 {
     font-style: italic;
     color: var(--color-accent-cyan);
 }
-/* --- Utility Classes for Feedback Animations (Micro-animations) --- */
+
+/* --- Utility Classes for Feedback Animations --- */
 .correct-pulse {
     animation: pulse-correct 0.3s forwards;
 }
