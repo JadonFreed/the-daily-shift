@@ -411,3 +411,201 @@ h1, h2, h3, h4 {
     0% { box-shadow: 0 0 5px var(--color-error-red); }
     100% { box-shadow: 0 0 20px var(--color-error-red); background: rgba(255, 49, 49, 0.2); }
 }
+
+/* --- SCOUT SCHOOL SPECIFIC STYLES --- */
+
+/* Start Screen */
+.mode-options {
+    display: flex;
+    justify-content: space-around;
+    background: rgba(0,0,0,0.2);
+    padding: 10px;
+    border: 1px dashed var(--color-accent-cyan);
+    margin-bottom: 15px;
+}
+.mode-options label {
+    cursor: pointer;
+    color: var(--color-secondary-light);
+    font-size: 0.9em;
+}
+.mode-options input[type="radio"] {
+    margin-right: 5px;
+    accent-color: var(--color-accent-cyan);
+}
+
+/* General Phase Styles */
+.scout-phase-screen h2 {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+.scout-phase-screen h3 {
+    font-size: 1.2em;
+    color: var(--color-secondary-light);
+    margin-bottom: 10px;
+}
+.phase-objective {
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+.phase-feedback {
+    min-height: 30px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 20px;
+}
+.phase-feedback.correct {
+    color: #39FF14; /* Neon Green */
+}
+.phase-feedback.incorrect {
+    color: var(--color-error-red);
+}
+.phase-progress {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 1.1em;
+    color: #aaa;
+}
+
+
+/* Phase 1: Identification */
+.phase-card-display {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+.phase-card-display .player-card {
+     /* Use existing player-card style, maybe slightly larger */
+     transform: scale(1.1);
+     cursor: default; /* Not draggable here */
+}
+.phase-card-display .player-card:hover {
+    /* Disable hover effect */
+    transform: scale(1.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    border-color: var(--color-secondary-light);
+}
+
+.phase-choices {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns for choices */
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.choice-btn {
+    padding: 15px;
+    font-family: 'Electrolize', sans-serif;
+    font-size: 1.1em;
+    background: var(--color-primary-dark);
+    color: var(--color-accent-cyan);
+    border: 1px solid var(--color-accent-cyan);
+    cursor: pointer;
+    transition: background 0.1s, color 0.1s;
+    text-align: center;
+}
+.choice-btn:hover {
+    background: rgba(0, 255, 255, 0.2);
+}
+.choice-btn.correct {
+    background: #39FF14;
+    color: var(--color-primary-dark);
+    border-color: #39FF14;
+}
+.choice-btn.incorrect {
+    background: var(--color-error-red);
+    color: var(--color-primary-dark);
+    border-color: var(--color-error-red);
+}
+
+
+/* Phase 2: Evaluation */
+.phase-comparison {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+.phase-2-card {
+    /* Container for player card */
+    cursor: pointer;
+    border: 2px dashed transparent; /* Placeholder for feedback */
+    padding: 5px;
+    transition: border-color 0.2s;
+}
+.phase-2-card:hover {
+    border-color: var(--color-accent-cyan);
+}
+.phase-2-card .player-card {
+    cursor: pointer; /* Ensure card itself is clickable */
+}
+.phase-2-card .player-card:hover {
+    /* Override hover effect slightly */
+    transform: none;
+    box-shadow: 0 0 12px var(--color-accent-cyan);
+}
+.vs-divider {
+    font-family: 'Electrolize', sans-serif;
+    font-size: 2em;
+    color: var(--color-accent-cyan);
+}
+
+
+/* Phase 3: Line Construction (Learning Mode Specifics) */
+.quiz-screen.learning-mode .timer-bar-container {
+    display: none; /* Hide timer */
+}
+
+.submit-btn {
+    width: 40%;
+    padding: 12px;
+    font-size: 1.1em;
+    margin: 15px auto 5px auto; /* Position between lines and pool */
+    background-color: #00aaff;
+    box-shadow: 0 0 10px #00aaff;
+}
+.submit-btn:hover {
+     background-color: var(--color-secondary-light);
+     box-shadow: 0 0 15px var(--color-secondary-light);
+}
+
+/* Instant Feedback Styles for Slots in Phase 3 */
+.line-slot.feedback-correct {
+    border-style: solid;
+    border-color: #39FF14; /* Neon Green */
+    box-shadow: 0 0 8px #39FF14;
+    animation: feedback-pulse 0.4s ease-out;
+}
+
+.line-slot.feedback-warning { /* Optional yellow feedback */
+    border-style: solid;
+    border-color: #FFD700; /* Gold/Yellow */
+    box-shadow: 0 0 8px #FFD700;
+    animation: feedback-pulse 0.4s ease-out;
+}
+
+.line-slot.feedback-incorrect {
+    border-style: solid;
+    border-color: var(--color-error-red);
+    box-shadow: 0 0 8px var(--color-error-red);
+    animation: feedback-pulse 0.4s ease-out;
+}
+
+@keyframes feedback-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); } /* Subtle pulse */
+    100% { transform: scale(1); }
+}
+
+/* Phase Complete Screen */
+#phase-complete-screen h2 {
+    color: #39FF14; /* Green for success */
+    font-size: 2em;
+}
+#team-mastery-badge strong {
+    color: var(--color-accent-cyan);
+    font-size: 1.5em;
+}
