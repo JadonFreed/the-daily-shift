@@ -57,7 +57,7 @@ async function loadDataAndInitialize() {
         setScreen('start');
     } catch (error) {
         console.error("Data loading error. Ensure 'nhl_players.json' and 'team_line_structures.json' are in the same folder.", error);
-        alert("Error loading game data. Check console for details.");
+        alert("Error loading game data. Check console for details. Ensure 'jersey_number' is in your player JSON.");
     }
 }
 
@@ -181,8 +181,11 @@ function createPlayerCard(player) {
     card.setAttribute('draggable', true);
     card.dataset.playerId = player.id;
     card.dataset.position = player.position;
+    
+    // *** NEW CARD CONTENT: Use Jersey Number and Position ***
     card.innerHTML = `
-        <h5>${player.name}</h5>
+        <h5>#${player.jersey_number || 'XX'}</h5>
+        <p>${player.player_name}</p>
         <p>POS: ${player.position}</p>
         <p class="rating-tag">RATING: ${player.rating}</p>
     `;
@@ -255,7 +258,7 @@ function handleDrop(e) {
     // Place the new card in the slot
     slot.appendChild(draggedCard);
 
-    // Update userLineup state
+    // Update userLineup state - Fetching full player object from allPlayers
     const [lineId, slotKey] = slot.dataset.slotId.split('-');
     const player = gameState.allPlayers.find(p => p.id === playerId);
     gameState.userLineup[lineId][slotKey] = player;
@@ -371,7 +374,8 @@ function calculateScore() {
             const correctPlayer = gameState.correctLineup[lineId][slotKey];
             const userPlayer = gameState.userLineup[lineId][slotKey];
             
-            if (userPlayer && correctPlayer && userPlayer.name === correctPlayer.name) {
+            // NOTE: Check against the name field to ensure the right player is in the slot
+            if (userPlayer && correctPlayer && userPlayer.player_name === correctPlayer.name) {
                 correctSlots++;
             } else {
                 // Log mistake
@@ -422,10 +426,11 @@ function renderDebrief(results, timeUp) {
         mistakeList.innerHTML = '<p class="review-placeholder">No errors detected. Flawless run. System applauds efficiency.</p>';
     } else {
         gameState.mistakes.forEach(m => {
-            const userPlayerName = m.user ? m.user.name : "EMPTY SLOT";
+            // FIX: Use player_name field from the full player object
+            const userPlayerName = m.user ? m.user.player_name : "EMPTY SLOT";
             const correctPlayer = m.correct;
             // Lookup the unique trait from the original allPlayers list using player ID
-            const correctPlayerTrait = gameState.allPlayers.find(p => p.id === correctPlayer.id)?.unique_trait || "Data pending.";
+            const correctPlayerTrait = gameState.allPlayers.find(p => p.player_name === correctPlayer.name)?.unique_trait || "Data pending.";
 
             const item = document.createElement('div');
             item.className = 'mistake-item';
