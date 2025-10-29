@@ -92,14 +92,14 @@ h1, h2, h3, h4 {
 .metrics {
     font-size: 1.1em;
     display: flex;
-    gap: 15px; /* Reduced gap */
+    gap: 15px;
     color: var(--color-secondary-light);
 }
 .metric-item {
     padding: 5px 10px;
     border: 1px solid var(--color-accent-cyan);
     background: rgba(0, 255, 255, 0.1);
-    font-size: 0.9em; /* Smaller metric text */
+    font-size: 0.9em;
 }
 .accent-text {
     color: var(--color-accent-cyan);
@@ -132,7 +132,7 @@ h1, h2, h3, h4 {
 .settings-panel label {
     color: var(--color-accent-cyan);
     font-size: 1em;
-    margin-bottom: -10px; /* Pull labels closer to inputs */
+    margin-bottom: -10px;
 }
 #team-select, #favorite-team-select {
     padding: 10px;
@@ -153,7 +153,7 @@ h1, h2, h3, h4 {
     cursor: pointer;
     color: var(--color-secondary-light);
     font-size: 0.9em;
-    margin-bottom: 0; /* Reset margin */
+    margin-bottom: 0;
 }
 .mode-options input[type="radio"] {
     margin-right: 5px;
@@ -215,7 +215,6 @@ h1, h2, h3, h4 {
     overflow-y: auto;
     padding-bottom: 10px;
 }
-.line-slots-area { /* Container for line units */ }
 
 /* Line Unit & Slots */
 .line-unit {
@@ -239,7 +238,7 @@ h1, h2, h3, h4 {
     gap: 10px;
 }
 .line-slot {
-    min-height: 120px; /* Adjust based on card height */
+    min-height: 120px;
     border: 1px dashed var(--color-secondary-light);
     background: rgba(0, 0, 0, 0.3);
     padding: 5px;
@@ -257,8 +256,8 @@ h1, h2, h3, h4 {
 }
 .line-slot .player-card {
     margin-top: 5px;
-    width: 90%; /* Card fills most of slot */
-    height: 100px; /* Match card height */
+    width: 90%;
+    height: 100px;
     cursor: pointer;
 }
 .line-slot-label {
@@ -280,7 +279,7 @@ h1, h2, h3, h4 {
     text-align: center;
     color: var(--color-secondary-light);
     padding-bottom: 5px;
-    margin-bottom: 5px; /* Reduced margin */
+    margin-bottom: 5px;
     border: none;
     font-size: 1em;
 }
@@ -290,7 +289,7 @@ h1, h2, h3, h4 {
     gap: 10px;
     padding: 10px;
     height: auto;
-    min-height: 130px; /* Adjust based on card size */
+    min-height: 130px;
     overflow-x: auto;
     overflow-y: hidden;
     align-items: center;
@@ -302,7 +301,6 @@ h1, h2, h3, h4 {
     width: 150px;
     height: 100px;
     border-radius: 8px;
-    /* Gradient using CSS variables set by JS */
     background: linear-gradient(135deg, var(--team-color-primary, var(--team-DEFAULT-primary)) 40%, var(--team-color-secondary, var(--team-DEFAULT-secondary)) 100%);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
     transition: transform 0.1s, box-shadow 0.2s;
@@ -316,16 +314,14 @@ h1, h2, h3, h4 {
     overflow: hidden;
     padding: 5px;
     border: 2px solid rgba(255, 255, 255, 0.5);
-    color: #FFF; /* Default: White text */
+    color: #FFF;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-    flex-shrink: 0; /* Prevent shrinking in flex container */
+    flex-shrink: 0;
 }
-/* Specific text color override for light backgrounds */
 .player-card.dark-text {
-    color: #111; /* Dark text */
+    color: #111;
     text-shadow: 1px 1px 1px rgba(255,255,255,0.7);
 }
-
 .player-card:hover {
     transform: translateY(-4px) scale(1.03);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7), 0 0 10px var(--team-color-primary, var(--team-DEFAULT-primary));
@@ -338,10 +334,10 @@ h1, h2, h3, h4 {
 /* Card Content Styling */
 .card-jersey-number {
     font-family: 'Electrolize', sans-serif;
-    font-size: 2.8em; /* Prominent jersey number */
+    font-size: 2.8em;
     font-weight: bold;
     line-height: 1;
-    margin-bottom: 0px; /* Space between number and name */
+    margin-bottom: 0px;
 }
 .card-player-name {
     font-family: 'Space Mono', monospace;
@@ -354,6 +350,24 @@ h1, h2, h3, h4 {
     width: 90%;
     margin: 0 auto;
 }
+/* NEW: Position Display (Hidden by default) */
+.card-player-position {
+    font-family: 'Electrolize', sans-serif;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--color-accent-cyan);
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.9);
+    display: none; /* *** HIDE BY DEFAULT *** */
+}
+/* Dark text override for position */
+.dark-text .card-player-position {
+    color: var(--color-primary-dark);
+    text-shadow: none;
+}
+
 
 /* --- SCOUT SCHOOL Phase Styles --- */
 .scout-phase-screen h2 { font-size: 1.5em; margin-bottom: 5px; }
@@ -369,7 +383,20 @@ h1, h2, h3, h4 {
 .phase-card-display .player-card { transform: scale(1.1); cursor: default; }
 .phase-card-display .player-card:hover { transform: scale(1.1); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); }
 /* Hide name in Phase 1 card */
-.phase-card-display .card-player-name { display: none; }
+.phase-card-display .card-player-name {
+    display: none;
+}
+/* SHOW position in Phase 1 card */
+.phase-card-display .card-player-position {
+    display: block;
+}
+/* Adjust jersey number in Phase 1 card */
+.phase-card-display .card-jersey-number {
+    font-size: 3.2em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .phase-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 600px; margin: 0 auto; }
 .choice-btn {
     padding: 15px; font-family: 'Electrolize', sans-serif; font-size: 1.1em;
@@ -386,7 +413,6 @@ h1, h2, h3, h4 {
 .phase-2-card { cursor: pointer; border: 2px solid transparent; padding: 5px; transition: border-color 0.2s; }
 .phase-2-card:hover { border-color: var(--color-accent-cyan); }
 .phase-2-card .player-card { cursor: pointer; }
-.phase-2-card .player-card:hover { /* Keep card hover */ }
 .vs-divider { font-family: 'Electrolize', sans-serif; font-size: 2em; color: var(--color-accent-cyan); }
 
 /* Phase 3: Line Construction Feedback */
