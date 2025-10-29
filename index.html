@@ -33,6 +33,7 @@
 
                 <label for="favorite-team-select">YOUR FAVORITE TEAM:</label>
                 <select id="favorite-team-select"></select>
+
                 <label for="team-select">TARGET TEAM:</label>
                 <select id="team-select"></select>
 
@@ -46,24 +47,24 @@
                 </div>
             </div>
             <button id="start-shift-btn" class="action-btn">INITIATE DRILL</button>
-            <p id="scout-mode-info" style="text-align: center; display: none; margin-top: 10px;">Master teams to unlock more!</p>
+            <p id="scout-mode-info" style="text-align: center; display: none; margin-top: 10px;">Select your favorite team to start Scout School!</p>
         </div>
 
         <div id="quiz-screen" class="game-screen">
-            <div class="timer-bar-container">
+             <div class="timer-bar-container">
                 <div id="timer-bar"></div>
                 <div id="timer-text">60:00</div>
             </div>
-            <h3 id="current-team-display">Team: **EDM**</h3>
+            <h3 id="current-team-display">Team: --</h3>
 
             <div class="line-builder-content">
                 <div id="line-slots-container" class="line-slots-area">
                     </div>
             </div>
-             <button id="submit-lineup-btn" class="action-btn submit-btn" style="display: none;">SUBMIT LINEUP</button>
+            <button id="submit-lineup-btn" class="action-btn submit-btn" style="display: none;">SUBMIT LINEUP</button>
 
             <div class="player-pool-area">
-                <h4 class="pool-header">PLAYER DATA POOL: <span id="pool-count">0</span> Skaters Available</h4>
+                <h4 class="pool-header">PLAYER POOL: <span id="pool-count">0</span> Skaters Available</h4>
                 <div id="player-pool" class="player-pool">
                     </div>
             </div>
@@ -86,9 +87,11 @@
             <h3 id="scout-phase-2-team">Team: --</h3>
             <p class="phase-objective">Select the player with the higher RATING.</p>
             <div id="phase-2-comparison" class="phase-comparison">
-                <div id="phase-2-player-A" class="phase-2-card"></div>
+                <div id="phase-2-player-A" class="phase-2-card">
+                     </div>
                 <div class="vs-divider">VS</div>
-                <div id="phase-2-player-B" class="phase-2-card"></div>
+                <div id="phase-2-player-B" class="phase-2-card">
+                     </div>
             </div>
             <div id="phase-2-feedback" class="phase-feedback"></div>
              <div id="phase-2-progress" class="phase-progress">Progress: 0 / 10</div>
@@ -100,6 +103,7 @@
              <button id="next-phase-btn" class="action-btn">CONTINUE TRAINING</button>
              <div id="team-mastery-badge" style="display: none; text-align: center; margin-top: 20px;">
                  <p><strong>TEAM MASTERED!</strong></p>
+                 [Image of a hockey scout badge]
                  <p>Scouting Report for <span id="mastered-team-name">--</span> is complete.</p>
              </div>
         </div>

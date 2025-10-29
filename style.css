@@ -1,347 +1,170 @@
-/* --- Color Palette (Data Console) --- */
+/* --- Color Palette & Fonts --- */
 :root {
     --color-primary-dark: #0A0A0A; /* Black */
     --color-secondary-light: #EAEAEA; /* Silver */
     --color-accent-cyan: #00FFFF; /* Cyan */
     --color-error-red: #FF3131;
     --color-background-dark: #101827; /* Dark Navy */
+    --color-feedback-green: #39FF14;
+    --color-feedback-yellow: #FFD700;
+
+    /* --- TEAM COLORS (Primary & Secondary) --- */
+    --team-ANA-primary: #F47A38; --team-ANA-secondary: #B9975B; /* Orange, Gold */
+    --team-ARI-primary: #8C2633; --team-ARI-secondary: #E2D6B5; /* Brick Red, Desert Sand (Placeholder) */
+    --team-BOS-primary: #FFB81C; --team-BOS-secondary: #000000; /* Gold, Black */
+    --team-BUF-primary: #003087; --team-BUF-secondary: #FFB81C; /* Royal Blue, Gold */
+    --team-CGY-primary: #C8102E; --team-CGY-secondary: #F1BE48; /* Red, Yellow Gold */
+    --team-CAR-primary: #CC0000; --team-CAR-secondary: #000000; /* Red, Black */
+    --team-CHI-primary: #CF0A2C; --team-CHI-secondary: #000000; /* Red, Black */
+    --team-COL-primary: #6F263D; --team-COL-secondary: #236192; /* Burgundy, Blue */
+    --team-CBJ-primary: #002654; --team-CBJ-secondary: #CE1126; /* Union Blue, Red */
+    --team-DAL-primary: #006847; --team-DAL-secondary: #8F8F8C; /* Victory Green, Silver */
+    --team-DET-primary: #CE1126; --team-DET-secondary: #FFFFFF; /* Red, White */
+    --team-EDM-primary: #041E42; --team-EDM-secondary: #FF4C00; /* Navy Blue, Orange */
+    --team-FLA-primary: #C8102E; --team-FLA-secondary: #041E42; /* Red, Navy */
+    --team-LAK-primary: #111111; --team-LAK-secondary: #A2AAAD; /* Black, Silver */
+    --team-MIN-primary: #154734; --team-MIN-secondary: #A6192E; /* Forest Green, Iron Range Red */
+    --team-MTL-primary: #AF1E2D; --team-MTL-secondary: #192168; /* Red, Blue */
+    --team-NSH-primary: #FFB81C; --team-NSH-secondary: #041E42; /* Gold, Navy Blue */
+    --team-NJD-primary: #CE1126; --team-NJD-secondary: #000000; /* Red, Black */
+    --team-NYI-primary: #00539B; --team-NYI-secondary: #F47D30; /* Royal Blue, Orange */
+    --team-NYR-primary: #0038A8; --team-NYR-secondary: #CE1126; /* Blue, Red */
+    --team-OTT-primary: #C52032; --team-OTT-secondary: #000000; /* Red, Black */
+    --team-PHI-primary: #F74902; --team-PHI-secondary: #000000; /* Orange, Black */
+    --team-PIT-primary: #FCB514; --team-PIT-secondary: #000000; /* Pittsburgh Gold, Black */
+    --team-SJS-primary: #006D75; --team-SJS-secondary: #000000; /* Teal, Black */
+    --team-SEA-primary: #001F5B; --team-SEA-secondary: #99D9D9; /* Deep Sea Blue, Ice Blue */
+    --team-STL-primary: #002F87; --team-STL-secondary: #FCB514; /* Blue, Yellow */
+    --team-TBL-primary: #002868; --team-TBL-secondary: #FFFFFF; /* Blue, White */
+    --team-TOR-primary: #00205B; --team-TOR-secondary: #FFFFFF; /* Blue, White */
+    --team-VAN-primary: #00205B; --team-VAN-secondary: #00843D; /* Blue, Green */
+    --team-VGK-primary: #B4975A; --team-VGK-secondary: #333F42; /* Steel Grey, Gold */
+    --team-WSH-primary: #C8102E; --team-WSH-secondary: #041E42; /* Red, Navy Blue */
+    --team-WPG-primary: #041E42; --team-WPG-secondary: #AC162C; /* Navy Blue, Red */
+    --team-DEFAULT-primary: #555; --team-DEFAULT-secondary: #BBB;
 }
 
-/* --- Base & Background --- */
+/* --- Base & Layout --- */
 body {
     background-color: var(--color-background-dark);
     color: var(--color-secondary-light);
     font-family: 'Space Mono', monospace;
     margin: 0;
-    padding: 0; /* Remove body padding */
+    padding: 0;
     height: 100vh;
-    display: flex; /* Use flex for centering */
+    display: flex;
     justify-content: center;
-    align-items: center; /* Center container vertically */
+    align-items: center;
     font-size: 16px;
-    overflow: hidden; /* Prevent body scroll */
+    overflow: hidden;
 }
 
 #app-container {
-    width: 95%; /* Adjust width */
+    width: 95%;
     max-width: 1600px;
-    height: 90vh; /* Adjust height */
+    height: 90vh;
     border: 2px solid var(--color-accent-cyan);
     box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
     padding: 20px;
     background: var(--color-primary-dark);
     border-radius: 4px;
     display: flex;
-    flex-direction: column; /* Stack header, content vertically */
+    flex-direction: column;
 }
 
-/* --- Headers --- */
+/* --- Headers & Metrics --- */
 h1, h2, h3, h4 {
     font-family: 'Electrolize', sans-serif;
     text-align: center;
     color: var(--color-accent-cyan);
     text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
-    margin: 10px 0; /* Adjust margins */
+    margin: 10px 0;
 }
-
 .data-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--color-secondary-light);
     padding-bottom: 15px;
-    margin-bottom: 20px; /* Reduced margin */
-    flex-shrink: 0; /* Prevent header shrinking */
+    margin-bottom: 20px;
+    flex-shrink: 0;
 }
-
 .metrics {
-    font-size: 1.1em; /* Slightly smaller metrics */
+    font-size: 1.1em;
     display: flex;
-    gap: 20px;
+    gap: 15px; /* Reduced gap */
     color: var(--color-secondary-light);
 }
 .metric-item {
     padding: 5px 10px;
     border: 1px solid var(--color-accent-cyan);
     background: rgba(0, 255, 255, 0.1);
+    font-size: 0.9em; /* Smaller metric text */
 }
-
 .accent-text {
     color: var(--color-accent-cyan);
     text-shadow: 0 0 5px var(--color-accent-cyan);
 }
 
-/* --- Screens & Transitions --- */
+/* --- Screens --- */
 .game-screen {
     display: none;
-    flex-grow: 1; /* Allow screen to fill available space */
-    overflow-y: auto; /* Allow scrolling within the screen if needed */
-    padding: 10px 0; /* Reduced padding */
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 10px 0;
 }
 .game-screen.active {
-    display: flex; /* Use flex for internal layout */
+    display: flex;
     flex-direction: column;
 }
 
-/* --- Timer --- */
-.timer-bar-container {
-    width: 100%;
-    height: 25px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid var(--color-secondary-light);
-    margin-bottom: 15px; /* Reduced margin */
-    position: relative;
-    border-radius: 2px;
-    flex-shrink: 0; /* Prevent timer shrinking */
-}
-#timer-bar {
-    height: 100%;
-    width: 100%;
-    background: var(--color-accent-cyan);
-    transition: width 1s linear;
-    box-shadow: 0 0 10px var(--color-accent-cyan);
-}
-#timer-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: var(--color-primary-dark);
-    font-weight: bold;
-    font-family: 'Electrolize', sans-serif;
-    text-shadow: 1px 1px 0 var(--color-secondary-light);
-}
-
-/* --- NEW LAYOUT: Line Builder --- */
-#quiz-screen {
-    display: none; /* Hide by default */
-}
-#quiz-screen.active {
-    display: flex; /* Use flex when active */
-    flex-direction: column;
-    justify-content: space-between; /* Push pool to bottom */
-    height: 100%; /* Ensure it tries to fill parent */
-}
-
-.line-builder-content {
-    flex-grow: 1; /* Allow this area to expand */
-    overflow-y: auto; /* Scroll if lines exceed height */
-    padding-bottom: 10px; /* Space above player pool */
-}
-
-.line-slots-area {
-    /* No major changes needed here, contains line-units */
-}
-
-/* --- Player Pool (Horizontal Bench) --- */
-.player-pool-area {
-    flex-shrink: 0; /* Prevent shrinking */
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 10px;
-    margin-top: 10px;
-    background: rgba(0,0,0,0.3); /* Darker background for contrast */
-}
-
-.pool-header {
-    text-align: center;
-    color: var(--color-secondary-light);
-    padding-bottom: 5px;
-    margin-bottom: 10px;
-    border: none; /* Remove border */
-    font-size: 1em;
-}
-
-.player-pool {
-    display: flex; /* Horizontal layout */
-    flex-wrap: nowrap; /* Prevent wrapping */
-    gap: 10px;
-    padding: 10px;
-    height: auto; /* Adjust height based on content */
-    min-height: 150px; /* Ensure minimum height */
-    overflow-x: auto; /* Enable horizontal scrolling */
-    overflow-y: hidden; /* Disable vertical scroll */
-    align-items: center; /* Center cards vertically if they vary */
-}
-
-/* --- Player Card (Redesigned) --- */
-.player-card {
-    cursor: grab;
-    width: 160px; /* Slightly wider */
-    height: 120px; /* Fixed height */
-    padding: 0; /* Remove padding, control internally */
-    border: 1px solid var(--color-secondary-light);
-    border-radius: 4px;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(4px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    transition: transform 0.1s, box-shadow 0.2s, border-color 0.2s;
-    user-select: none;
-    display: flex;
-    flex-direction: column; /* Stack content vertically */
-    justify-content: space-between; /* Space out header, details, footer */
-    flex-shrink: 0; /* Prevent cards from shrinking */
-}
-
-.player-card:hover {
-    transform: translateY(-3px); /* Lift effect */
-    box-shadow: 0 0 12px var(--color-accent-cyan);
-    border-color: var(--color-accent-cyan);
-}
-.player-card.dragging {
-    opacity: 0.4;
-    transform: scale(0.95);
-}
-
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 8px;
-    background: rgba(0, 255, 255, 0.1); /* Subtle header background */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-.player-name {
-    font-family: 'Electrolize', sans-serif;
-    font-size: 0.9em;
-    font-weight: bold;
-    color: var(--color-secondary-light);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; /* Handle long names */
-    max-width: 100px;
-}
-.jersey-number {
-    font-family: 'Electrolize', sans-serif;
-    font-size: 1.1em;
-    color: var(--color-accent-cyan);
-}
-
-.card-details {
-    display: flex;
-    justify-content: space-around;
-    padding: 8px 5px;
-    font-size: 0.8em;
-}
-.card-details span {
-    color: #bbb; /* Slightly dimmer text for details */
-}
-
-.card-footer {
-    padding: 6px 8px;
-    text-align: center;
-    font-size: 0.9em;
-    font-weight: bold;
-    background: rgba(0,0,0,0.5); /* Darker footer */
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-.rating-tag { /* Applied to card-footer */
-    color: var(--color-accent-cyan);
-}
-
-
-/* --- Drop Target: Line Slots --- */
-.line-unit {
-    border: 2px solid var(--color-accent-cyan); /* Slightly thinner border */
-    border-radius: 4px;
-    padding: 10px 15px; /* Adjust padding */
-    margin-bottom: 15px; /* Adjust margin */
-    background: rgba(0, 0, 0, 0.4);
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
-}
-.line-unit h4 {
-    color: var(--color-secondary-light);
-    border-bottom: 1px solid var(--color-accent-cyan); /* Thinner line */
-    padding-bottom: 5px;
-    margin-bottom: 10px;
-    font-size: 1.1em; /* Smaller line headers */
-}
-.line-slots {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px; /* Reduced gap */
-}
-.line-slot {
-    min-height: 140px; /* Taller slot to fit new card */
-    border: 1px dashed var(--color-secondary-light);
-    background: rgba(0, 0, 0, 0.3);
-    padding: 5px;
-    text-align: center;
-    transition: background 0.1s, border-color 0.1s;
-    display: flex; /* Use flex to manage content */
-    flex-direction: column;
-    justify-content: space-between; /* Push label down */
-    align-items: center; /* Center card horizontally */
-}
-.line-slot.drag-over {
-    background: rgba(0, 255, 255, 0.15);
-    border-color: var(--color-accent-cyan);
-    box-shadow: inset 0 0 10px var(--color-accent-cyan); /* Inner shadow */
-}
-
-.line-slot .player-card {
-    margin-top: 5px; /* Space between card and top */
-    width: 95%; /* Make card fill most of the slot */
-    height: 120px; /* Keep card height consistent */
-    cursor: pointer;
-}
-.line-slot-label {
-    margin-top: auto; /* Push label to bottom */
-    margin-bottom: 2px; /* Small space from bottom */
-    color: #aaa; /* Dimmer label */
-    font-size: 0.9em;
-}
-
-
-/* --- Buttons & Inputs (Generally unchanged, minor tweaks) --- */
-.action-btn {
-    display: block;
-    width: 60%; /* Smaller button */
-    margin: 20px auto;
-    padding: 15px;
-    font-family: 'Electrolize', sans-serif;
-    font-size: 1.2em; /* Smaller font */
-    background: var(--color-accent-cyan);
-    color: var(--color-primary-dark);
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 0 15px var(--color-accent-cyan);
-    transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
-    border-radius: 4px;
-}
-.action-btn:hover {
-    background: var(--color-secondary-light);
-    box-shadow: 0 0 20px var(--color-secondary-light);
-    color: var(--color-primary-dark);
-    transform: translateY(-2px);
-}
-
+/* --- Start Screen Specific --- */
 .settings-panel {
     background: rgba(255, 255, 255, 0.05);
-    padding: 25px; /* Slightly less padding */
+    padding: 20px;
     border: 1px solid var(--color-accent-cyan);
-    max-width: 450px; /* Smaller panel */
+    max-width: 500px;
     margin: 20px auto;
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Reduced gap */
+    gap: 15px;
 }
 .settings-panel label {
     color: var(--color-accent-cyan);
-    font-size: 1em; /* Slightly smaller label */
+    font-size: 1em;
+    margin-bottom: -10px; /* Pull labels closer to inputs */
 }
-#team-select {
-    padding: 10px; /* Reduced padding */
+#team-select, #favorite-team-select {
+    padding: 10px;
     background: var(--color-primary-dark);
     color: var(--color-secondary-light);
     border: 1px solid var(--color-accent-cyan);
     font-family: 'Space Mono', monospace;
     font-size: 1em;
 }
+.mode-options {
+    display: flex;
+    justify-content: space-around;
+    background: rgba(0,0,0,0.2);
+    padding: 10px;
+    border: 1px dashed var(--color-accent-cyan);
+}
+.mode-options label {
+    cursor: pointer;
+    color: var(--color-secondary-light);
+    font-size: 0.9em;
+    margin-bottom: 0; /* Reset margin */
+}
+.mode-options input[type="radio"] {
+    margin-right: 5px;
+    accent-color: var(--color-accent-cyan);
+}
 .line-options {
     display: flex;
     justify-content: space-around;
 }
 .line-btn {
-    padding: 8px 12px; /* Smaller buttons */
+    padding: 8px 12px;
     background: var(--color-primary-dark);
     color: var(--color-accent-cyan);
     border: 1px solid var(--color-accent-cyan);
@@ -355,366 +178,156 @@ h1, h2, h3, h4 {
     box-shadow: 0 0 8px var(--color-accent-cyan);
 }
 
-
-/* --- Debrief Screen (Minor spacing adjustments) --- */
-.debrief-summary {
-    text-align: center;
-    font-size: 1.3em;
-    margin: 20px 0; /* Reduced margin */
-    padding: 20px;
-    border: 2px solid var(--color-accent-cyan);
-    background: rgba(0, 255, 255, 0.05);
-}
-
-.mistake-review-container {
-    padding: 15px; /* Reduced padding */
-    border: 1px solid var(--color-secondary-light);
-    background: var(--color-primary-dark);
-    flex-grow: 1; /* Allow to fill space */
-    overflow-y: auto; /* Scroll if needed */
-}
-
-#mistake-review-list {
-    margin-top: 10px;
-}
-.mistake-item {
-    padding: 10px;
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
-    background: rgba(255, 49, 49, 0.1);
-    margin-bottom: 5px;
-}
-.mistake-item strong {
-    color: var(--color-error-red);
-}
-.mistake-item .correct-answer {
-    color: var(--color-accent-cyan);
-    margin-left: 15px;
-}
-.review-placeholder {
-    text-align: center;
-    font-style: italic;
-    color: var(--color-accent-cyan);
-}
-
-/* --- Utility Classes for Feedback Animations --- */
-.correct-pulse {
-    animation: pulse-correct 0.3s forwards;
-}
-@keyframes pulse-correct {
-    0% { box-shadow: 0 0 5px var(--color-accent-cyan); }
-    100% { box-shadow: 0 0 20px var(--color-accent-cyan); background: rgba(0, 255, 255, 0.2); }
-}
-.incorrect-flash {
-    animation: flash-error 0.3s forwards;
-}
-@keyframes flash-error {
-    0% { box-shadow: 0 0 5px var(--color-error-red); }
-    100% { box-shadow: 0 0 20px var(--color-error-red); background: rgba(255, 49, 49, 0.2); }
-}
-
-/* --- SCOUT SCHOOL SPECIFIC STYLES --- */
-
-/* Start Screen */
-.mode-options {
+/* --- Quiz Screen Layout (Used for Quiz & Phase 3) --- */
+#quiz-screen.active {
     display: flex;
-    justify-content: space-around;
-    background: rgba(0,0,0,0.2);
-    padding: 10px;
-    border: 1px dashed var(--color-accent-cyan);
-    margin-bottom: 15px;
+    flex-direction: column;
+    justify-content: space-between;
 }
-.mode-options label {
-    cursor: pointer;
+.timer-bar-container {
+    width: 100%;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--color-secondary-light);
+    margin-bottom: 15px;
+    position: relative;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+#timer-bar {
+    height: 100%;
+    width: 100%;
+    background: var(--color-accent-cyan);
+    transition: width 1s linear;
+    box-shadow: 0 0 10px var(--color-accent-cyan);
+}
+#timer-text {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--color-primary-dark);
+    font-weight: bold;
+    font-family: 'Electrolize', sans-serif;
+    text-shadow: 1px 1px 0 var(--color-secondary-light);
+}
+.line-builder-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-bottom: 10px;
+}
+.line-slots-area { /* Container for line units */ }
+
+/* Line Unit & Slots */
+.line-unit {
+    border: 2px solid var(--color-accent-cyan);
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    background: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+}
+.line-unit h4 {
     color: var(--color-secondary-light);
+    border-bottom: 1px solid var(--color-accent-cyan);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+.line-slots {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+.line-slot {
+    min-height: 120px; /* Adjust based on card height */
+    border: 1px dashed var(--color-secondary-light);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    text-align: center;
+    transition: background 0.1s, border-color 0.1s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.line-slot.drag-over {
+    background: rgba(0, 255, 255, 0.15);
+    border-color: var(--color-accent-cyan);
+    box-shadow: inset 0 0 10px var(--color-accent-cyan);
+}
+.line-slot .player-card {
+    margin-top: 5px;
+    width: 90%; /* Card fills most of slot */
+    height: 100px; /* Match card height */
+    cursor: pointer;
+}
+.line-slot-label {
+    margin-top: auto;
+    margin-bottom: 2px;
+    color: #aaa;
     font-size: 0.9em;
 }
-.mode-options input[type="radio"] {
-    margin-right: 5px;
-    accent-color: var(--color-accent-cyan);
-}
 
-/* General Phase Styles */
-.scout-phase-screen h2 {
-    font-size: 1.5em;
-    margin-bottom: 5px;
+/* Player Pool (Horizontal Bench) */
+.player-pool-area {
+    flex-shrink: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 10px;
+    margin-top: 10px;
+    background: rgba(0,0,0,0.3);
 }
-.scout-phase-screen h3 {
-    font-size: 1.2em;
+.pool-header {
+    text-align: center;
     color: var(--color-secondary-light);
-    margin-bottom: 10px;
+    padding-bottom: 5px;
+    margin-bottom: 5px; /* Reduced margin */
+    border: none;
+    font-size: 1em;
 }
-.phase-objective {
-    text-align: center;
-    font-style: italic;
-    margin-bottom: 20px;
-    color: #ccc;
-}
-.phase-feedback {
-    min-height: 30px;
-    text-align: center;
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-top: 20px;
-}
-.phase-feedback.correct {
-    color: #39FF14; /* Neon Green */
-}
-.phase-feedback.incorrect {
-    color: var(--color-error-red);
-}
-.phase-progress {
-    text-align: center;
-    margin-top: 15px;
-    font-size: 1.1em;
-    color: #aaa;
-}
-
-
-/* Phase 1: Identification */
-.phase-card-display {
+.player-pool {
     display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-}
-.phase-card-display .player-card {
-     /* Use existing player-card style, maybe slightly larger */
-     transform: scale(1.1);
-     cursor: default; /* Not draggable here */
-}
-.phase-card-display .player-card:hover {
-    /* Disable hover effect */
-    transform: scale(1.1);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    border-color: var(--color-secondary-light);
-}
-
-.phase-choices {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two columns for choices */
-    gap: 15px;
-    max-width: 600px;
-    margin: 0 auto;
-}
-.choice-btn {
-    padding: 15px;
-    font-family: 'Electrolize', sans-serif;
-    font-size: 1.1em;
-    background: var(--color-primary-dark);
-    color: var(--color-accent-cyan);
-    border: 1px solid var(--color-accent-cyan);
-    cursor: pointer;
-    transition: background 0.1s, color 0.1s;
-    text-align: center;
-}
-.choice-btn:hover {
-    background: rgba(0, 255, 255, 0.2);
-}
-.choice-btn.correct {
-    background: #39FF14;
-    color: var(--color-primary-dark);
-    border-color: #39FF14;
-}
-.choice-btn.incorrect {
-    background: var(--color-error-red);
-    color: var(--color-primary-dark);
-    border-color: var(--color-error-red);
-}
-
-
-/* Phase 2: Evaluation */
-.phase-comparison {
-    display: flex;
-    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 10px;
+    padding: 10px;
+    height: auto;
+    min-height: 130px; /* Adjust based on card size */
+    overflow-x: auto;
+    overflow-y: hidden;
     align-items: center;
-    gap: 30px;
-    margin-top: 30px;
-}
-.phase-2-card {
-    /* Container for player card */
-    cursor: pointer;
-    border: 2px dashed transparent; /* Placeholder for feedback */
-    padding: 5px;
-    transition: border-color 0.2s;
-}
-.phase-2-card:hover {
-    border-color: var(--color-accent-cyan);
-}
-.phase-2-card .player-card {
-    cursor: pointer; /* Ensure card itself is clickable */
-}
-.phase-2-card .player-card:hover {
-    /* Override hover effect slightly */
-    transform: none;
-    box-shadow: 0 0 12px var(--color-accent-cyan);
-}
-.vs-divider {
-    font-family: 'Electrolize', sans-serif;
-    font-size: 2em;
-    color: var(--color-accent-cyan);
 }
 
-
-/* Phase 3: Line Construction (Learning Mode Specifics) */
-.quiz-screen.learning-mode .timer-bar-container {
-    display: none; /* Hide timer */
-}
-
-.submit-btn {
-    width: 40%;
-    padding: 12px;
-    font-size: 1.1em;
-    margin: 15px auto 5px auto; /* Position between lines and pool */
-    background-color: #00aaff;
-    box-shadow: 0 0 10px #00aaff;
-}
-.submit-btn:hover {
-     background-color: var(--color-secondary-light);
-     box-shadow: 0 0 15px var(--color-secondary-light);
-}
-
-/* Instant Feedback Styles for Slots in Phase 3 */
-.line-slot.feedback-correct {
-    border-style: solid;
-    border-color: #39FF14; /* Neon Green */
-    box-shadow: 0 0 8px #39FF14;
-    animation: feedback-pulse 0.4s ease-out;
-}
-
-.line-slot.feedback-warning { /* Optional yellow feedback */
-    border-style: solid;
-    border-color: #FFD700; /* Gold/Yellow */
-    box-shadow: 0 0 8px #FFD700;
-    animation: feedback-pulse 0.4s ease-out;
-}
-
-.line-slot.feedback-incorrect {
-    border-style: solid;
-    border-color: var(--color-error-red);
-    box-shadow: 0 0 8px var(--color-error-red);
-    animation: feedback-pulse 0.4s ease-out;
-}
-
-@keyframes feedback-pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.02); } /* Subtle pulse */
-    100% { transform: scale(1); }
-}
-
-/* Phase Complete Screen */
-#phase-complete-screen h2 {
-    color: #39FF14; /* Green for success */
-    font-size: 2em;
-}
-#team-mastery-badge strong {
-    color: var(--color-accent-cyan);
-    font-size: 1.5em;
-}
-
-/* --- ADD: Team Color Variables (Example - Add all 32!) --- */
-:root {
-    /* Existing variables... */
-    --color-primary-dark: #0A0A0A;
-    --color-secondary-light: #EAEAEA;
-    --color-accent-cyan: #00FFFF;
-    --color-error-red: #FF3131;
-    --color-background-dark: #101827;
-
-    /* Add Primary/Secondary colors for each team */
-    /* Example: */
-    --team-ANA-primary: #F47A38; /* Orange */
-    --team-ANA-secondary: #B9975B; /* Gold */
-    --team-BOS-primary: #FFB81C; /* Gold */
-    --team-BOS-secondary: #000000; /* Black */
-    --team-BUF-primary: #003087; /* Royal Blue */
-    --team-BUF-secondary: #FFB81C; /* Gold */
-    --team-CGY-primary: #C8102E; /* Red */
-    --team-CGY-secondary: #F1BE48; /* Yellow Gold */
-    --team-CAR-primary: #CC0000; /* Red */
-    --team-CAR-secondary: #000000; /* Black */
-    --team-CHI-primary: #CF0A2C; /* Red */
-    --team-CHI-secondary: #000000; /* Black */
-    --team-COL-primary: #6F263D; /* Burgundy */
-    --team-COL-secondary: #236192; /* Blue */
-    --team-CBJ-primary: #002654; /* Union Blue */
-    --team-CBJ-secondary: #CE1126; /* Red */
-    --team-DAL-primary: #006847; /* Victory Green */
-    --team-DAL-secondary: #8F8F8C; /* Silver */
-    --team-DET-primary: #CE1126; /* Red */
-    --team-DET-secondary: #FFFFFF; /* White */
-    --team-EDM-primary: #041E42; /* Navy Blue */
-    --team-EDM-secondary: #FF4C00; /* Orange */
-    --team-FLA-primary: #C8102E; /* Red */
-    --team-FLA-secondary: #041E42; /* Navy */
-    --team-LAK-primary: #111111; /* Black */
-    --team-LAK-secondary: #A2AAAD; /* Silver */
-    --team-MIN-primary: #154734; /* Forest Green */
-    --team-MIN-secondary: #A6192E; /* Iron Range Red */
-    --team-MTL-primary: #AF1E2D; /* Red */
-    --team-MTL-secondary: #192168; /* Blue */
-    --team-NSH-primary: #FFB81C; /* Gold */
-    --team-NSH-secondary: #041E42; /* Navy Blue */
-    --team-NJD-primary: #CE1126; /* Red */
-    --team-NJD-secondary: #000000; /* Black */
-    --team-NYI-primary: #00539B; /* Royal Blue */
-    --team-NYI-secondary: #F47D30; /* Orange */
-    --team-NYR-primary: #0038A8; /* Blue */
-    --team-NYR-secondary: #CE1126; /* Red */
-    --team-OTT-primary: #C52032; /* Red */
-    --team-OTT-secondary: #000000; /* Black */
-    --team-PHI-primary: #F74902; /* Orange */
-    --team-PHI-secondary: #000000; /* Black */
-    --team-PIT-primary: #FCB514; /* Pittsburgh Gold */
-    --team-PIT-secondary: #000000; /* Black */
-    --team-SJS-primary: #006D75; /* Teal */
-    --team-SJS-secondary: #000000; /* Black */
-    --team-SEA-primary: #001F5B; /* Deep Sea Blue */
-    --team-SEA-secondary: #99D9D9; /* Ice Blue */
-    --team-STL-primary: #002F87; /* Blue */
-    --team-STL-secondary: #FCB514; /* Yellow */
-    --team-TBL-primary: #002868; /* Blue */
-    --team-TBL-secondary: #FFFFFF; /* White */
-    --team-TOR-primary: #00205B; /* Blue */
-    --team-TOR-secondary: #FFFFFF; /* White */
-    --team-VAN-primary: #00205B; /* Blue */
-    --team-VAN-secondary: #00843D; /* Green */
-    --team-VGK-primary: #B4975A; /* Steel Grey */
-    --team-VGK-secondary: #333F42; /* Gold */
-    --team-WSH-primary: #C8102E; /* Red */
-    --team-WSH-secondary: #041E42; /* Navy Blue */
-    --team-WPG-primary: #041E42; /* Navy Blue */
-    --team-WPG-secondary: #AC162C; /* Red */
-    /* Add ARI when/if needed */
-    --team-DEFAULT-primary: #555; /* Default Grey */
-    --team-DEFAULT-secondary: #BBB;
-}
-
-
-/* --- REPLACE EXISTING PLAYER CARD STYLES --- */
+/* --- PLAYER CARD (Jersey Style) --- */
 .player-card {
     cursor: grab;
-    width: 150px; /* Adjust size as needed */
-    height: 100px; /* Adjust size as needed */
-    border-radius: 8px; /* Slightly more rounded */
+    width: 150px;
+    height: 100px;
+    border-radius: 8px;
+    /* Gradient using CSS variables set by JS */
     background: linear-gradient(135deg, var(--team-color-primary, var(--team-DEFAULT-primary)) 40%, var(--team-color-secondary, var(--team-DEFAULT-secondary)) 100%);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
     transition: transform 0.1s, box-shadow 0.2s;
     user-select: none;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    position: relative; /* For potential jersey stripes later */
-    overflow: hidden; /* Hide overflow for stripes */
+    position: relative;
+    overflow: hidden;
     padding: 5px;
-    border: 2px solid rgba(255, 255, 255, 0.5); /* White border */
-    color: #FFF; /* Default text color */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.7); /* Text shadow for readability */
-    flex-shrink: 0;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: #FFF; /* Default: White text */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    flex-shrink: 0; /* Prevent shrinking in flex container */
+}
+/* Specific text color override for light backgrounds */
+.player-card.dark-text {
+    color: #111; /* Dark text */
+    text-shadow: 1px 1px 1px rgba(255,255,255,0.7);
 }
 
 .player-card:hover {
-    transform: translateY(-4px) scale(1.03); /* More pronounced hover */
+    transform: translateY(-4px) scale(1.03);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7), 0 0 10px var(--team-color-primary, var(--team-DEFAULT-primary));
 }
 .player-card.dragging {
@@ -725,60 +338,92 @@ h1, h2, h3, h4 {
 /* Card Content Styling */
 .card-jersey-number {
     font-family: 'Electrolize', sans-serif;
-    font-size: 2.5em; /* Large jersey number */
+    font-size: 2.8em; /* Prominent jersey number */
     font-weight: bold;
     line-height: 1;
-    margin-bottom: 2px;
+    margin-bottom: 0px; /* Space between number and name */
 }
-
 .card-player-name {
     font-family: 'Space Mono', monospace;
-    font-size: 0.9em; /* Smaller name */
+    font-size: 0.9em;
     font-weight: bold;
     line-height: 1.1;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 90%; /* Prevent long names breaking layout */
+    width: 90%;
     margin: 0 auto;
 }
 
-/* --- Remove old card structure styles if they exist --- */
-.card-header, .card-details, .card-footer, .player-name, .jersey-number, .rating-tag {
-    /* These specific classes might need removal or adjustment if conflicting */
-    /* If you used the previous `style.css`, delete the old .player-card internal structure styles */
+/* --- SCOUT SCHOOL Phase Styles --- */
+.scout-phase-screen h2 { font-size: 1.5em; margin-bottom: 5px; }
+.scout-phase-screen h3 { font-size: 1.2em; color: var(--color-secondary-light); margin-bottom: 10px; }
+.phase-objective { text-align: center; font-style: italic; margin-bottom: 20px; color: #ccc; }
+.phase-feedback { min-height: 30px; text-align: center; font-size: 1.2em; font-weight: bold; margin-top: 20px; }
+.phase-feedback.correct { color: var(--color-feedback-green); }
+.phase-feedback.incorrect { color: var(--color-error-red); }
+.phase-progress { text-align: center; margin-top: 15px; font-size: 1.1em; color: #aaa; }
+
+/* Phase 1: Identification */
+.phase-card-display { display: flex; justify-content: center; margin-bottom: 30px; }
+.phase-card-display .player-card { transform: scale(1.1); cursor: default; }
+.phase-card-display .player-card:hover { transform: scale(1.1); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); }
+/* Hide name in Phase 1 card */
+.phase-card-display .card-player-name { display: none; }
+.phase-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 600px; margin: 0 auto; }
+.choice-btn {
+    padding: 15px; font-family: 'Electrolize', sans-serif; font-size: 1.1em;
+    background: var(--color-primary-dark); color: var(--color-accent-cyan);
+    border: 1px solid var(--color-accent-cyan); cursor: pointer; transition: background 0.1s, color 0.1s; text-align: center;
+}
+.choice-btn:hover:not(:disabled) { background: rgba(0, 255, 255, 0.2); }
+.choice-btn.correct { background: var(--color-feedback-green); color: var(--color-primary-dark); border-color: var(--color-feedback-green); }
+.choice-btn.incorrect { background: var(--color-error-red); color: var(--color-primary-dark); border-color: var(--color-error-red); }
+.choice-btn:disabled { opacity: 0.7; cursor: default; }
+
+/* Phase 2: Evaluation */
+.phase-comparison { display: flex; justify-content: center; align-items: center; gap: 30px; margin-top: 30px; }
+.phase-2-card { cursor: pointer; border: 2px solid transparent; padding: 5px; transition: border-color 0.2s; }
+.phase-2-card:hover { border-color: var(--color-accent-cyan); }
+.phase-2-card .player-card { cursor: pointer; }
+.phase-2-card .player-card:hover { /* Keep card hover */ }
+.vs-divider { font-family: 'Electrolize', sans-serif; font-size: 2em; color: var(--color-accent-cyan); }
+
+/* Phase 3: Line Construction Feedback */
+.line-slot.feedback-correct { border-style: solid; border-color: var(--color-feedback-green); box-shadow: 0 0 8px var(--color-feedback-green); animation: feedback-pulse 0.4s ease-out; }
+.line-slot.feedback-warning { border-style: solid; border-color: var(--color-feedback-yellow); box-shadow: 0 0 8px var(--color-feedback-yellow); animation: feedback-pulse 0.4s ease-out; }
+.line-slot.feedback-incorrect { border-style: solid; border-color: var(--color-error-red); box-shadow: 0 0 8px var(--color-error-red); animation: feedback-pulse 0.4s ease-out; }
+@keyframes feedback-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+.submit-btn {
+    width: 40%; padding: 12px; font-size: 1.1em; margin: 15px auto 5px auto;
+    background-color: #00aaff; box-shadow: 0 0 10px #00aaff;
+}
+.submit-btn:hover { background-color: var(--color-secondary-light); box-shadow: 0 0 15px var(--color-secondary-light); }
+
+/* Phase Complete Screen */
+#phase-complete-screen h2 { color: var(--color-feedback-green); font-size: 2em; }
+#phase-complete-screen h2.failed { color: var(--color-error-red); } /* Style for failed title */
+#team-mastery-badge strong { color: var(--color-accent-cyan); font-size: 1.5em; }
+
+/* Buttons */
+.action-btn {
+    display: block; width: 60%; margin: 20px auto; padding: 15px;
+    font-family: 'Electrolize', sans-serif; font-size: 1.2em;
+    background: var(--color-accent-cyan); color: var(--color-primary-dark);
+    border: none; cursor: pointer; box-shadow: 0 0 15px var(--color-accent-cyan);
+    transition: background 0.15s, box-shadow 0.15s, transform 0.1s; border-radius: 4px;
+}
+.action-btn:hover {
+    background: var(--color-secondary-light); box-shadow: 0 0 20px var(--color-secondary-light);
+    color: var(--color-primary-dark); transform: translateY(-2px);
 }
 
-/* --- Adjust Slot Size --- */
-.line-slot {
-    min-height: 120px; /* Adjust if needed based on new card size */
-}
-.line-slot .player-card {
-    height: 100px; /* Match card height */
-    width: 90%; /* Adjust width within slot */
-}
-
-/* Phase 1 Card Display (No Name Version) */
-.phase-card-display .player-card {
-     transform: scale(1.1);
-     cursor: default;
-}
-.phase-card-display .player-card:hover {
-    transform: scale(1.1); /* Disable hover enlarge */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Reset shadow */
-}
-/* Hide name specifically in phase 1 display */
-.phase-card-display .card-player-name {
-    display: none;
-}
-/* Ensure number is centered when name is hidden */
-.phase-card-display .card-jersey-number {
-     margin-bottom: 0; /* Adjust spacing if name is gone */
-}
-
-/* Phase 2 Comparison Cards */
-.phase-2-card .player-card:hover {
-    /* Keep hover effect */
-    transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7), 0 0 10px var(--team-color-primary, var(--team-DEFAULT-primary));
-}
+/* Debrief Screen */
+.debrief-summary { text-align: center; font-size: 1.3em; margin: 20px 0; padding: 20px; border: 2px solid var(--color-accent-cyan); background: rgba(0, 255, 255, 0.05); }
+.mistake-review-container { padding: 15px; border: 1px solid var(--color-secondary-light); background: var(--color-primary-dark); flex-grow: 1; overflow-y: auto; }
+#mistake-review-list { margin-top: 10px; }
+.mistake-item { padding: 10px; border-bottom: 1px dashed rgba(255, 255, 255, 0.1); background: rgba(255, 49, 49, 0.1); margin-bottom: 5px; }
+.mistake-item strong { color: var(--color-error-red); }
+.mistake-item .correct-answer { color: var(--color-accent-cyan); margin-left: 15px; }
+.review-placeholder { text-align: center; font-style: italic; color: var(--color-accent-cyan); }
+#debrief-screen.learning-mode #time-bonus-display { display: none; }
