@@ -223,7 +223,7 @@ function startGame() {
     }
 }
 
-// --- Player Card Creation (NEW Jersey Style) ---
+// --- Player Card Creation (Jersey Style) ---
 function createPlayerCard(player, hideNameForGuessing = false) {
     const card = document.createElement('div');
     card.className = 'player-card';
@@ -250,6 +250,10 @@ function createPlayerCard(player, hideNameForGuessing = false) {
         <div class="card-player-name">${playerName}</div>
         <div class="card-player-position">${playerPosition}</div>
     `;
+    
+    // CSS handles hiding name and showing position in Phase 1
+    // .phase-card-display .card-player-name { display: none; }
+    // .phase-card-display .card-player-position { display: block; }
 
     if (!hideNameForGuessing) {
         card.addEventListener('dragstart', handleDragStart);
@@ -692,7 +696,7 @@ function handleDrop(e) {
      if (gameState.userLineup[lineId]) { gameState.userLineup[lineId][slotKey] = player; }
     if (gameState.currentMode === 'scout' && gameState.currentScoutPhase === 3) {
         const correctPlayerForSlot = gameState.correctLineup[lineId]?.[slotKey];
-        if (correctPlayerForSlot && player.player_name === correctPlayer.name) {
+        if (correctPlayerForSlot && player.player_name === correctPlayerForSlot.name) {
             applyFeedback(slot, 'correct');
         } else {
             applyFeedback(slot, 'incorrect');
@@ -764,7 +768,8 @@ function saveProgress() {
 function loadProgress() {
     try {
         const savedProgress = localStorage.getItem('scoutSchoolProgress');
-        let initialFavorite = gameState.lineStructures.length > 0 ? gameState.lineStructures[0].team_abbr : 'ANA'; // Default to first team in list
+        // Set a default favorite *before* checking storage
+        let initialFavorite = gameState.lineStructures.length > 0 ? gameState.lineStructures[0].team_abbr : 'ANA';
         let initialUnlocked = [initialFavorite];
 
         if (savedProgress) {

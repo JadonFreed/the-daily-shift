@@ -112,6 +112,7 @@ h1, h2, h3, h4 {
     flex-grow: 1;
     overflow-y: auto;
     padding: 10px 0;
+    position: relative; /* Needed for legend positioning */
 }
 .game-screen.active {
     display: flex;
@@ -350,7 +351,6 @@ h1, h2, h3, h4 {
     width: 90%;
     margin: 0 auto;
 }
-/* NEW: Position Display (Hidden by default) */
 .card-player-position {
     font-family: 'Electrolize', sans-serif;
     font-size: 1.1em;
@@ -362,7 +362,6 @@ h1, h2, h3, h4 {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.9);
     display: none; /* *** HIDE BY DEFAULT *** */
 }
-/* Dark text override for position */
 .dark-text .card-player-position {
     color: var(--color-primary-dark);
     text-shadow: none;
@@ -377,6 +376,40 @@ h1, h2, h3, h4 {
 .phase-feedback.correct { color: var(--color-feedback-green); }
 .phase-feedback.incorrect { color: var(--color-error-red); }
 .phase-progress { text-align: center; margin-top: 15px; font-size: 1.1em; color: #aaa; }
+
+/* *** NEW: Position Legend *** */
+.position-legend {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 150px;
+    padding: 10px;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid var(--color-accent-cyan);
+    border-radius: 4px;
+}
+.position-legend h4 {
+    font-size: 1.1em;
+    color: var(--color-secondary-light);
+    margin: 0 0 10px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--color-accent-cyan);
+}
+.position-legend ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.9em;
+}
+.position-legend li {
+    margin-bottom: 5px;
+}
+.position-legend li span {
+    font-weight: bold;
+    color: var(--color-accent-cyan);
+    width: 20px;
+    display: inline-block;
+}
 
 /* Phase 1: Identification */
 .phase-card-display { display: flex; justify-content: center; margin-bottom: 30px; }
