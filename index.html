@@ -23,20 +23,13 @@
             <div class="settings-panel data-card">
                 <label>SELECT MODE:</label>
                 <div class="mode-options">
-                    <label>
-                        <input type="radio" name="game-mode" value="quiz" checked> Quiz Mode (Timed)
-                    </label>
-                    <label>
-                        <input type="radio" name="game-mode" value="scout"> Scout School (Learn)
-                    </label>
+                    <label><input type="radio" name="game-mode" value="quiz" checked> Quiz Mode (Timed)</label>
+                    <label><input type="radio" name="game-mode" value="scout"> Scout School (Learn)</label>
                 </div>
-
                 <label for="favorite-team-select">YOUR FAVORITE TEAM:</label>
                 <select id="favorite-team-select"></select>
-
                 <label for="team-select">TARGET TEAM:</label>
                 <select id="team-select"></select>
-
                 <div id="lines-to-build-section">
                     <label>LINES TO BUILD:</label>
                     <div class="line-options">
@@ -52,21 +45,16 @@
 
         <div id="quiz-screen" class="game-screen">
              <div class="timer-bar-container">
-                <div id="timer-bar"></div>
-                <div id="timer-text">60:00</div>
+                <div id="timer-bar"></div><div id="timer-text">60:00</div>
             </div>
             <h3 id="current-team-display">Team: --</h3>
-
             <div class="line-builder-content">
-                <div id="line-slots-container" class="line-slots-area">
-                    </div>
+                <div id="line-slots-container" class="line-slots-area"></div>
             </div>
             <button id="submit-lineup-btn" class="action-btn submit-btn" style="display: none;">SUBMIT LINEUP</button>
-
             <div class="player-pool-area">
                 <h4 class="pool-header">PLAYER POOL: <span id="pool-count">0</span> Skaters Available</h4>
-                <div id="player-pool" class="player-pool">
-                    </div>
+                <div id="player-pool" class="player-pool"></div>
             </div>
         </div>
 
@@ -74,20 +62,12 @@
             <h2>SCOUT SCHOOL - PHASE 1: IDENTIFICATION</h2>
             <h3 id="scout-phase-1-team">Team: --</h3>
             <p class="phase-objective">Identify the player based on their details.</p>
-            
             <div class="position-legend">
                 <h4>Position Key</h4>
-                <ul>
-                    <li><span>C:</span> Center</li>
-                    <li><span>L:</span> Left Wing</li>
-                    <li><span>R:</span> Right Wing</li>
-                    <li><span>D:</span> Defenseman</li>
-                </ul>
+                <ul><li><span>C:</span> Center</li><li><span>L:</span> Left Wing</li><li><span>R:</span> Right Wing</li><li><span>D:</span> Defenseman</li></ul>
             </div>
-            <div id="phase-1-card-display" class="phase-card-display">
-                </div>
-            <div id="phase-1-choices" class="phase-choices">
-                </div>
+            <div id="phase-1-card-display" class="phase-card-display"></div>
+            <div id="phase-1-choices" class="phase-choices"></div>
             <div id="phase-1-feedback" class="phase-feedback"></div>
             <div id="phase-1-progress" class="phase-progress">Progress: 0 / 10</div>
          </div>
@@ -97,16 +77,35 @@
             <h3 id="scout-phase-2-team">Team: --</h3>
             <p class="phase-objective">Select the player with the higher RATING.</p>
             <div id="phase-2-comparison" class="phase-comparison">
-                <div id="phase-2-player-A" class="phase-2-card">
-                     </div>
+                <div id="phase-2-player-A" class="phase-2-card"></div>
                 <div class="vs-divider">VS</div>
-                <div id="phase-2-player-B" class="phase-2-card">
-                     </div>
+                <div id="phase-2-player-B" class="phase-2-card"></div>
             </div>
             <div id="phase-2-feedback" class="phase-feedback"></div>
              <div id="phase-2-progress" class="phase-progress">Progress: 0 / 10</div>
         </div>
 
+        <div id="scout-phase-4-screen" class="game-screen scout-phase-screen">
+             <h2>SCOUT SCHOOL - PHASE 4: GOALIE TANDEM</h2>
+             <h3 id="scout-phase-4-team">Team: --</h3>
+             <p class="phase-objective">Drag the correct goalie to their role (Starter vs Backup).</p>
+             <div class="goalie-tandem-area">
+                 <div class="goalie-slot-container">
+                     <div class="goalie-slot" id="goalie-slot-starter" data-role="Starter">
+                         <div class="goalie-slot-label">STARTER</div>
+                         </div>
+                 </div>
+                 <div class="goalie-slot-container">
+                     <div class="goalie-slot" id="goalie-slot-backup" data-role="Backup">
+                         <div class="goalie-slot-label">BACKUP</div>
+                          </div>
+                 </div>
+             </div>
+             <div id="phase-4-feedback" class="phase-feedback"></div> <div class="player-pool-area goalie-pool-area"> <h4 class="pool-header">GOALIE POOL</h4>
+                 <div id="goalie-pool" class="player-pool goalie-pool">
+                     </div>
+             </div>
+        </div>
         <div id="phase-complete-screen" class="game-screen">
              <h2 id="phase-complete-title">PHASE COMPLETE!</h2>
              <p id="phase-complete-message">Good work, scout. Prepare for the next phase.</p>

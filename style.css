@@ -486,3 +486,75 @@ h1, h2, h3, h4 {
 .mistake-item .correct-answer { color: var(--color-accent-cyan); margin-left: 15px; }
 .review-placeholder { text-align: center; font-style: italic; color: var(--color-accent-cyan); }
 #debrief-screen.learning-mode #time-bonus-display { display: none; }
+
+/* --- SCOUT PHASE 4: GOALIE TANDEM --- */
+.goalie-tandem-area {
+    display: flex;
+    justify-content: space-around; /* Space out Starter/Backup */
+    align-items: flex-start; /* Align tops */
+    padding: 30px 10%; /* Add padding */
+    margin-bottom: 20px;
+}
+
+.goalie-slot-container {
+    width: 40%; /* Adjust width */
+    text-align: center;
+}
+
+.goalie-slot {
+    min-height: 150px; /* Taller slot for goalie card */
+    border: 2px dashed var(--color-secondary-light);
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    transition: background 0.1s, border-color 0.1s, box-shadow 0.2s;
+    position: relative; /* For label positioning */
+}
+
+.goalie-slot-label {
+    font-family: 'Electrolize', sans-serif;
+    color: var(--color-accent-cyan);
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--color-accent-cyan);
+    padding-bottom: 5px;
+}
+
+.goalie-slot.drag-over {
+    background: rgba(0, 255, 255, 0.15);
+    border-color: var(--color-accent-cyan);
+    box-shadow: inset 0 0 10px var(--color-accent-cyan);
+}
+
+/* Goalie Card inside the slot */
+.goalie-slot .player-card {
+    margin: 10px auto; /* Center card */
+    cursor: grab; /* Make it draggable again */
+    width: 150px; /* Use standard card size */
+    height: 100px;
+}
+
+/* Goalie Pool adjustments */
+.goalie-pool-area {
+    margin-top: 30px; /* More space above goalie pool */
+    min-height: 160px; /* Ensure enough space */
+}
+
+.goalie-pool {
+    justify-content: center; /* Center goalies if only a few */
+    padding: 15px;
+}
+
+/* Goalie Feedback on Slots */
+.goalie-slot.feedback-correct {
+    border-style: solid;
+    border-color: var(--color-feedback-green);
+    box-shadow: 0 0 8px var(--color-feedback-green);
+    animation: feedback-pulse 0.4s ease-out;
+}
+
+.goalie-slot.feedback-incorrect {
+    border-style: solid;
+    border-color: var(--color-error-red);
+    box-shadow: 0 0 8px var(--color-error-red);
+    animation: feedback-pulse 0.4s ease-out;
+}
