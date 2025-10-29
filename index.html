@@ -73,9 +73,9 @@
          </div>
 
          <div id="scout-phase-2-screen" class="game-screen scout-phase-screen">
-            <h2>SCOUT SCHOOL - PHASE 2: EVALUATION</h2>
+            <h2>SCOUT SCHOOL - PHASE 2: LINE ASSIGNMENT</h2>
             <h3 id="scout-phase-2-team">Team: --</h3>
-            <p class="phase-objective">Select the player with the higher RATING.</p>
+            <p class="phase-objective">Select the player who plays on the **HIGHER** line (e.g. Line 1 > Line 2).</p>
             <div id="phase-2-comparison" class="phase-comparison">
                 <div id="phase-2-player-A" class="phase-2-card"></div>
                 <div class="vs-divider">VS</div>
@@ -93,19 +93,21 @@
                  <div class="goalie-slot-container">
                      <div class="goalie-slot" id="goalie-slot-starter" data-role="Starter">
                          <div class="goalie-slot-label">STARTER</div>
-                         </div>
+                     </div>
                  </div>
                  <div class="goalie-slot-container">
                      <div class="goalie-slot" id="goalie-slot-backup" data-role="Backup">
                          <div class="goalie-slot-label">BACKUP</div>
-                          </div>
+                     </div>
                  </div>
              </div>
-             <div id="phase-4-feedback" class="phase-feedback"></div> <div class="player-pool-area goalie-pool-area"> <h4 class="pool-header">GOALIE POOL</h4>
-                 <div id="goalie-pool" class="player-pool goalie-pool">
-                     </div>
+             <div id="phase-4-feedback" class="phase-feedback"></div>
+             <div class="player-pool-area goalie-pool-area">
+                 <h4 class="pool-header">GOALIE POOL</h4>
+                 <div id="goalie-pool" class="player-pool goalie-pool"></div>
              </div>
         </div>
+
         <div id="phase-complete-screen" class="game-screen">
              <h2 id="phase-complete-title">PHASE COMPLETE!</h2>
              <p id="phase-complete-message">Good work, scout. Prepare for the next phase.</p>
@@ -115,7 +117,6 @@
                  <p>Scouting Report for <span id="mastered-team-name">--</span> is complete.</p>
              </div>
         </div>
-
 
         <div id="debrief-screen" class="game-screen">
             <h2 id="debrief-title" class="data-title">DEBRIEF SCREEN: DATA LOG</h2>
