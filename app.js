@@ -1,401 +1,421 @@
-const UI_CONSTANTS = {
-    TIMER_SECONDS: 60,
-    POINTS_PER_CORRECT_SLOT: 10,
-    SCORE_MULTIPLIER_TIME_FACTOR: 60,
-    FEEDBACK_DURATION: 500,
-    PHASE_1_QUESTIONS: 10,
-    PHASE_1_MASTERY_ACCURACY: 0.8,
-    PHASE_2_QUESTIONS: 10, // Keep 10 questions for the new Phase 2
-    PHASE_2_MASTERY_ACCURACY: 0.8, // 80% accuracy for Line Assignment
-};
-
-// --- Team Colors Mapping ---
-const teamColors = {
-    'ANA': { primary: '#F47A38', secondary: '#B9975B' }, 'ARI': { primary: '#8C2633', secondary: '#E2D6B5' },
-    'BOS': { primary: '#FFB81C', secondary: '#000000' }, 'BUF': { primary: '#003087', secondary: '#FFB81C' },
-    'CGY': { primary: '#C8102E', secondary: '#F1BE48' }, 'CAR': { primary: '#CC0000', secondary: '#000000' },
-    'CHI': { primary: '#CF0A2C', secondary: '#000000' }, 'COL': { primary: '#6F263D', secondary: '#236192' },
-    'CBJ': { primary: '#002654', secondary: '#CE1126' }, 'DAL': { primary: '#006847', secondary: '#8F8F8C' },
-    'DET': { primary: '#CE1126', secondary: '#FFFFFF' }, 'EDM': { primary: '#041E42', secondary: '#FF4C00' },
-    'FLA': { primary: '#C8102E', secondary: '#041E42' }, 'LAK': { primary: '#111111', secondary: '#A2AAAD' },
-    'MIN': { primary: '#154734', secondary: '#A6192E' }, 'MTL': { primary: '#AF1E2D', secondary: '#192168' },
-    'NSH': { primary: '#FFB81C', secondary: '#041E42' }, 'NJD': { primary: '#CE1126', secondary: '#000000' },
-    'NYI': { primary: '#00539B', secondary: '#F47D30' }, 'NYR': { primary: '#0038A8', secondary: '#CE1126' },
-    'OTT': { primary: '#C52032', secondary: '#000000' }, 'PHI': { primary: '#F74902', secondary: '#000000' },
-    'PIT': { primary: '#FCB514', secondary: '#000000' }, 'SJS': { primary: '#006D75', secondary: '#000000' },
-    'SEA': { primary: '#001F5B', secondary: '#99D9D9' }, 'STL': { primary: '#002F87', secondary: '#FCB514' },
-    'TBL': { primary: '#002868', secondary: '#FFFFFF' }, 'TOR': { primary: '#00205B', secondary: '#FFFFFF' },
-    'VAN': { primary: '#00205B', secondary: '#00843D' }, 'VGK': { primary: '#B4975A', secondary: '#333F42' },
-    'WSH': { primary: '#C8102E', secondary: '#041E42' }, 'WPG': { primary: '#041E42', secondary: '#AC162C' },
-    'DEFAULT': { primary: '#555555', secondary: '#BBBBBB' }
-};
-const darkTextTeams = ['DET', 'TBL', 'TOR'];
-
-// --- Global State Variables ---
-let gameState = {
-    allPlayers: [], allGoalies: [], lineStructures: [], currentTeam: null,
-    linesToQuiz: 2, favoriteTeam: 'ANA', currentMode: 'quiz',
-    quizActive: false, timer: null, timeRemaining: 0,
-    userLineup: {}, mistakes: [],
-    currentScoutPhase: 0, scoutPhaseProgress: 0, scoutPhaseCorrect: 0,
-    scoutPhaseQuestionData: null, masteredTeams: new Set(), unlockedTeams: ['ANA'],
-    correctGoalieRoles: { Starter: null, Backup: null },
-    userGoalieRoles: { Starter: null, Backup: null },
-};
-
-// --- DOM Element Selection ---
-const screens = {
-    start: document.getElementById('start-screen'), quiz: document.getElementById('quiz-screen'),
-    debrief: document.getElementById('debrief-screen'), scoutPhase1: document.getElementById('scout-phase-1-screen'),
-    scoutPhase2: document.getElementById('scout-phase-2-screen'),
-    scoutPhase4: document.getElementById('scout-phase-4-screen'),
-    phaseComplete: document.getElementById('phase-complete-screen'),
-};
-// (All other DOM selections remain the same as the previous version)
-const modeRadios = document.querySelectorAll('input[name="game-mode"]');
-const favoriteTeamSelect = document.getElementById('favorite-team-select');
-const teamSelect = document.getElementById('team-select');
-const lineOptionsButtons = document.querySelectorAll('.line-options .line-btn');
-const linesToBuildSection = document.getElementById('lines-to-build-section');
-const startButton = document.getElementById('start-shift-btn');
-const scoutModeInfo = document.getElementById('scout-mode-info');
-const timerContainer = document.querySelector('.timer-bar-container');
-const timerBar = document.getElementById('timer-bar');
-const timerText = document.getElementById('timer-text');
-const currentTeamDisplay = document.getElementById('current-team-display');
-const lineSlotsContainer = document.getElementById('line-slots-container');
-const playerPoolArea = document.querySelector('.player-pool-area');
-const playerPool = document.getElementById('player-pool');
-const poolCount = document.getElementById('pool-count');
-const submitLineupButton = document.getElementById('submit-lineup-btn');
-const phase1Team = document.getElementById('scout-phase-1-team');
-const phase1CardDisplay = document.getElementById('phase-1-card-display');
-const phase1Choices = document.getElementById('phase-1-choices');
-const phase1Feedback = document.getElementById('phase-1-feedback');
-const phase1Progress = document.getElementById('phase-1-progress');
-const phase2Team = document.getElementById('scout-phase-2-team');
-const phase2PlayerA = document.getElementById('phase-2-player-A');
-const phase2PlayerB = document.getElementById('phase-2-player-B');
-const phase2Feedback = document.getElementById('phase-2-feedback');
-const phase2Progress = document.getElementById('phase-2-progress');
-const phase4Team = document.getElementById('scout-phase-4-team');
-const goalieSlotStarter = document.getElementById('goalie-slot-starter');
-const goalieSlotBackup = document.getElementById('goalie-slot-backup');
-const goaliePool = document.getElementById('goalie-pool');
-const phase4Feedback = document.getElementById('phase-4-feedback');
-const phaseCompleteTitle = document.getElementById('phase-complete-title');
-const phaseCompleteMessage = document.getElementById('phase-complete-message');
-const nextPhaseButton = document.getElementById('next-phase-btn');
-const teamMasteryBadge = document.getElementById('team-mastery-badge');
-const masteredTeamName = document.getElementById('mastered-team-name');
-const timeBonusDisplay = document.getElementById('time-bonus-display');
-const debriefTimeBonus = document.getElementById('debrief-time-bonus');
-const debriefAccuracy = document.getElementById('debrief-accuracy');
-const debriefPoints = document.getElementById('debrief-points');
-const mistakeList = document.getElementById('mistake-review-list');
-const nextShiftButton = document.getElementById('next-shift-btn');
-
-// --- Utility Functions ---
-function setScreen(screenName) { /* ... (no changes) ... */
-    Object.values(screens).forEach(screen => screen.classList.remove('active'));
-    if (screens[screenName]) {
-        screens[screenName].classList.add('active');
-        document.body.classList.toggle('learning-mode', gameState.currentMode === 'scout');
-        screens.quiz?.classList.toggle('learning-mode', gameState.currentMode === 'scout');
-        screens.debrief?.classList.toggle('learning-mode', gameState.currentMode === 'scout');
-    } else { console.error("Screen not found:", screenName); }
-}
-function shuffleArray(array) { /* ... (no changes) ... */
-    for (let i = array.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [array[i], array[j]] = [array[j], array[i]]; } return array;
-}
-
-// --- Initialization ---
-async function loadDataAndInitialize() {
-    try {
-        const [playersResponse, linesResponse, goaliesResponse, lookupResponse] = await Promise.all([
-            fetch('nhl_players.json'),
-            fetch('team_line_structures.json'),
-            fetch('all_goalies_ratings_final.csv'),
-            fetch('allPlayersLookup.csv')
-        ]);
-        if (!playersResponse.ok) throw new Error('Failed to load nhl_players.json');
-        if (!linesResponse.ok) throw new Error('Failed to load team_line_structures.json');
-        if (!goaliesResponse.ok) throw new Error('Failed to load all_goalies_ratings_final.csv');
-        if (!lookupResponse.ok) throw new Error('Failed to load allPlayersLookup.csv');
-
-        gameState.allPlayers = await playersResponse.json();
-        gameState.lineStructures = await linesResponse.json();
-
-        // CSV Parsing
-        const goaliesCSVText = await goaliesResponse.text();
-        const lookupCSVText = await lookupResponse.text();
-        const parseCSV = (text) => {
-            const lines = text.trim().split('\n');
-            const header = lines[0].split(',').map(h => h.trim());
-            return lines.slice(1).map(line => {
-                const values = line.split(',');
-                const obj = {};
-                header.forEach((key, index) => {
-                    let value = values[index]?.trim();
-                    if (value?.startsWith('"') && value?.endsWith('"')) { value = value.slice(1, -1); }
-                    obj[key] = value;
-                });
-                return obj;
-            });
-        };
-        const goalieRatingsData = parseCSV(goaliesCSVText);
-        const lookupData = parseCSV(lookupCSVText);
-
-        // Create enriched goalie data
-        gameState.allGoalies = goalieRatingsData.map(goalie => {
-            const lookupInfo = lookupData.find(p => p.playerId === goalie.playerId);
-            const birthDate = lookupInfo?.birthDate ? new Date(lookupInfo.birthDate) : null;
-            const age = birthDate && !isNaN(birthDate)
-                      ? Math.floor((new Date() - birthDate) / (1000 * 60 * 60 * 24 * 365.25))
-                      : '?';
-            return {
-                id: goalie.playerId,
-                player_name: goalie.name || 'Unknown Goalie',
-                team_abbr: goalie.team,
-                position: 'G',
-                rating: parseFloat(goalie.GSAx_Per60_Stabilized) || 0,
-                jersey_number: lookupInfo?.primaryNumber || 'XX',
-                age: age,
-                height: lookupInfo?.height || '?',
-            };
-        });
-        gameState.allPlayers = gameState.allPlayers.filter(p => p.position !== 'G');
-
-        loadProgress();
-        initializeStartScreen();
-        setScreen('start');
-    } catch (error) {
-        console.error("Data loading error:", error);
-        alert("Error loading or processing game data. Check console.");
-    }
-}
-function initializeStartScreen() { /* ... (no changes) ... */
-    modeRadios.forEach(radio => { radio.addEventListener('change', (e) => { gameState.currentMode = e.target.value; updateStartScreenUI(); }); });
-    const allTeamsSorted = gameState.lineStructures.map(t => t.team_abbr).sort();
-    favoriteTeamSelect.innerHTML = '';
-    allTeamsSorted.forEach(team => { const option = document.createElement('option'); option.value = team; option.textContent = team; favoriteTeamSelect.appendChild(option); });
-    favoriteTeamSelect.value = gameState.favoriteTeam;
-    favoriteTeamSelect.addEventListener('change', (e) => { gameState.favoriteTeam = e.target.value; if (!gameState.unlockedTeams.includes(gameState.favoriteTeam)) { gameState.unlockedTeams.push(gameState.favoriteTeam); gameState.unlockedTeams.sort(); } saveProgress(); updateStartScreenUI(); });
-    teamSelect.addEventListener('change', (e) => gameState.currentTeam = e.target.value);
-    lineOptionsButtons.forEach(btn => { btn.addEventListener('click', (e) => { lineOptionsButtons.forEach(b => b.classList.remove('active')); e.target.classList.add('active'); gameState.linesToQuiz = parseInt(e.target.dataset.lines); }); });
-    startButton.addEventListener('click', startGame);
-    updateStartScreenUI();
-}
-function updateStartScreenUI() { /* ... (no changes) ... */
-    const isScoutMode = gameState.currentMode === 'scout';
-    linesToBuildSection.style.display = isScoutMode ? 'none' : 'block';
-    scoutModeInfo.style.display = isScoutMode ? 'block' : 'none';
-    let teamsToShow;
-    if (isScoutMode) { teamsToShow = [...new Set([gameState.favoriteTeam, ...gameState.unlockedTeams])].sort(); }
-    else { teamsToShow = gameState.lineStructures.map(t => t.team_abbr).sort(); }
-    const currentTargetValue = teamSelect.value;
-    teamSelect.innerHTML = '';
-    teamsToShow.forEach(team => { const option = document.createElement('option'); option.value = team; option.textContent = team + (gameState.masteredTeams.has(team) ? ' ✅' : ''); teamSelect.appendChild(option); });
-    let defaultTarget;
-    if (isScoutMode) { defaultTarget = teamsToShow.includes(gameState.favoriteTeam) ? gameState.favoriteTeam : teamsToShow[0]; }
-    else { defaultTarget = teamsToShow.includes(currentTargetValue) ? currentTargetValue : (teamsToShow.includes(gameState.favoriteTeam) ? gameState.favoriteTeam : teamsToShow[0]); }
-    teamSelect.value = defaultTarget || teamsToShow[0];
-    gameState.currentTeam = teamSelect.value;
-}
-
-// --- Game Start ---
-function startGame() { /* ... (no changes) ... */
-    gameState.currentTeam = teamSelect.value;
-    if (!gameState.currentTeam) return alert("Please select a target team.");
-    if (gameState.currentMode === 'quiz') { startQuizMode(); }
-    else { startScoutSchool(); }
-}
-
-// --- Player Card Creation ---
-function createPlayerCard(player, hideNameForGuessing = false) { /* ... (no changes) ... */
-    const card = document.createElement('div');
-    card.className = 'player-card';
-    card.setAttribute('draggable', !hideNameForGuessing);
-    card.dataset.playerId = player.id;
-    card.dataset.position = player.position;
-    const colors = teamColors[player.team_abbr] || teamColors['DEFAULT'];
-    card.style.setProperty('--team-color-primary', colors.primary);
-    card.style.setProperty('--team-color-secondary', colors.secondary);
-    if (darkTextTeams.includes(player.team_abbr)) { card.classList.add('dark-text'); }
-    const jerseyNumber = player.jersey_number || 'XX';
-    const playerName = player.player_name || 'Unknown';
-    const playerPosition = player.position || '?';
-    card.innerHTML = `
-        <div class="card-jersey-number">${jerseyNumber}</div>
-        <div class="card-player-name">${playerName}</div>
-        <div class="card-player-position">${playerPosition}</div>`;
-    if (!hideNameForGuessing) {
-        card.addEventListener('dragstart', handleDragStart);
-        card.addEventListener('click', handleCardClick);
-    } else { card.style.cursor = 'default'; }
-    return card;
-}
-
-// --- QUIZ MODE --- (No changes needed)
-function startQuizMode() { /* ... */ }
-function startTimer() { /* ... */ }
-function updateTimerDisplay() { /* ... */ }
-function checkQuizCompletion() { /* ... */ }
-function endQuiz(timeUp) { /* ... */ }
-function calculateScore() { /* ... */ }
-function renderDebrief(results, timeUp) { /* ... */ }
-
-
-// --- SCOUT SCHOOL MODE ---
-function startScoutSchool() { /* ... (no changes) ... */
-    gameState.currentScoutPhase = 1; gameState.scoutPhaseProgress = 0; gameState.scoutPhaseCorrect = 0;
-    startScoutPhase1();
-}
-
-// --- Phase 1: Identification --- (No changes needed)
-function startScoutPhase1() { /* ... */ }
-function generatePhase1Question() { /* ... */ }
-function handlePhase1Answer(isCorrect, button, targetPlayerId) { /* ... */ }
-
-
-// --- *** NEW: Phase 2: Line Assignment *** ---
-function startScoutPhase2() {
-    gameState.scoutPhaseProgress = 0;
-    gameState.scoutPhaseCorrect = 0;
-    phase2Team.textContent = `Team: ${gameState.currentTeam}`;
-    generatePhase2Question(); // Call the new function
-    setScreen('scoutPhase2');
-}
-
-/** Finds the line number (1, 2, or 3) for a player. Returns 4 for "Depth" (not top 3). */
-function findPlayerLine(playerName) {
-    const teamData = gameState.lineStructures.find(t => t.team_abbr === gameState.currentTeam);
-    if (!teamData) return 4; // Default to depth if no team data
-    if (Object.values(teamData.lines['Line 1'] || {}).some(p => p && p.name === playerName)) return 1;
-    if (Object.values(teamData.lines['Line 2'] || {}).some(p => p && p.name === playerName)) return 2;
-    if (Object.values(teamData.lines['Line 3'] || {}).some(p => p && p.name === playerName)) return 3;
-    return 4; // Player is not in the top 3 lines
-}
-
-function generatePhase2Question() {
-    phase2Feedback.textContent = ''; phase2Feedback.className = 'phase-feedback';
-    phase2PlayerA.innerHTML = ''; phase2PlayerB.innerHTML = '';
-    phase2PlayerA.onclick = null; phase2PlayerB.onclick = null;
-    phase2PlayerA.style.borderColor = 'transparent'; phase2PlayerB.style.borderColor = 'transparent';
-
-    const teamSkaters = gameState.allPlayers.filter(p => p.team_abbr === gameState.currentTeam && ['C', 'L', 'R', 'D'].includes(p.position));
-    if (teamSkaters.length < 2) { alert("Not enough skaters."); goToStartScreen(); return; }
-
-    let playerA, playerB, lineA, lineB, attempts = 0;
+document.addEventListener('DOMContentLoaded', () => {
     
-    // Find two players on different lines
-    do {
-        const shuffledPlayers = shuffleArray([...teamSkaters]);
-        playerA = shuffledPlayers[0];
-        playerB = shuffledPlayers[1];
-        lineA = findPlayerLine(playerA.player_name);
-        lineB = findPlayerLine(playerB.player_name);
-        attempts++;
-    } while (lineA === lineB && attempts < 20); // Try 20 times to find different-line players
+    // --- DOM Elements ---
+    const screens = {
+        start: document.getElementById('start-screen'),
+        game: document.getElementById('game-screen'),
+        debrief: document.getElementById('debrief-screen')
+    };
+    const buttons = {
+        start: document.getElementById('start-button'),
+        playAgain: document.getElementById('play-again-button')
+    };
+    const hud = {
+        timer: document.getElementById('timer'),
+        counter: document.getElementById('question-counter'),
+        score: document.getElementById('score-display')
+    };
+    const questionArea = {
+        title: document.getElementById('question-title'),
+        content: document.getElementById('question-content'),
+        options: document.getElementById('answer-options')
+    };
+    const debriefStats = {
+        score: document.getElementById('final-score'),
+        accuracy: document.getElementById('final-accuracy'),
+        time: document.getElementById('final-time'),
+        review: document.getElementById('mistake-review-area')
+    };
+    const localStats = {
+        highScore: document.getElementById('local-high-score'),
+        streak: document.getElementById('local-streak')
+    };
 
-    // If still same line (e.g., small roster data), just pick two different players
-    if (lineA === lineB && teamSkaters.length > 1) {
-         playerB = teamSkaters.find(p => p.id !== playerA.id) || teamSkaters[1];
-         lineB = findPlayerLine(playerB.player_name);
-    }
-    
-    if (!playerA || !playerB) { alert("Error finding players."); goToStartScreen(); return; }
+    // --- Game State ---
+    let allPlayers = [];
+    let dailyQuestions = [];
+    let currentQuestionIndex = 0;
+    let score = 0;
+    let timeLeft = 60;
+    let timerInterval = null;
+    let mistakes = [];
+    const TOTAL_QUESTIONS = 10;
+    const GAME_TIME = 60;
 
-    // Create cards (Name VISIBLE)
-    phase2PlayerA.appendChild(createPlayerCard(playerA, false));
-    phase2PlayerB.appendChild(createPlayerCard(playerB, false));
+    // --- Core Game Functions ---
 
-    // Determine the correct answer
-    // Lower line number means "higher" line (Line 1 < Line 2)
-    const higherLinePlayerId = (lineA <= lineB) ? playerA.id : playerB.id;
-    // Handle edge case where both are "Depth" (lineA == lineB == 4)
-    if (lineA === 4 && lineB === 4) {
-         // If both are depth, pick one randomly (or based on rating as fallback)
-         gameState.scoutPhaseQuestionData = { higherLinePlayerId: playerA.rating >= playerB.rating ? playerA.id : playerB.id };
-    } else {
-         gameState.scoutPhaseQuestionData = { higherLinePlayerId };
-    }
+    /**
+     * Initializes the game: loads player data and sets up start button.
+     */
+    async function initGame() {
+        try {
+            const response = await fetch('./nhl_players.json');
+            if (!response.ok) throw new Error('Failed to load player data.');
+            allPlayers = await response.json();
+            
+            // Filter out players with missing data if any
+            allPlayers = allPlayers.filter(p => p.player_name && p.position && p.rating && p.team_abbr);
 
-
-    phase2PlayerA.onclick = () => handlePhase2Answer(playerA.id === gameState.scoutPhaseQuestionData.higherLinePlayerId, phase2PlayerA);
-    phase2PlayerB.onclick = () => handlePhase2Answer(playerB.id === gameState.scoutPhaseQuestionData.higherLinePlayerId, phase2PlayerB);
-
-    updatePhaseProgress(2);
-}
-
-function handlePhase2Answer(isCorrect, selectedCardElement) {
-    phase2PlayerA.onclick = null; phase2PlayerB.onclick = null; // Disable clicks
-
-    if (isCorrect) {
-        gameState.scoutPhaseCorrect++;
-        phase2Feedback.textContent = 'CORRECT!';
-        phase2Feedback.className = 'phase-feedback correct';
-        selectedCardElement.style.borderColor = 'var(--color-feedback-green)';
-    } else {
-        phase2Feedback.textContent = 'INCORRECT!';
-        phase2Feedback.className = 'phase-feedback incorrect';
-        selectedCardElement.style.borderColor = 'var(--color-error-red)';
-        
-        // Highlight the correct card
-        const correctCard = (phase2PlayerA.querySelector(`[data-player-id="${gameState.scoutPhaseQuestionData.higherLinePlayerId}"]`)) ? phase2PlayerA : phase2PlayerB;
-        if (correctCard !== selectedCardElement) { 
-            correctCard.style.borderColor = 'var(--color-feedback-green)';
+            console.log(`Loaded ${allPlayers.length} players.`);
+            buttons.start.addEventListener('click', startGame);
+            buttons.playAgain.addEventListener('click', () => showScreen('start'));
+            updateLocalStats();
+        } catch (error) {
+            console.error(error);
+            questionArea.title.textContent = "Error loading game data. Please refresh.";
         }
     }
 
-    gameState.scoutPhaseProgress++;
-
-    if (gameState.scoutPhaseProgress >= UI_CONSTANTS.PHASE_2_QUESTIONS) {
-        const accuracy = gameState.scoutPhaseCorrect / UI_CONSTANTS.PHASE_2_QUESTIONS;
-        setTimeout(() => showPhaseCompleteScreen(2, accuracy >= UI_CONSTANTS.PHASE_2_MASTERY_ACCURACY), 1500);
-    } else {
-        setTimeout(generatePhase2Question, 1500);
+    /**
+     * Resets state variables and starts the game loop.
+     */
+    function startGame() {
+        currentQuestionIndex = 0;
+        score = 0;
+        timeLeft = GAME_TIME;
+        mistakes = [];
+        dailyQuestions = generateDailyQuestions();
+        
+        updateHUD();
+        displayQuestion();
+        startTimer();
+        showScreen('game');
     }
-}
+
+    /**
+     * Ends the game, calculates score, and shows debrief screen.
+     */
+    function endGame() {
+        clearInterval(timerInterval);
+        showScreen('debrief');
+        
+        const timeTaken = GAME_TIME - timeLeft;
+        const accuracy = (score / TOTAL_QUESTIONS) * 100;
+        const speedMultiplier = 1 + (timeLeft / GAME_TIME); // Multiplier based on time left
+        const finalScore = Math.round((score * 10) * speedMultiplier); // 10 base points per correct * multiplier
+
+        // Display stats
+        debriefStats.score.textContent = finalScore;
+        debriefStats.accuracy.textContent = `${accuracy.toFixed(0)}%`;
+        debriefStats.time.textContent = `${timeTaken}s`;
+        
+        displayMistakeReview();
+        
+        // Update localStorage
+        updateLocalStorage(finalScore, accuracy === 100);
+    }
+
+    // --- Screen & HUD ---
+
+    /**
+     * Manages which game screen is visible.
+     * @param {string} screenName - 'start', 'game', or 'debrief'
+     */
+    function showScreen(screenName) {
+        Object.values(screens).forEach(screen => screen.classList.remove('active'));
+        screens[screenName].classList.add('active');
+    }
+
+    /**
+     * Updates the timer, question counter, and score display.
+     */
+    function updateHUD() {
+        hud.counter.textContent = `${currentQuestionIndex + 1} / ${TOTAL_QUESTIONS}`;
+        hud.score.textContent = score * 10; // Show score as base points (10 per)
+    }
+
+    /**
+     * Starts the 60-second countdown timer.
+     */
+    function startTimer() {
+        clearInterval(timerInterval);
+        hud.timer.textContent = `0:${timeLeft < 10 ? '0' : ''}${timeLeft}`;
+        
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            hud.timer.textContent = `0:${timeLeft < 10 ? '0' : ''}${timeLeft}`;
+            if (timeLeft <= 0) {
+                endGame();
+            }
+        }, 1000);
+    }
+
+    // --- Question Generation & Display ---
+
+    /**
+     * Creates an array of 10 random questions from the three modes.
+     */
+    function generateDailyQuestions() {
+        const questions = [];
+        const modes = ['identity', 'position', 'rating'];
+        
+        for (let i = 0; i < TOTAL_QUESTIONS; i++) {
+            const mode = modes[Math.floor(Math.random() * modes.length)];
+            questions.push(generateQuestion(mode));
+        }
+        return questions;
+    }
+
+    /**
+     * Generates a single question object based on mode.
+     * @param {string} mode - 'identity', 'position', or 'rating'
+     */
+    function generateQuestion(mode) {
+        switch (mode) {
+            case 'identity': {
+                const [correctPlayer, ...decoys] = getRandomPlayers(4);
+                const options = shuffle([correctPlayer.player_name, decoys[0].player_name, decoys[1].player_name, decoys[2].player_name]);
+                return { type: 'identity', player: correctPlayer, options, answer: correctPlayer.player_name };
+            }
+            case 'position': {
+                const player = getRandomPlayers(1)[0];
+                const allPos = ['C', 'LW', 'RW', 'D', 'G'];
+                // Handle multi-positions like 'C/RW'
+                const correctPos = player.position.split('/')[0].trim(); 
+                const decoyPos = shuffle(allPos.filter(p => p !== correctPos)).slice(0, 3);
+                const options = shuffle([correctPos, ...decoyPos]);
+                return { type: 'position', player, options, answer: correctPos };
+            }
+            case 'rating': {
+                const [playerA, playerB] = getRandomPlayers(2);
+                // Determine correct answer (higher rating)
+                const answer = playerA.rating >= playerB.rating ? playerA.player_name : playerB.player_name;
+                return { type: 'rating', playerA, playerB, answer };
+            }
+        }
+    }
+
+    /**
+     * Renders the current question to the DOM.
+     */
+    function displayQuestion() {
+        if (currentQuestionIndex >= TOTAL_QUESTIONS) {
+            endGame();
+            return;
+        }
+
+        const q = dailyQuestions[currentQuestionIndex];
+        questionArea.content.innerHTML = '';
+        questionArea.options.innerHTML = '';
+
+        switch (q.type) {
+            case 'identity':
+                questionArea.title.textContent = 'Identity Check';
+                questionArea.content.innerHTML = `
+                    <div class="player-card">
+                        <div class="player-card-rating">${q.player.rating}</div>
+                        <div class="player-card-details">${q.player.position} | ${q.player.team_abbr}</div>
+                    </div>
+                `;
+                q.options.forEach(name => {
+                    const btn = createAnswerButton(name, () => handleAnswer(name === q.answer, q, btn));
+                    questionArea.options.appendChild(btn);
+                });
+                break;
+            
+            case 'position':
+                questionArea.title.textContent = 'Positional Drill';
+                questionArea.content.innerHTML = `
+                    <h3 class="kinetic-text-question">${q.player.player_name}</h3>
+                    <p class="kinetic-text-team">${q.player.team_name}</p>
+                `;
+                q.options.forEach(pos => {
+                    const btn = createAnswerButton(pos, () => handleAnswer(pos === q.answer, q, btn));
+                    questionArea.options.appendChild(btn);
+                });
+                break;
+
+            case 'rating':
+                questionArea.title.textContent = 'Rating Matchup';
+                // Buttons are created in the content area for H2H
+                const btnA = createMatchupButton(q.playerA, () => handleAnswer(q.playerA.rating >= q.playerB.rating, q, btnA));
+                const btnB = createMatchupButton(q.playerB, () => handleAnswer(q.playerB.rating >= q.playerA.rating, q, btnB));
+                const vs = document.createElement('span');
+                vs.className = 'vs-text';
+                vs.textContent = 'VS';
+                
+                questionArea.content.className = 'matchup-container';
+                questionArea.content.append(btnA, vs, btnB);
+                break;
+        }
+    }
+
+    /**
+     * Helper to create a standard multiple-choice button.
+     */
+    function createAnswerButton(text, onClick) {
+        const btn = document.createElement('button');
+        btn.className = 'answer-option';
+        btn.textContent = text;
+        btn.onclick = onClick;
+        return btn;
+    }
+
+    /**
+     * Helper to create a head-to-head matchup button.
+     */
+    function createMatchupButton(player, onClick) {
+        const btn = document.createElement('button');
+        btn.className = 'matchup-player';
+        btn.innerHTML = `<h3>${player.player_name}</h3><p>${player.team_abbr}</p>`;
+        btn.onclick = onClick;
+        return btn;
+    }
+
+    // --- Answer Handling & Feedback ---
+
+    /**
+     * Processes the user's answer, provides feedback, and advances the game.
+     * @param {boolean} isCorrect - If the user's choice was correct.
+     * @param {object} questionData - The data for the question.
+     * @param {HTMLElement} clickedButton - The button element the user clicked.
+     */
+    function handleAnswer(isCorrect, questionData, clickedButton) {
+        // Disable all buttons to prevent double-clicks
+        document.querySelectorAll('#answer-options button, #question-content button').forEach(b => b.disabled = true);
+
+        if (isCorrect) {
+            score++;
+            clickedButton.classList.add('correct');
+        } else {
+            clickedButton.classList.add('incorrect');
+            mistakes.push(questionData);
+            
+            // If incorrect, also highlight the correct answer
+            highlightCorrectAnswer(questionData);
+        }
+
+        setTimeout(() => {
+            currentQuestionIndex++;
+            updateHUD();
+            displayQuestion();
+        }, 800); // Wait for feedback animation
+    }
+
+    /**
+     * Finds and highlights the correct answer if the user was wrong.
+     */
+    function highlightCorrectAnswer(q) {
+        let correctButton;
+        if (q.type === 'rating') {
+            // Find the button with the correct player name
+            const buttons = questionArea.content.querySelectorAll('.matchup-player');
+            buttons.forEach(btn => {
+                if (btn.innerHTML.includes(q.answer)) {
+                    correctButton = btn;
+                }
+            });
+        } else {
+            // Find the button with the correct text content
+            const buttons = questionArea.options.querySelectorAll('.answer-option');
+            buttons.forEach(btn => {
+                if (btn.textContent === q.answer) {
+                    correctButton = btn;
+                }
+            });
+        }
+        
+        if (correctButton && !correctButton.classList.contains('incorrect')) {
+            correctButton.classList.add('correct');
+        }
+    }
+
+    /**
+     * Populates the mistake review section on the debrief screen.
+     */
+    function displayMistakeReview() {
+        debriefStats.review.innerHTML = ''; // Clear previous
+        if (mistakes.length === 0) {
+            debriefStats.review.innerHTML = '<p>Perfect Shift! No mistakes.</p>';
+            return;
+        }
+
+        mistakes.forEach(q => {
+            let questionText = '';
+            let correctAnswer = '';
+            let trait = '';
+
+            switch (q.type) {
+                case 'identity':
+                    questionText = `Identity Check for: ${q.player.team_abbr}, ${q.player.position}, ${q.player.rating} Rating`;
+                    correctAnswer = q.player.player_name;
+                    trait = q.player.unique_trait;
+                    break;
+                case 'position':
+                    questionText = `Position for: ${q.player.player_name}`;
+                    correctAnswer = q.answer;
+                    trait = q.player.unique_trait;
+                    break;
+                case 'rating':
+                    questionText = `Rating Matchup: ${q.playerA.player_name} (${q.playerA.rating}) vs ${q.playerB.player_name} (${q.playerB.rating})`;
+                    correctAnswer = q.answer; // Name of the player with the higher rating
+                    trait = allPlayers.find(p => p.player_name === q.answer)?.unique_trait || '';
+                    break;
+            }
+
+            const card = document.createElement('div');
+            card.className = 'mistake-card';
+            card.innerHTML = `
+                <p class="mistake-question"><b>You Missed:</b> ${questionText}</p>
+                <p class="mistake-answer"><b>Correct Answer:</b> ${correctAnswer}</p>
+                <p class="mistake-trait">${trait}</p>
+            `;
+            debriefStats.review.appendChild(card);
+        });
+    }
+
+    // --- LocalStorage & Stats ---
+
+    function updateLocalStats() {
+        const highScore = localStorage.getItem('dailyShiftHighScore') || 0;
+        const streak = localStorage.getItem('dailyShiftStreak') || 0;
+        localStats.highScore.textContent = highScore;
+        localStats.streak.textContent = streak;
+    }
+
+    function updateLocalStorage(newScore, wasPerfect) {
+        // High Score
+        const oldHighScore = localStorage.getItem('dailyShiftHighScore') || 0;
+        if (newScore > oldHighScore) {
+            localStorage.setItem('dailyShiftHighScore', newScore);
+        }
+        
+        // Streak (Simplified: resets on non-perfect game)
+        let currentStreak = parseInt(localStorage.getItem('dailyShiftStreak') || 0);
+        if (wasPerfect) {
+            currentStreak++;
+        } else {
+            currentStreak = 0; // Streak breaks
+        }
+        localStorage.setItem('dailyShiftStreak', currentStreak);
+
+        // Update display on start screen
+        updateLocalStats();
+    }
 
 
-// --- Phase 3: Line Construction --- (No changes needed)
-function startScoutPhase3() { /* ... */ }
-function handleSubmitLineup() { /* ... */ }
+    // --- Utility Helpers ---
 
-// --- Phase 4: Goalie Tandem --- (No changes needed)
-function startScoutPhase4() { /* ... */ }
-function handleGoalieDragStart(e) { /* ... */ }
-function handleGoalieDragOver(e) { /* ... */ }
-function handleGoalieDragLeave(e) { /* ... */ }
-function handleGoalieDrop(e) { /* ... */ }
-function handleGoalieCardClick(e) { /* ... */ }
-function checkPhase4Completion() { /* ... */ }
+    /**
+     * Gets a specified number of unique random players.
+     * @param {number} count - Number of players to get.
+     */
+    function getRandomPlayers(count) {
+        return shuffle([...allPlayers]).slice(0, count);
+    }
 
-// --- Phase Completion Screen --- (No changes needed)
-function showPhaseCompleteScreen(phaseCompleted, passed) { /* ... */ }
+    /**
+     * Shuffles an array in place using Fisher-Yates.
+     * @param {Array} array - The array to shuffle.
+     */
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
 
-// --- Shared Line Builder UI/Logic --- (No changes needed)
-function setupLineupBuilderState() { /* ... */ }
-function renderLineBuilderUI() { /* ... */ }
-function renderPlayerInSlot(player) { /* ... */ }
-
-// --- Drag and Drop Handlers --- (No changes needed)
-function handleDragStart(e) { /* ... */ }
-function handleDragOver(e) { /* ... */ }
-function handleDragLeave(e) { /* ... */ }
-function handleDrop(e) { /* ... */ }
-function handleCardClick(e) { /* ... */ }
-function attachDragDropListeners() { /* ... */ }
-function applyFeedback(element, type) { /* ... */ }
-
-// --- Helpers & Local Storage --- (No changes needed)
-function updatePhaseProgress(phase) { /* ... */ }
-function goToStartScreen() { /* ... */ }
-function markTeamAsMastered() { /* ... */ }
-function saveProgress() { /* ... */ }
-function loadProgress() { /* ... */ }
-
-// --- Event Listeners & App Start ---
-nextShiftButton.addEventListener('click', goToStartScreen);
-window.addEventListener('load', loadDataAndInitialize);
+    // --- Start The Game ---
+    initGame();
+});
