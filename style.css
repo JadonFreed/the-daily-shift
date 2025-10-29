@@ -609,3 +609,176 @@ h1, h2, h3, h4 {
     color: var(--color-accent-cyan);
     font-size: 1.5em;
 }
+
+/* --- ADD: Team Color Variables (Example - Add all 32!) --- */
+:root {
+    /* Existing variables... */
+    --color-primary-dark: #0A0A0A;
+    --color-secondary-light: #EAEAEA;
+    --color-accent-cyan: #00FFFF;
+    --color-error-red: #FF3131;
+    --color-background-dark: #101827;
+
+    /* Add Primary/Secondary colors for each team */
+    /* Example: */
+    --team-ANA-primary: #F47A38; /* Orange */
+    --team-ANA-secondary: #B9975B; /* Gold */
+    --team-BOS-primary: #FFB81C; /* Gold */
+    --team-BOS-secondary: #000000; /* Black */
+    --team-BUF-primary: #003087; /* Royal Blue */
+    --team-BUF-secondary: #FFB81C; /* Gold */
+    --team-CGY-primary: #C8102E; /* Red */
+    --team-CGY-secondary: #F1BE48; /* Yellow Gold */
+    --team-CAR-primary: #CC0000; /* Red */
+    --team-CAR-secondary: #000000; /* Black */
+    --team-CHI-primary: #CF0A2C; /* Red */
+    --team-CHI-secondary: #000000; /* Black */
+    --team-COL-primary: #6F263D; /* Burgundy */
+    --team-COL-secondary: #236192; /* Blue */
+    --team-CBJ-primary: #002654; /* Union Blue */
+    --team-CBJ-secondary: #CE1126; /* Red */
+    --team-DAL-primary: #006847; /* Victory Green */
+    --team-DAL-secondary: #8F8F8C; /* Silver */
+    --team-DET-primary: #CE1126; /* Red */
+    --team-DET-secondary: #FFFFFF; /* White */
+    --team-EDM-primary: #041E42; /* Navy Blue */
+    --team-EDM-secondary: #FF4C00; /* Orange */
+    --team-FLA-primary: #C8102E; /* Red */
+    --team-FLA-secondary: #041E42; /* Navy */
+    --team-LAK-primary: #111111; /* Black */
+    --team-LAK-secondary: #A2AAAD; /* Silver */
+    --team-MIN-primary: #154734; /* Forest Green */
+    --team-MIN-secondary: #A6192E; /* Iron Range Red */
+    --team-MTL-primary: #AF1E2D; /* Red */
+    --team-MTL-secondary: #192168; /* Blue */
+    --team-NSH-primary: #FFB81C; /* Gold */
+    --team-NSH-secondary: #041E42; /* Navy Blue */
+    --team-NJD-primary: #CE1126; /* Red */
+    --team-NJD-secondary: #000000; /* Black */
+    --team-NYI-primary: #00539B; /* Royal Blue */
+    --team-NYI-secondary: #F47D30; /* Orange */
+    --team-NYR-primary: #0038A8; /* Blue */
+    --team-NYR-secondary: #CE1126; /* Red */
+    --team-OTT-primary: #C52032; /* Red */
+    --team-OTT-secondary: #000000; /* Black */
+    --team-PHI-primary: #F74902; /* Orange */
+    --team-PHI-secondary: #000000; /* Black */
+    --team-PIT-primary: #FCB514; /* Pittsburgh Gold */
+    --team-PIT-secondary: #000000; /* Black */
+    --team-SJS-primary: #006D75; /* Teal */
+    --team-SJS-secondary: #000000; /* Black */
+    --team-SEA-primary: #001F5B; /* Deep Sea Blue */
+    --team-SEA-secondary: #99D9D9; /* Ice Blue */
+    --team-STL-primary: #002F87; /* Blue */
+    --team-STL-secondary: #FCB514; /* Yellow */
+    --team-TBL-primary: #002868; /* Blue */
+    --team-TBL-secondary: #FFFFFF; /* White */
+    --team-TOR-primary: #00205B; /* Blue */
+    --team-TOR-secondary: #FFFFFF; /* White */
+    --team-VAN-primary: #00205B; /* Blue */
+    --team-VAN-secondary: #00843D; /* Green */
+    --team-VGK-primary: #B4975A; /* Steel Grey */
+    --team-VGK-secondary: #333F42; /* Gold */
+    --team-WSH-primary: #C8102E; /* Red */
+    --team-WSH-secondary: #041E42; /* Navy Blue */
+    --team-WPG-primary: #041E42; /* Navy Blue */
+    --team-WPG-secondary: #AC162C; /* Red */
+    /* Add ARI when/if needed */
+    --team-DEFAULT-primary: #555; /* Default Grey */
+    --team-DEFAULT-secondary: #BBB;
+}
+
+
+/* --- REPLACE EXISTING PLAYER CARD STYLES --- */
+.player-card {
+    cursor: grab;
+    width: 150px; /* Adjust size as needed */
+    height: 100px; /* Adjust size as needed */
+    border-radius: 8px; /* Slightly more rounded */
+    background: linear-gradient(135deg, var(--team-color-primary, var(--team-DEFAULT-primary)) 40%, var(--team-color-secondary, var(--team-DEFAULT-secondary)) 100%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    transition: transform 0.1s, box-shadow 0.2s;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    text-align: center;
+    position: relative; /* For potential jersey stripes later */
+    overflow: hidden; /* Hide overflow for stripes */
+    padding: 5px;
+    border: 2px solid rgba(255, 255, 255, 0.5); /* White border */
+    color: #FFF; /* Default text color */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7); /* Text shadow for readability */
+    flex-shrink: 0;
+}
+
+.player-card:hover {
+    transform: translateY(-4px) scale(1.03); /* More pronounced hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7), 0 0 10px var(--team-color-primary, var(--team-DEFAULT-primary));
+}
+.player-card.dragging {
+    opacity: 0.5;
+    transform: scale(0.9);
+}
+
+/* Card Content Styling */
+.card-jersey-number {
+    font-family: 'Electrolize', sans-serif;
+    font-size: 2.5em; /* Large jersey number */
+    font-weight: bold;
+    line-height: 1;
+    margin-bottom: 2px;
+}
+
+.card-player-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.9em; /* Smaller name */
+    font-weight: bold;
+    line-height: 1.1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 90%; /* Prevent long names breaking layout */
+    margin: 0 auto;
+}
+
+/* --- Remove old card structure styles if they exist --- */
+.card-header, .card-details, .card-footer, .player-name, .jersey-number, .rating-tag {
+    /* These specific classes might need removal or adjustment if conflicting */
+    /* If you used the previous `style.css`, delete the old .player-card internal structure styles */
+}
+
+/* --- Adjust Slot Size --- */
+.line-slot {
+    min-height: 120px; /* Adjust if needed based on new card size */
+}
+.line-slot .player-card {
+    height: 100px; /* Match card height */
+    width: 90%; /* Adjust width within slot */
+}
+
+/* Phase 1 Card Display (No Name Version) */
+.phase-card-display .player-card {
+     transform: scale(1.1);
+     cursor: default;
+}
+.phase-card-display .player-card:hover {
+    transform: scale(1.1); /* Disable hover enlarge */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); /* Reset shadow */
+}
+/* Hide name specifically in phase 1 display */
+.phase-card-display .card-player-name {
+    display: none;
+}
+/* Ensure number is centered when name is hidden */
+.phase-card-display .card-jersey-number {
+     margin-bottom: 0; /* Adjust spacing if name is gone */
+}
+
+/* Phase 2 Comparison Cards */
+.phase-2-card .player-card:hover {
+    /* Keep hover effect */
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7), 0 0 10px var(--team-color-primary, var(--team-DEFAULT-primary));
+}
