@@ -124,7 +124,7 @@ async function loadDataAndInitialize() {
         setScreen('start');
     } catch (error) {
         console.error("Data loading error:", error);
-        alert("Error loading game data. Check console.");
+        alert("Error loading game data. Check console. Make sure 'nhl_players.json' and 'team_line_structures.json' are present.");
     }
 }
 
@@ -239,6 +239,7 @@ function createPlayerCard(player, hideNameForGuessing = false) {
         card.classList.add('dark-text');
     }
 
+    // Note: 'jersey_number' must exist in your 'nhl_players.json' for this to show properly.
     const jerseyNumber = player.jersey_number || 'XX';
     const playerName = player.player_name || 'Unknown';
     const playerPosition = player.position || '?'; // Get position
@@ -293,7 +294,13 @@ function startTimer() {
 function updateTimerDisplay() {
      const timeRatio = Math.max(0, gameState.timeRemaining / UI_CONSTANTS.TIMER_SECONDS);
     timerBar.style.width = `${timeRatio * 100}%`;
-    timerText.textContent = `${gameState.timeRemaining}:00`;
+    
+    // --- FIX: Format timer as M:SS instead of MM:00 ---
+    const minutes = Math.floor(gameState.timeRemaining / 60);
+    const seconds = gameState.timeRemaining % 60;
+    timerText.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    // --- END FIX ---
+
     timerBar.style.backgroundColor = gameState.timeRemaining <= 10 ? 'var(--color-error-red)' : 'var(--color-accent-cyan)';
     timerBar.style.boxShadow = `0 0 10px ${gameState.timeRemaining <= 10 ? 'var(--color-error-red)' : 'var(--color-accent-cyan)'}`;
 }
@@ -323,8 +330,8 @@ function calculateScore() {
     for (const lineId in gameState.correctLineup) {
         for (const slotKey in gameState.correctLineup[lineId]) {
             totalSlots++;
-            const correctPlayer = gameState.correctLineup[lineId][slotKey];
-            const userPlayer = gameState.userLineup[lineId]?.[slotKey];
+            const correctPlayer = gameState.correctLineup[lineId][slotKey]; // {name: "...", rating: ...}
+            const userPlayer = gameState.userLineup[lineId]?.[slotKey]; // Full player object
             if (userPlayer && correctPlayer && userPlayer.player_name === correctPlayer.name) {
                 correctSlots++;
             } else if (gameState.currentMode === 'quiz') {
@@ -352,7 +359,8 @@ function renderDebrief(results, timeUp) {
     } else {
         gameState.mistakes.forEach(m => {
             const userPlayerName = m.user ? m.user.player_name : "EMPTY";
-            const correctPlayer = m.correct;
+            const correctPlayer = m.correct; // {name: "...", rating: ...}
+            // Find the full player object for the correct player to get their trait
             const correctPlayerObj = gameState.allPlayers.find(p => p.player_name === correctPlayer.name);
             const correctPlayerTrait = correctPlayerObj?.unique_trait || "Data pending.";
             const item = document.createElement('div');
@@ -386,7 +394,9 @@ function generatePhase1Question() {
     const teamPlayers = gameState.allPlayers.filter(p => p.team_abbr === gameState.currentTeam && ['C', 'L', 'R', 'D'].includes(p.position))
                                        .sort((a, b) => b.rating - a.rating)
                                        .slice(0, 15);
-     if (teamPlayers.length < 4) { alert("Not enough players."); goToStartScreen(); return; }
+     if (teamPlayers.length < 4) { alert("Not enough players for Scout School."); goToStartScreen(); return; }
+    
+    // Cycle through the top players for the questions
     const targetPlayerIndex = gameState.scoutPhaseProgress % Math.min(UI_CONSTANTS.PHASE_1_QUESTIONS, teamPlayers.length);
     const targetPlayer = teamPlayers[targetPlayerIndex];
 
@@ -419,6 +429,7 @@ function handlePhase1Answer(isCorrect, button, targetPlayerId) {
         phase1Feedback.textContent = `INCORRECT! Correct was ${targetName}`;
         phase1Feedback.className = 'phase-feedback incorrect';
         button.classList.add('incorrect');
+        // Highlight the correct answer
         phase1Choices.querySelectorAll('button').forEach(btn => {
              if (btn.textContent === targetName) { btn.classList.add('correct'); }
          });
@@ -449,24 +460,44 @@ function generatePhase2Question() {
     const teamPlayers = gameState.allPlayers.filter(p => p.team_abbr === gameState.currentTeam && ['C', 'L', 'R', 'D'].includes(p.position))
                                        .sort((a, b) => b.rating - a.rating)
                                        .slice(0, 15);
-     if (teamPlayers.length < 2) { alert("Not enough players."); goToStartScreen(); return; }
+     if (teamPlayers.length < 2) { alert("Not enough players for Scout School."); goToStartScreen(); return; }
+    
     let playerA, playerB, attempts = 0;
      do {
          const shuffledPlayers = shuffleArray([...teamPlayers]);
          playerA = shuffledPlayers[0]; playerB = shuffledPlayers[1];
          attempts++;
+     // Keep trying if ratings are equal, but stop after 10 attempts or if there aren't enough unique players
      } while (playerA.rating === playerB.rating && attempts < 10 && teamPlayers.length > 2);
 
     phase2PlayerA.appendChild(createPlayerCard(playerA, false)); // Name Visible
     phase2PlayerB.appendChild(createPlayerCard(playerB, false)); // Name Visible
-    const higherRatedPlayerId = playerA.rating >= playerB.rating ? playerA.id : playerB.id;
+    
+    // --- FIX: Handle equal ratings correctly ---
+    let higherRatedPlayerId;
+    if (playerA.rating > playerB.rating) {
+        higherRatedPlayerId = playerA.id;
+    } else if (playerB.rating > playerA.rating) {
+        higherRatedPlayerId = playerB.id;
+    } else {
+        higherRatedPlayerId = 'EQUAL'; // Special case for ties
+    }
     gameState.scoutPhaseQuestionData = { higherRatedPlayerId };
-    phase2PlayerA.onclick = () => handlePhase2Answer(playerA.id === higherRatedPlayerId, phase2PlayerA);
-    phase2PlayerB.onclick = () => handlePhase2Answer(playerB.id === higherRatedPlayerId, phase2PlayerB);
+    
+    phase2PlayerA.onclick = () => handlePhase2Answer(playerA.id, phase2PlayerA);
+    phase2PlayerB.onclick = () => handlePhase2Answer(playerB.id, phase2PlayerB);
+    // --- END FIX ---
+
     updatePhaseProgress(2);
 }
-function handlePhase2Answer(isCorrect, selectedCardElement) {
+function handlePhase2Answer(selectedPlayerId, selectedCardElement) { // --- FIX: Pass ID to check logic ---
     phase2PlayerA.onclick = null; phase2PlayerB.onclick = null;
+
+    // --- FIX: Check against 'EQUAL' case ---
+    const { higherRatedPlayerId } = gameState.scoutPhaseQuestionData;
+    const isCorrect = (selectedPlayerId === higherRatedPlayerId) || (higherRatedPlayerId === 'EQUAL');
+    // --- END FIX ---
+
     if (isCorrect) {
         gameState.scoutPhaseCorrect++;
         phase2Feedback.textContent = 'CORRECT!';
@@ -476,9 +507,17 @@ function handlePhase2Answer(isCorrect, selectedCardElement) {
         phase2Feedback.textContent = 'INCORRECT!';
         phase2Feedback.className = 'phase-feedback incorrect';
         selectedCardElement.style.borderColor = 'var(--color-error-red)';
-        const correctCard = (phase2PlayerA.querySelector(`[data-player-id="${gameState.scoutPhaseQuestionData.higherRatedPlayerId}"]`)) ? phase2PlayerA : phase2PlayerB;
-        if (correctCard !== selectedCardElement) { correctCard.style.borderColor = 'var(--color-feedback-green)'; }
+        
+        // Find the correct card to highlight
+        let correctCard = null;
+        if (higherRatedPlayerId === 'EQUAL') {
+             correctCard = selectedCardElement === phase2PlayerA ? phase2PlayerB : phase2PlayerA;
+        } else {
+             correctCard = (phase2PlayerA.querySelector(`[data-player-id="${higherRatedPlayerId}"]`)) ? phase2PlayerA : phase2PlayerB;
+        }
+        if (correctCard && correctCard !== selectedCardElement) { correctCard.style.borderColor = 'var(--color-feedback-green)'; }
     }
+    
     gameState.scoutPhaseProgress++;
     if (gameState.scoutPhaseProgress >= UI_CONSTANTS.PHASE_2_QUESTIONS) {
         const accuracy = gameState.scoutPhaseCorrect / UI_CONSTANTS.PHASE_2_QUESTIONS;
@@ -511,23 +550,40 @@ function handleSubmitLineup() {
         if (!allSlotsFilled) break;
     }
      if (!allSlotsFilled) { alert("Please fill all line slots."); return; }
+    
     const results = calculateScore();
     if (results.accuracy === 1) { // 100% needed
         gameState.masteredTeams.add(gameState.currentTeam);
+        
         // Unlock next *unmastered* team
         const allTeams = gameState.lineStructures.map(t => t.team_abbr).sort();
         const currentIndex = allTeams.indexOf(gameState.currentTeam);
         for (let i = 0; i < allTeams.length; i++) {
-            const team = allTeams[(currentIndex + 1 + i) % allTeams.length];
+            const team = allTeams[(currentIndex + 1 + i) % allTeams.length]; // Cycle through teams
              if (!gameState.masteredTeams.has(team) && !gameState.unlockedTeams.includes(team)) {
                  gameState.unlockedTeams.push(team);
                  gameState.unlockedTeams.sort();
-                 break;
+                 break; // Unlock only one new team
             }
         }
         saveProgress();
         showPhaseCompleteScreen(3, true);
     } else {
+         // Provide instant feedback on the board
+         Object.keys(gameState.userLineup).forEach(lineId => {
+            Object.keys(gameState.userLineup[lineId]).forEach(slotKey => {
+                const userPlayer = gameState.userLineup[lineId][slotKey];
+                const correctPlayer = gameState.correctLineup[lineId][slotKey];
+                const slotElement = document.querySelector(`[data-slot-id="${lineId}-${slotKey}"]`);
+                if (slotElement) {
+                    if (userPlayer && correctPlayer && userPlayer.player_name === correctPlayer.name) {
+                        applyFeedback(slotElement, 'correct');
+                    } else {
+                        applyFeedback(slotElement, 'incorrect');
+                    }
+                }
+            });
+         });
          alert(`Lineup incorrect (${results.correctSlots}/${results.totalSlots}). Review placements using the instant feedback and try again!`);
     }
 }
@@ -548,6 +604,7 @@ function showPhaseCompleteScreen(phaseCompleted, passed) {
                 if (phaseCompleted === 2) startScoutPhase3();
             };
         } else {
+            // This is the "Mastery" screen (Phase 3 complete)
             phaseCompleteMessage.textContent = `You've mastered the ${gameState.currentTeam} roster!`;
             nextPhaseButton.textContent = 'RETURN TO MENU';
             nextPhaseButton.onclick = goToStartScreen;
@@ -559,11 +616,12 @@ function showPhaseCompleteScreen(phaseCompleted, passed) {
         phaseCompleteMessage.textContent = `Accuracy requirement not met. Drill needs repeating.`;
         nextPhaseButton.textContent = 'RETRY PHASE';
         nextPhaseButton.onclick = () => {
+             // Reset progress for the failed phase and retry
              gameState.scoutPhaseProgress = 0;
              gameState.scoutPhaseCorrect = 0;
              if (phaseCompleted === 1) startScoutPhase1();
              if (phaseCompleted === 2) startScoutPhase2();
-             if (phaseCompleted === 3) startScoutPhase3();
+             if (phaseCompleted === 3) startScoutPhase3(); // Re-attempts Phase 3
         };
     }
     setScreen('phaseComplete');
@@ -572,53 +630,99 @@ function showPhaseCompleteScreen(phaseCompleted, passed) {
 // --- Shared Line Builder UI/Logic ---
 function setupLineupBuilderState() {
     const teamData = gameState.lineStructures.find(t => t.team_abbr === gameState.currentTeam);
-    if (!teamData) return;
+    if (!teamData) {
+        console.error(`No line structure found for ${gameState.currentTeam}`);
+        alert(`Error: No line data for ${gameState.currentTeam}. Returning to menu.`);
+        goToStartScreen();
+        return;
+    }
+    
     gameState.correctLineup = {};
+    gameState.userLineup = {}; // Clear previous lineup
+    
     const lines = (gameState.currentMode === 'scout' && gameState.currentScoutPhase === 3) ? 3 : gameState.linesToQuiz;
+    
     for (let i = 1; i <= lines; i++) {
         const lineKey = `Line ${i}`;
         if (teamData.lines[lineKey]) {
             gameState.correctLineup[lineKey] = teamData.lines[lineKey];
+            // Initialize userLineup with nulls
             gameState.userLineup[lineKey] = Object.keys(teamData.lines[lineKey]).reduce((acc, slotKey) => { acc[slotKey] = null; return acc; }, {});
         }
     }
 }
 function renderLineBuilderUI() {
-    currentTeamDisplay.textContent = `Team: **${gameState.currentTeam}**`;
+    currentTeamDisplay.textContent = `Team: ${gameState.currentTeam}`;
     lineSlotsContainer.innerHTML = '';
     const linesToRender = (gameState.currentMode === 'scout' && gameState.currentScoutPhase === 3) ? 3 : gameState.linesToQuiz;
 
+    // This check ensures setupLineupBuilderState is called if the state is mismatched
     if (Object.keys(gameState.userLineup).length !== linesToRender || !gameState.userLineup[`Line ${linesToRender}`]) {
         setupLineupBuilderState();
+        // If setup failed (e.g., no team data), stop rendering
+        if (Object.keys(gameState.correctLineup).length === 0) return;
     }
 
     for (let i = 1; i <= linesToRender; i++) {
         const lineId = `Line ${i}`;
         if (!gameState.correctLineup[lineId]) continue;
+        
         const lineUnit = document.createElement('div');
         lineUnit.className = 'line-unit';
         lineUnit.innerHTML = `<h4>:: LINE ${i} ::</h4>
                               <div class="line-slots" data-line-id="${lineId}">
-                                  ${Object.keys(gameState.correctLineup[lineId]).map(slotId => `
-                                      <div class="line-slot" data-slot-id="${lineId}-${slotId}" data-position-type="${slotId.slice(0, 1).toUpperCase()}">
+                                  ${Object.keys(gameState.correctLineup[lineId]).map(slotId => {
+                                      // --- FIX: Determine correct position type (C, W, or D) ---
+                                      const slotKey = slotId; // e.g., "LW", "LD"
+                                      let posType;
+                                      if (slotKey === 'C') {
+                                          posType = 'C';
+                                      } else if (slotKey.includes('W')) { // LW, RW
+                                          posType = 'W';
+                                      } else if (slotKey.includes('D')) { // LD, RD
+                                          posType = 'D';
+                                      } else {
+                                          posType = slotKey.slice(0, 1).toUpperCase(); // Fallback
+                                      }
+                                      // --- END FIX ---
+
+                                      return `
+                                      <div class="line-slot" data-slot-id="${lineId}-${slotId}" data-position-type="${posType}">
                                           <div class="line-slot-label">${slotId}</div>
                                           ${renderPlayerInSlot(gameState.userLineup[lineId]?.[slotId])}
-                                      </div>`).join('')}
+                                      </div>`;
+                                  }).join('')}
                               </div>`;
         lineSlotsContainer.appendChild(lineUnit);
     }
 
+    // --- Player Pool Generation ---
     playerPool.innerHTML = '';
+    
+    // 1. Get all skaters for the team
     const allTeamPlayers = gameState.allPlayers.filter(p => p.team_abbr === gameState.currentTeam && ['C', 'L', 'R', 'D'].includes(p.position))
                                           .sort((a, b) => b.rating - a.rating);
-    const playersNeededCount = linesToRender * 5;
+    
+    // 2. Determine how many players we *need*
+    const playersNeededCount = linesToRender * 5; // 5 players per line
+    
+    // 3. Find players already placed in slots
     const playersInSlots = new Set();
-    Object.values(gameState.userLineup).forEach(line => { Object.values(line || {}).forEach(player => { if (player) playersInSlots.add(player.id); }); });
+    Object.values(gameState.userLineup).forEach(line => { 
+        Object.values(line || {}).forEach(player => { 
+            if (player) playersInSlots.add(player.id); 
+        }); 
+    });
+
+    // 4. Create a base pool of candidates (Top rated players)
+    // Take the top N players, plus a buffer
     let poolCandidates = allTeamPlayers.slice(0, playersNeededCount + 7);
+
+    // 5. Ensure all *correct* players for the lines are in the pool
     for (let i = 1; i <= linesToRender; i++) {
         const lineId = `Line ${i}`;
         if (gameState.correctLineup[lineId]) {
-            Object.values(gameState.correctLineup[lineId]).forEach(correctPlayer => {
+            Object.values(gameState.correctLineup[lineId]).forEach(correctPlayer => { // correctPlayer = {name: "...", rating: ...}
                 if (correctPlayer && !poolCandidates.some(p => p.player_name === correctPlayer.name)) {
                     const fullPlayer = allTeamPlayers.find(p => p.player_name === correctPlayer.name);
                     if (fullPlayer) poolCandidates.push(fullPlayer);
@@ -626,9 +730,18 @@ function renderLineBuilderUI() {
             });
         }
     }
+    
+    // 6. De-duplicate the pool
     poolCandidates = poolCandidates.filter((p, i, self) => i === self.findIndex(pl => pl.id === p.id));
+    
+    // 7. Filter out players already in a slot
     const finalPoolPlayers = poolCandidates.filter(p => !playersInSlots.has(p.id));
-    finalPoolPlayers.forEach(player => { playerPool.appendChild(createPlayerCard(player, false)); });
+    
+    // 8. Render the final pool
+    finalPoolPlayers.forEach(player => { 
+        playerPool.appendChild(createPlayerCard(player, false)); 
+    });
+    
     poolCount.textContent = finalPoolPlayers.length;
     attachDragDropListeners();
 }
@@ -640,13 +753,18 @@ function renderPlayerInSlot(player) {
 
 // --- Drag and Drop Handlers ---
 function handleDragStart(e) {
+    // Only allow dragging in Quiz mode or Phase 3
     if (!gameState.quizActive && !(gameState.currentMode === 'scout' && gameState.currentScoutPhase === 3)) return;
+    
     e.dataTransfer.setData('text/plain', e.target.dataset.playerId);
     e.target.classList.add('dragging');
+    
+    // If dragging from a slot, remove it from state
     const slot = e.target.closest('.line-slot');
     if (slot) {
         const [lineId, slotKey] = slot.dataset.slotId.split('-');
          if (gameState.userLineup[lineId]) { gameState.userLineup[lineId][slotKey] = null; }
+        // Clear feedback
         slot.classList.remove('feedback-correct', 'feedback-warning', 'feedback-incorrect');
     }
 }
@@ -662,38 +780,56 @@ function handleDragLeave(e) {
 function handleDrop(e) {
     e.preventDefault();
     if (!gameState.quizActive && !(gameState.currentMode === 'scout' && gameState.currentScoutPhase === 3)) return;
+    
     const slot = e.currentTarget;
     const playerId = e.dataTransfer.getData('text/plain');
     const draggedCard = document.querySelector(`.player-card[data-player-id="${playerId}"]`);
+    
     if (!draggedCard) return;
-    const playerPosition = draggedCard.dataset.position;
-    const slotType = slot.dataset.positionType;
+    
+    const playerPosition = draggedCard.dataset.position; // Player's actual position (C, L, R, D)
+    const slotType = slot.dataset.positionType; // Slot type (C, W, D) - from our FIX
+    
     slot.classList.remove('drag-over');
     draggedCard.classList.remove('dragging');
+
+    // This logic now works thanks to the fix in renderLineBuilderUI
     const isPositionValid =
         (slotType === 'C' && playerPosition === 'C') ||
-        (slotType === 'W' && ['L', 'R', 'C'].includes(playerPosition)) ||
+        (slotType === 'W' && ['L', 'R', 'C'].includes(playerPosition)) || // Centers can play Wing
         (slotType === 'D' && playerPosition === 'D');
+
     if (!isPositionValid) {
-        if (gameState.currentMode === 'scout') { applyFeedback(slot, 'incorrect'); }
+        // Position is wrong, reject drop
+        if (gameState.currentMode === 'scout') {
+            applyFeedback(slot, 'incorrect'); // Show red border on slot
+        }
         else if (!draggedCard.closest('.line-slot')) {
+             // If from pool, flash card red
              draggedCard.classList.add('incorrect-flash');
              setTimeout(() => draggedCard.classList.remove('incorrect-flash'), UI_CONSTANTS.FEEDBACK_DURATION);
         }
+        // If dragging from another slot, it will just snap back.
         return;
     }
-    if (slot.children.length > 1) {
+    
+    // Position is valid, handle the swap
+    if (slot.children.length > 1) { // >1 because label is child 0
         const existingCard = slot.querySelector('.player-card');
         if (existingCard) {
-            playerPool.appendChild(existingCard);
-             const [lineId_old, slotKey_old] = slot.dataset.slotId.split('-');
-             if (gameState.userLineup[lineId_old]) { gameState.userLineup[lineId_old][slotKey_old] = null; }
+            playerPool.appendChild(existingCard); // Return existing card to pool
+             // No need to clear state, handleDragStart did that
         }
     }
-    slot.appendChild(draggedCard);
+    
+    slot.appendChild(draggedCard); // Add new card to slot
+    
+    // Update game state
     const [lineId, slotKey] = slot.dataset.slotId.split('-');
     const player = gameState.allPlayers.find(p => p.id === playerId);
      if (gameState.userLineup[lineId]) { gameState.userLineup[lineId][slotKey] = player; }
+    
+    // If in Phase 3, give instant feedback
     if (gameState.currentMode === 'scout' && gameState.currentScoutPhase === 3) {
         const correctPlayerForSlot = gameState.correctLineup[lineId]?.[slotKey];
         if (correctPlayerForSlot && player.player_name === correctPlayerForSlot.name) {
@@ -702,17 +838,26 @@ function handleDrop(e) {
             applyFeedback(slot, 'incorrect');
         }
     }
+    
+    // If in quiz mode, check if all slots are filled
     if (gameState.currentMode === 'quiz') { checkQuizCompletion(); }
 }
 function handleCardClick(e) {
+     // Ignore clicks on phase 1/2 cards
      if (e.currentTarget.closest('#phase-1-card-display') || e.currentTarget.closest('.phase-2-card')) { return; }
+     
      if (!gameState.quizActive && !(gameState.currentMode === 'scout' && gameState.currentScoutPhase === 3)) return;
+    
     const card = e.currentTarget;
     const slot = card.closest('.line-slot');
+    
+    // If card is in a slot, return it to the pool
     if (slot) {
         playerPool.appendChild(card);
+        // Update state
         const [lineId, slotKey] = slot.dataset.slotId.split('-');
          if (gameState.userLineup[lineId]) { gameState.userLineup[lineId][slotKey] = null; }
+        // Clear feedback
         slot.classList.remove('feedback-correct', 'feedback-warning', 'feedback-incorrect');
     }
 }
@@ -721,16 +866,19 @@ function attachDragDropListeners() {
         slot.removeEventListener('dragover', handleDragOver);
         slot.removeEventListener('dragleave', handleDragLeave);
         slot.removeEventListener('drop', handleDrop);
+        
         slot.addEventListener('dragover', handleDragOver);
         slot.addEventListener('dragleave', handleDragLeave);
         slot.addEventListener('drop', handleDrop);
     });
+    
      playerPool.querySelectorAll('.player-card').forEach(card => {
          card.removeEventListener('dragstart', handleDragStart);
          card.addEventListener('dragstart', handleDragStart);
          card.removeEventListener('click', handleCardClick);
          card.addEventListener('click', handleCardClick);
      });
+     
     lineSlotsContainer.querySelectorAll('.player-card').forEach(card => {
          card.removeEventListener('dragstart', handleDragStart);
          card.addEventListener('dragstart', handleDragStart);
@@ -740,8 +888,10 @@ function attachDragDropListeners() {
 }
 function applyFeedback(element, type) {
     element.classList.remove('feedback-correct', 'feedback-warning', 'feedback-incorrect');
+    // Apply new feedback
     element.classList.add(`feedback-${type}`);
-    setTimeout(() => { element.classList.remove(`feedback-${type}`); }, UI_CONSTANTS.FEEDBACK_DURATION);
+    // Remove feedback after a delay
+    setTimeout(() => { element.classList.remove(`feedback-${type}`); }, UI_CONSTANTS.FEEDBACK_DURATION + 1000); // Longer duration for phase 3
 }
 
 
@@ -752,8 +902,11 @@ function updatePhaseProgress(phase) {
      if (progressElement) { progressElement.textContent = `Progress: ${gameState.scoutPhaseProgress} / ${totalQuestions} | Correct: ${gameState.scoutPhaseCorrect}`; }
 }
 function goToStartScreen() {
-     gameState.currentScoutPhase = 0; gameState.quizActive = false;
-     updateStartScreenUI(); setScreen('start');
+     gameState.currentScoutPhase = 0; 
+     gameState.quizActive = false;
+     clearInterval(gameState.timer);
+     updateStartScreenUI(); 
+     setScreen('start');
 }
 function saveProgress() {
      try {
@@ -768,6 +921,7 @@ function saveProgress() {
 function loadProgress() {
     try {
         const savedProgress = localStorage.getItem('scoutSchoolProgress');
+        
         // Set a default favorite *before* checking storage
         let initialFavorite = gameState.lineStructures.length > 0 ? gameState.lineStructures[0].team_abbr : 'ANA';
         let initialUnlocked = [initialFavorite];
@@ -776,8 +930,10 @@ function loadProgress() {
             const progress = JSON.parse(savedProgress);
             gameState.masteredTeams = new Set(progress.masteredTeams || []);
             gameState.favoriteTeam = progress.favoriteTeam || initialFavorite;
-            gameState.unlockedTeams = [...new Set([gameState.favoriteTeam, ...(progress.unlockedTeams || [])])].sort();
+            // Ensure favorite team is always in the unlocked list
+            gameState.unlockedTeams = [...new Set([gameState.favoriteTeam, ...(progress.unlockedTeams || initialUnlocked)])].sort();
         } else {
+             // No save file, create one
              gameState.masteredTeams = new Set();
              gameState.favoriteTeam = initialFavorite;
              gameState.unlockedTeams = [initialFavorite];
@@ -785,6 +941,7 @@ function loadProgress() {
         }
     } catch (e) {
         console.warn("Could not load progress:", e);
+        // Fallback to defaults
         gameState.masteredTeams = new Set();
         gameState.favoriteTeam = gameState.lineStructures.length > 0 ? gameState.lineStructures[0].team_abbr : 'ANA';
         gameState.unlockedTeams = [gameState.favoriteTeam];
