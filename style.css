@@ -10,7 +10,7 @@
 
     /* --- TEAM COLORS (Primary & Secondary) --- */
     --team-ANA-primary: #F47A38; --team-ANA-secondary: #B9975B; /* Orange, Gold */
-    --team-ARI-primary: #8C2633; --team-ARI-secondary: #E2D6B5; /* Brick Red, Desert Sand (Placeholder) */
+    --team-ARI-primary: #8C2633; --team-ARI-secondary: #E2D6B5; /* Brick Red, Desert Sand */
     --team-BOS-primary: #FFB81C; --team-BOS-secondary: #000000; /* Gold, Black */
     --team-BUF-primary: #003087; --team-BUF-secondary: #FFB81C; /* Royal Blue, Gold */
     --team-CGY-primary: #C8102E; --team-CGY-secondary: #F1BE48; /* Red, Yellow Gold */
@@ -41,6 +41,7 @@
     --team-VGK-primary: #B4975A; --team-VGK-secondary: #333F42; /* Steel Grey, Gold */
     --team-WSH-primary: #C8102E; --team-WSH-secondary: #041E42; /* Red, Navy Blue */
     --team-WPG-primary: #041E42; --team-WPG-secondary: #AC162C; /* Navy Blue, Red */
+    --team-UTA-primary: #5D2B7F; --team-UTA-secondary: #B5B5B7; /* Placeholder for Utah */
     --team-DEFAULT-primary: #555; --team-DEFAULT-secondary: #BBB;
 }
 
@@ -125,7 +126,7 @@ h1, h2, h3, h4 {
     padding: 20px;
     border: 1px solid var(--color-accent-cyan);
     max-width: 500px;
-    margin: 20px auto;
+    margin: 10px auto; /* Reduced margin */
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -143,6 +144,15 @@ h1, h2, h3, h4 {
     font-family: 'Space Mono', monospace;
     font-size: 1em;
 }
+/* *** NEW: Style for <optgroup> *** */
+#team-select optgroup {
+    font-family: 'Electrolize', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    color: var(--color-accent-cyan);
+    background: var(--color-background-dark);
+}
+
 .mode-options {
     display: flex;
     justify-content: space-around;
@@ -178,6 +188,41 @@ h1, h2, h3, h4 {
     color: var(--color-primary-dark);
     box-shadow: 0 0 8px var(--color-accent-cyan);
 }
+
+/* *** NEW: Division Mastery Section *** */
+#division-mastery-section {
+    border-color: var(--color-feedback-green);
+    max-width: 500px; /* Match settings panel */
+}
+#division-mastery-section label {
+    color: var(--color-feedback-green);
+    text-align: center;
+    margin-bottom: 10px;
+}
+#division-mastery-placeholder {
+    font-style: italic;
+    color: #aaa;
+    text-align: center;
+    font-size: 0.9em;
+}
+#division-quiz-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.division-quiz-btn {
+    width: 100%;
+    margin: 0;
+    padding: 12px;
+    font-size: 1em;
+    background: var(--color-feedback-green);
+    box-shadow: 0 0 10px var(--color-feedback-green);
+}
+.division-quiz-btn:hover {
+    background: var(--color-secondary-light);
+    box-shadow: 0 0 15px var(--color-secondary-light);
+}
+
 
 /* --- Quiz Screen Layout (Used for Quiz & Phase 3) --- */
 #quiz-screen.active {
@@ -360,11 +405,28 @@ h1, h2, h3, h4 {
     bottom: 8px;
     right: 12px;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.9);
-    display: none; /* *** HIDE BY DEFAULT *** */
+    display: none; /* Hide by default */
 }
 .dark-text .card-player-position {
     color: var(--color-primary-dark);
     text-shadow: none;
+}
+
+/* Logic for showing/hiding name/position */
+.player-card.hide-name .card-player-name {
+    display: none;
+}
+.player-card.hide-name .card-player-position {
+    display: block;
+}
+.player-card.hide-name .card-jersey-number {
+    font-size: 3.2em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+/* Force show position for phase 1 card display */
+.phase-card-display .player-card .card-player-position {
+    display: block;
 }
 
 
@@ -377,7 +439,6 @@ h1, h2, h3, h4 {
 .phase-feedback.incorrect { color: var(--color-error-red); }
 .phase-progress { text-align: center; margin-top: 15px; font-size: 1.1em; color: #aaa; }
 
-/* *** NEW: Position Legend *** */
 .position-legend {
     position: absolute;
     top: 20px;
@@ -395,40 +456,14 @@ h1, h2, h3, h4 {
     padding-bottom: 5px;
     border-bottom: 1px solid var(--color-accent-cyan);
 }
-.position-legend ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    font-size: 0.9em;
-}
-.position-legend li {
-    margin-bottom: 5px;
-}
-.position-legend li span {
-    font-weight: bold;
-    color: var(--color-accent-cyan);
-    width: 20px;
-    display: inline-block;
-}
+.position-legend ul { margin: 0; padding: 0; list-style: none; font-size: 0.9em; }
+.position-legend li { margin-bottom: 5px; }
+.position-legend li span { font-weight: bold; color: var(--color-accent-cyan); width: 20px; display: inline-block; }
 
-/* Phase 1: Identification */
+/* Phase 1 & 2 Card/Choice Styling */
 .phase-card-display { display: flex; justify-content: center; margin-bottom: 30px; }
 .phase-card-display .player-card { transform: scale(1.1); cursor: default; }
 .phase-card-display .player-card:hover { transform: scale(1.1); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); }
-/* Hide name in Phase 1 card */
-.phase-card-display .card-player-name {
-    display: none;
-}
-/* SHOW position in Phase 1 card */
-.phase-card-display .card-player-position {
-    display: block;
-}
-/* Adjust jersey number in Phase 1 card */
-.phase-card-display .card-jersey-number {
-    font-size: 3.2em;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
 
 .phase-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 600px; margin: 0 auto; }
 .choice-btn {
@@ -441,12 +476,17 @@ h1, h2, h3, h4 {
 .choice-btn.incorrect { background: var(--color-error-red); color: var(--color-primary-dark); border-color: var(--color-error-red); }
 .choice-btn:disabled { opacity: 0.7; cursor: default; }
 
-/* Phase 2: Evaluation */
-.phase-comparison { display: flex; justify-content: center; align-items: center; gap: 30px; margin-top: 30px; }
-.phase-2-card { cursor: pointer; border: 2px solid transparent; padding: 5px; transition: border-color 0.2s; }
-.phase-2-card:hover { border-color: var(--color-accent-cyan); }
-.phase-2-card .player-card { cursor: pointer; }
-.vs-divider { font-family: 'Electrolize', sans-serif; font-size: 2em; color: var(--color-accent-cyan); }
+/* *** NEW: Division Quiz Choices (4x2 grid) *** */
+.division-quiz-choices {
+    grid-template-columns: repeat(4, 1fr); /* 4 buttons per row */
+    gap: 10px;
+    max-width: 800px; /* Wider grid */
+}
+.division-quiz-choices .choice-btn {
+    font-size: 1em; /* Slightly smaller text */
+    padding: 12px 5px; /* Less padding */
+}
+
 
 /* Phase 3: Line Construction Feedback */
 .line-slot.feedback-correct { border-style: solid; border-color: var(--color-feedback-green); box-shadow: 0 0 8px var(--color-feedback-green); animation: feedback-pulse 0.4s ease-out; }
