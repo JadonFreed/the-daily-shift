@@ -1,6 +1,7 @@
 import pandas as pd
 import json
 
+
 def create_final_player_json():
     """
     Combines player ratings data with lookup data (jersey number, age, height)
