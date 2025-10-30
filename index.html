@@ -3,88 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Daily Shift - NHL Quiz</title>
+    <title>The Daily Lineup | HOCKEY DATA CONSOLE</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="app-container">
+        <header class="data-header">
+            <h1 class="data-title">DAILY LINEUP // **DATA CONSOLE**</h1>
+            <div class="metrics">
+                <span id="streak-metric" class="metric-item">STREAK: 0</span>
+                <span id="score-metric" class="metric-item">SCORE: 0</span>
+                <span id="scout-rank-metric" class="metric-item" style="display: none;">RANK: Rookie</span>
+            </div>
+        </header>
 
-    <div id="game-container">
-
-        <div class="screen active" id="start-screen">
-            <h1 class="kinetic-title">THE DAILY SHIFT</h1>
-            <p class="subtitle">10 questions. 60 seconds. How's your hockey sense?</p>
-            <button class="btn" id="start-button">Start Shift</button>
-            <div class="leaderboard-preview">
-                <h2>LEADERBOARD</h2>
-                <div class="leaderboard-item">
-                    <span>HIGH SCORE</span>
-                    <span id="local-high-score">0</span>
+        <div id="start-screen" class="game-screen active">
+            <h2>SYSTEM READY: NEW SHIFT INITIATED</h2>
+            <div class="settings-panel data-card">
+                <label>SELECT MODE:</label>
+                <div class="mode-options">
+                    <label>
+                        <input type="radio" name="game-mode" value="quiz" checked> Quiz Mode (Timed)
+                    </label>
+                    <label>
+                        <input type="radio" name="game-mode" value="scout"> Scout School (Learn)
+                    </label>
                 </div>
-                <div class="leaderboard-item">
-                    <span>CURRENT STREAK</span>
-                    <span id="local-streak">0</span>
+
+                <label for="favorite-team-select">YOUR FAVORITE TEAM:</label>
+                <select id="favorite-team-select"></select>
+
+                <label for="team-select">TARGET TEAM:</label>
+                <select id="team-select"></select>
+
+                <div id="lines-to-build-section">
+                    <label>LINES TO BUILD:</label>
+                    <div class="line-options">
+                        <button class="line-btn" data-lines="1">1st Line Only</button>
+                        <button class="line-btn active" data-lines="2">Top 2 Lines</button>
+                        <button class="line-btn" data-lines="3">Full 3 Lines</button>
+                    </div>
                 </div>
             </div>
+            <button id="start-shift-btn" class="action-btn">INITIATE DRILL</button>
+            <p id="scout-mode-info" style="text-align: center; display: none; margin-top: 10px;">Select your favorite team to start Scout School!</p>
         </div>
 
-        <div class="screen" id="game-screen">
-            <div id="hud">
-                <div class="hud-item">
-                    <span>TIME</span>
-                    <div id="timer">0:60</div>
-                </div>
-                <div class="hud-item">
-                    <span>PROGRESS</span>
-                    <div id="question-counter">1 / 10</div>
-                </div>
-                <div class="hud-item">
-                    <span>SCORE</span>
-                    <div id="score-display">0</div>
-                </div>
+        <div id="quiz-screen" class="game-screen">
+             <div class="timer-bar-container">
+                <div id="timer-bar"></div>
+                <div id="timer-text">60:00</div>
             </div>
+            <h3 id="current-team-display">Team: --</h3>
 
-            <div id="question-area">
-                <h2 id="question-title">QUESTION TITLE</h2>
-                <div id="question-content">
+            <div class="line-builder-content">
+                <div id="line-slots-container" class="line-slots-area">
                     </div>
             </div>
+            <button id="submit-lineup-btn" class="action-btn submit-btn" style="display: none;">SUBMIT LINEUP</button>
 
-            <div id="answer-options">
-                </div>
+            <div class="player-pool-area">
+                <h4 class="pool-header">PLAYER POOL: <span id="pool-count">0</span> Skaters Available</h4>
+                <div id="player-pool" class="player-pool">
+                    </div>
+            </div>
         </div>
 
-        <div class="screen" id="debrief-screen">
-            <h1 class="kinetic-title">SHIFT COMPLETE</h1>
+         <div id="scout-phase-1-screen" class="game-screen scout-phase-screen">
+            <h2>SCOUT SCHOOL - PHASE 1: IDENTIFICATION</h2>
+            <h3 id="scout-phase-1-team">Team: --</h3>
+            <p class="phase-objective">Identify the player based on their details.</p>
             
-            <div class="debrief-stats">
-                <div class="stat-card">
-                    <h3>Total Score</h3>
-                    <p id="final-score">0</p>
-                </div>
-                <div class="stat-card">
-                    <h3>Accuracy</h3>
-                    <p id="final-accuracy">0%</p>
-                </div>
-                <div class="stat-card">
-                    <h3>Time Taken</h3>
-                    <p id="final-time">0s</p>
-                </div>
+            <div class="position-legend">
+                <h4>Position Key</h4>
+                <ul>
+                    <li><span>C:</span> Center</li>
+                    <li><span>L:</span> Left Wing</li>
+                    <li><span>R:</span> Right Wing</li>
+                    <li><span>D:</span> Defenseman</li>
+                </ul>
             </div>
+            <div id="phase-1-card-display" class="phase-card-display">
+                </div>
+            <div id="phase-1-choices" class="phase-choices">
+                </div>
+            <div id="phase-1-feedback" class="phase-feedback"></div>
+            <div id="phase-1-progress" class="phase-progress">Progress: 0 / 10</div>
+         </div>
 
-            <div id="mistake-review">
-                <h2>MISTAKE REVIEW</h2>
-                <div id="mistake-review-area">
-                    </div>
+         <div id="scout-phase-2-screen" class="game-screen scout-phase-screen">
+            <h2>SCOUT SCHOOL - PHASE 2: EVALUATION</h2>
+            <h3 id="scout-phase-2-team">Team: --</h3>
+            <p class="phase-objective">Select the player with the higher RATING.</p>
+            <div id="phase-2-comparison" class="phase-comparison">
+                <div id="phase-2-player-A" class="phase-2-card">
+                     </div>
+                <div class="vs-divider">VS</div>
+                <div id="phase-2-player-B" class="phase-2-card">
+                     </div>
             </div>
-
-            <button class="btn" id="play-again-button">Back to Main Menu</button>
+            <div id="phase-2-feedback" class="phase-feedback"></div>
+             <div id="phase-2-progress" class="phase-progress">Progress: 0 / 10</div>
         </div>
 
-    </div>
+        <div id="phase-complete-screen" class="game-screen">
+             <h2 id="phase-complete-title">PHASE COMPLETE!</h2>
+             <p id="phase-complete-message">Good work, scout. Prepare for the next phase.</p>
+             <button id="next-phase-btn" class="action-btn">CONTINUE TRAINING</button>
+             <div id="team-mastery-badge" style="display: none; text-align: center; margin-top: 20px;">
+                 <p><strong>TEAM MASTERED!</strong></p>
+                 <p>Scouting Report for <span id="mastered-team-name">--</span> is complete.</p>
+             </div>
+        </div>
 
-    <script src="script.js"></script>
+
+        <div id="debrief-screen" class="game-screen">
+            <h2 id="debrief-title" class="data-title">DEBRIEF SCREEN: DATA LOG</h2>
+            <div class="debrief-summary">
+                <p id="time-bonus-display">TIME BONUS: <span id="debrief-time-bonus">--</span></p>
+                <p>ACCURACY RATING: <span id="debrief-accuracy">--</span></p>
+                <p>POINTS EARNED: <span id="debrief-points" class="accent-text">--</span></p>
+            </div>
+            <div class="mistake-review-container">
+                <h4>:: MISTAKE REVIEW LOG ::</h4>
+                <div id="mistake-review-list">
+                    <p class="review-placeholder">No errors detected.</p>
+                </div>
+            </div>
+            <button id="next-shift-btn" class="action-btn">RETURN TO SYSTEM MENU</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
 </body>
 </html>
