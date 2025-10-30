@@ -144,7 +144,6 @@ h1, h2, h3, h4 {
     font-family: 'Space Mono', monospace;
     font-size: 1em;
 }
-/* *** NEW: Style for <optgroup> *** */
 #team-select optgroup {
     font-family: 'Electrolize', sans-serif;
     font-style: normal;
@@ -189,7 +188,7 @@ h1, h2, h3, h4 {
     box-shadow: 0 0 8px var(--color-accent-cyan);
 }
 
-/* *** NEW: Division Mastery Section *** */
+/* Division Mastery Section */
 #division-mastery-section {
     border-color: var(--color-feedback-green);
     max-width: 500px; /* Match settings panel */
@@ -313,13 +312,23 @@ h1, h2, h3, h4 {
     font-size: 0.9em;
 }
 
-/* Player Pool (Horizontal Bench) */
+/* --- MODIFIED: Player Pool (Dual Pool) --- */
 .player-pool-area {
     flex-shrink: 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 10px;
     margin-top: 10px;
     background: rgba(0,0,0,0.3);
+}
+.dual-pool-container {
+    display: flex;
+    gap: 10px;
+}
+.pool-column {
+    flex: 1; /* Each column takes 50% width */
+    border: 1px solid var(--color-accent-cyan);
+    padding: 5px;
+    background: rgba(0,0,0,0.2);
 }
 .pool-header {
     text-align: center;
@@ -340,6 +349,8 @@ h1, h2, h3, h4 {
     overflow-y: hidden;
     align-items: center;
 }
+/* --- END MODIFICATION --- */
+
 
 /* --- PLAYER CARD (Jersey Style) --- */
 .player-card {
@@ -429,6 +440,11 @@ h1, h2, h3, h4 {
     display: block;
 }
 
+/* --- NEW: Show position on all cards in the line builder screen --- */
+#quiz-screen .player-card .card-player-position {
+    display: block;
+}
+
 
 /* --- SCOUT SCHOOL Phase Styles --- */
 .scout-phase-screen h2 { font-size: 1.5em; margin-bottom: 5px; }
@@ -476,7 +492,7 @@ h1, h2, h3, h4 {
 .choice-btn.incorrect { background: var(--color-error-red); color: var(--color-primary-dark); border-color: var(--color-error-red); }
 .choice-btn:disabled { opacity: 0.7; cursor: default; }
 
-/* *** NEW: Division Quiz Choices (4x2 grid) *** */
+/* Division Quiz Choices (4x2 grid) */
 .division-quiz-choices {
     grid-template-columns: repeat(4, 1fr); /* 4 buttons per row */
     gap: 10px;

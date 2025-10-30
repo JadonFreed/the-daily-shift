@@ -35,7 +35,8 @@
                 <select id="favorite-team-select"></select>
 
                 <label for="team-select">TARGET TEAM:</label>
-                <select id="team-select"></select>
+                <select id="team-select">
+                    </select>
 
                 <div id="lines-to-build-section">
                     <label>LINES TO BUILD:</label>
@@ -46,6 +47,14 @@
                     </div>
                 </div>
             </div>
+
+            <div id="division-mastery-section" class="settings-panel data-card">
+                <label>:: DIVISION MASTERY QUIZZES ::</label>
+                <p id="division-mastery-placeholder">Master all 8 teams in a division to unlock its mastery quiz.</p>
+                <div id="division-quiz-buttons">
+                    </div>
+            </div>
+
             <button id="start-shift-btn" class="action-btn">INITIATE DRILL</button>
             <p id="scout-mode-info" style="text-align: center; display: none; margin-top: 10px;">Select your favorite team to start Scout School!</p>
         </div>
@@ -64,11 +73,23 @@
             <button id="submit-lineup-btn" class="action-btn submit-btn" style="display: none;">SUBMIT LINEUP</button>
 
             <div class="player-pool-area">
-                <h4 class="pool-header">PLAYER POOL: <span id="pool-count">0</span> Skaters Available</h4>
-                <div id="player-pool" class="player-pool">
+                <div class="dual-pool-container">
+                    
+                    <div class="pool-column" id="forward-pool-area">
+                        <h4 class="pool-header">FORWARDS POOL: <span id="forward-pool-count">0</span></h4>
+                        <div id="forward-player-pool" class="player-pool">
+                            </div>
                     </div>
+                    
+                    <div class="pool-column" id="defense-pool-area">
+                         <h4 class="pool-header">DEFENSEMEN POOL: <span id="defense-pool-count">0</span></h4>
+                        <div id="defense-player-pool" class="player-pool">
+                            </div>
+                    </div>
+
+                </div>
             </div>
-        </div>
+            </div>
 
          <div id="scout-phase-1-screen" class="game-screen scout-phase-screen">
             <h2>SCOUT SCHOOL - PHASE 1: IDENTIFICATION</h2>
@@ -105,6 +126,21 @@
             <div id="phase-2-feedback" class="phase-feedback"></div>
              <div id="phase-2-progress" class="phase-progress">Progress: 0 / 10</div>
         </div>
+
+        <div id="division-quiz-screen" class="game-screen scout-phase-screen">
+            <h2 id="division-quiz-title">DIVISION QUIZ: --</h2>
+            <p class="phase-objective">Identify which team the player belongs to.</p>
+            
+            <div id="division-quiz-card-display" class="phase-card-display">
+                </div>
+            <div id="division-quiz-choices" class_name="phase-choices">
+                </div>
+
+            <div id="division-quiz-feedback" class="phase-feedback"></div>
+            <div id="division-quiz-progress" class="phase-progress">Progress: 0 / 10 | Correct: 0</div>
+            <button id="division-quiz-exit-btn" class="action-btn" style="width: 40%; margin-top: 20px; background-color: var(--color-error-red);">EXIT QUIZ</button>
+        </div>
+
         <div id="phase-complete-screen" class="game-screen">
              <h2 id="phase-complete-title">PHASE COMPLETE!</h2>
              <p id="phase-complete-message">Good work, scout. Prepare for the next phase.</p>

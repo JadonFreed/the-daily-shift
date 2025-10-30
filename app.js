@@ -7,7 +7,7 @@ const UI_CONSTANTS = {
     PHASE_1_MASTERY_ACCURACY: 0.8,
     PHASE_2_QUESTIONS: 10,
     PHASE_2_MASTERY_ACCURACY: 0.9,
-    DIVISION_QUIZ_QUESTIONS: 10, // New constant for division quiz
+    DIVISION_QUIZ_QUESTIONS: 10,
 };
 
 // --- Team Colors Mapping ---
@@ -28,29 +28,24 @@ const teamColors = {
     'TBL': { primary: '#002868', secondary: '#FFFFFF' }, 'TOR': { primary: '#00205B', secondary: '#FFFFFF' },
     'VAN': { primary: '#00205B', secondary: '#00843D' }, 'VGK': { primary: '#B4975A', secondary: '#333F42' },
     'WSH': { primary: '#C8102E', secondary: '#041E42' }, 'WPG': { primary: '#041E42', secondary: '#AC162C' },
-    // Handle new teams or old abbreviations
-    'ARI': { primary: '#8C2633', secondary: '#E2D6B5' }, // Placeholder for ARI/UTA
-    'UTA': { primary: '#5D2B7F', secondary: '#B5B5B7' }, // Placeholder for Utah
+    'ARI': { primary: '#8C2633', secondary: '#E2D6B5' }, 
+    'UTA': { primary: '#5D2B7F', secondary: '#B5B5B7' }, 
     'DEFAULT': { primary: '#555555', secondary: '#BBBBBB' }
 };
-const darkTextTeams = ['DET', 'TBL', 'TOR']; // Teams needing dark text
+const darkTextTeams = ['DET', 'TBL', 'TOR']; 
 
-// --- *** NEW NHL DIVISION DATA *** ---
+// --- NHL DIVISION DATA ---
 const NHL_DIVISIONS = {
     "Eastern": {
         "Atlantic": ["BOS", "BUF", "DET", "FLA", "MTL", "OTT", "TBL", "TOR"],
         "Metropolitan": ["CAR", "CBJ", "NJD", "NYI", "NYR", "PHI", "PIT", "WSH"]
     },
     "Western": {
-        "Central": ["ARI", "CHI", "COL", "DAL", "MIN", "NSH", "STL", "WPG"], // Note: ARI is moving
+        "Central": ["ARI", "CHI", "COL", "DAL", "MIN", "NSH", "STL", "WPG"],
         "Pacific": ["ANA", "CGY", "EDM", "LAK", "SJS", "SEA", "VAN", "VGK"]
     }
 };
-// Helper to get a flat list of all divisions
-const ALL_DIVISIONS = {
-    ...NHL_DIVISIONS.Eastern,
-    ...NHL_DIVISIONS.Western
-};
+const ALL_DIVISIONS = { ...NHL_DIVISIONS.Eastern, ...NHL_DIVISIONS.Western };
 
 
 // --- Global State Variables ---
@@ -61,7 +56,7 @@ let gameState = {
     userLineup: {}, mistakes: [],
     currentScoutPhase: 0, scoutPhaseProgress: 0, scoutPhaseCorrect: 0,
     scoutPhaseQuestionData: null, masteredTeams: new Set(), unlockedTeams: ['ANA'],
-    currentDivisionQuiz: null, // Holds the division name being quizzed
+    currentDivisionQuiz: null, 
 };
 
 // --- DOM Element Selection ---
@@ -69,7 +64,7 @@ const screens = {
     start: document.getElementById('start-screen'), quiz: document.getElementById('quiz-screen'),
     debrief: document.getElementById('debrief-screen'), scoutPhase1: document.getElementById('scout-phase-1-screen'),
     scoutPhase2: document.getElementById('scout-phase-2-screen'), phaseComplete: document.getElementById('phase-complete-screen'),
-    divisionQuiz: document.getElementById('division-quiz-screen'), // New Screen
+    divisionQuiz: document.getElementById('division-quiz-screen'), 
 };
 const modeRadios = document.querySelectorAll('input[name="game-mode"]');
 const favoriteTeamSelect = document.getElementById('favorite-team-select');
@@ -83,46 +78,40 @@ const timerBar = document.getElementById('timer-bar');
 const timerText = document.getElementById('timer-text');
 const currentTeamDisplay = document.getElementById('current-team-display');
 const lineSlotsContainer = document.getElementById('line-slots-container');
-const playerPoolArea = document.querySelector('.player-pool-area');
-const playerPool = document.getElementById('player-pool');
-const poolCount = document.getElementById('pool-count');
-const submitLineupButton = document.getElementById('submit-lineup-btn');
 
-// Division Mastery DOM
+// --- MODIFIED: Player Pool DOM ---
+const playerPoolArea = document.querySelector('.player-pool-area');
+const forwardPlayerPool = document.getElementById('forward-player-pool');
+const defensePlayerPool = document.getElementById('defense-player-pool');
+const forwardPoolCount = document.getElementById('forward-pool-count');
+const defensePoolCount = document.getElementById('defense-pool-count');
+// --- END MODIFICATION ---
+
+const submitLineupButton = document.getElementById('submit-lineup-btn');
 const divisionMasterySection = document.getElementById('division-mastery-section');
 const divisionMasteryPlaceholder = document.getElementById('division-mastery-placeholder');
 const divisionQuizButtons = document.getElementById('division-quiz-buttons');
-
-// Phase 1 DOM
 const phase1Team = document.getElementById('scout-phase-1-team');
 const phase1CardDisplay = document.getElementById('phase-1-card-display');
 const phase1Choices = document.getElementById('phase-1-choices');
 const phase1Feedback = document.getElementById('phase-1-feedback');
 const phase1Progress = document.getElementById('phase-1-progress');
-
-// Phase 2 DOM
 const phase2Team = document.getElementById('scout-phase-2-team');
 const phase2CardDisplay = document.getElementById('phase-2-card-display');
 const phase2Choices = document.getElementById('phase-2-choices');
 const phase2Feedback = document.getElementById('phase-2-feedback');
 const phase2Progress = document.getElementById('phase-2-progress');
-
-// Division Quiz DOM
 const divisionQuizTitle = document.getElementById('division-quiz-title');
 const divisionQuizCardDisplay = document.getElementById('division-quiz-card-display');
 const divisionQuizChoices = document.getElementById('division-quiz-choices');
 const divisionQuizFeedback = document.getElementById('division-quiz-feedback');
 const divisionQuizProgress = document.getElementById('division-quiz-progress');
 const divisionQuizExitBtn = document.getElementById('division-quiz-exit-btn');
-
-// Phase Complete DOM
 const phaseCompleteTitle = document.getElementById('phase-complete-title');
 const phaseCompleteMessage = document.getElementById('phase-complete-message');
 const nextPhaseButton = document.getElementById('next-phase-btn');
 const teamMasteryBadge = document.getElementById('team-mastery-badge');
 const masteredTeamName = document.getElementById('mastered-team-name');
-
-// Debrief DOM
 const timeBonusDisplay = document.getElementById('time-bonus-display');
 const debriefTimeBonus = document.getElementById('debrief-time-bonus');
 const debriefAccuracy = document.getElementById('debrief-accuracy');
@@ -163,9 +152,9 @@ async function loadDataAndInitialize() {
         gameState.allPlayers = await playersResponse.json();
         gameState.lineStructures = await linesResponse.json();
 
-        loadProgress(); // Load favorite, mastered, unlocked
-        initializeStartScreen(); // Setup UI based on loaded progress
-        updateDivisionMasteryUI(); // Check for unlocked division quizzes
+        loadProgress(); 
+        initializeStartScreen(); 
+        updateDivisionMasteryUI(); 
         setScreen('start');
     } catch (error) {
         console.error("Data loading error:", error);
@@ -174,7 +163,6 @@ async function loadDataAndInitialize() {
 }
 
 function initializeStartScreen() {
-    // Mode Selection
     modeRadios.forEach(radio => {
         radio.addEventListener('change', (e) => {
             gameState.currentMode = e.target.value;
@@ -182,7 +170,6 @@ function initializeStartScreen() {
         });
     });
 
-    // Populate Favorite Team Dropdown
     const allTeamsSorted = gameState.lineStructures.map(t => t.team_abbr).sort();
     favoriteTeamSelect.innerHTML = '';
     allTeamsSorted.forEach(team => {
@@ -191,7 +178,7 @@ function initializeStartScreen() {
         option.textContent = team;
         favoriteTeamSelect.appendChild(option);
     });
-    favoriteTeamSelect.value = gameState.favoriteTeam; // Set dropdown to loaded/default favorite
+    favoriteTeamSelect.value = gameState.favoriteTeam; 
     favoriteTeamSelect.addEventListener('change', (e) => {
         gameState.favoriteTeam = e.target.value;
         if (!gameState.unlockedTeams.includes(gameState.favoriteTeam)) {
@@ -202,10 +189,8 @@ function initializeStartScreen() {
         updateStartScreenUI();
     });
 
-    // Target Team Select (populated by updateStartScreenUI)
     teamSelect.addEventListener('change', (e) => gameState.currentTeam = e.target.value);
 
-    // Line Options (for Quiz Mode)
     lineOptionsButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
             lineOptionsButtons.forEach(b => b.classList.remove('active'));
@@ -214,10 +199,7 @@ function initializeStartScreen() {
         });
     });
 
-    // Start Button
     startButton.addEventListener('click', startGame);
-
-    // Initial UI Update
     updateStartScreenUI();
 }
 
@@ -227,10 +209,9 @@ function updateStartScreenUI() {
     scoutModeInfo.style.display = isScoutMode ? 'block' : 'none';
     divisionMasterySection.style.display = isScoutMode ? 'block' : 'none';
 
-    // --- *** NEW: Populate Target Team Dropdown with Divisions *** ---
     let teamsToShow;
     const currentTargetValue = teamSelect.value;
-    teamSelect.innerHTML = ''; // Clear existing options
+    teamSelect.innerHTML = ''; 
 
     if (isScoutMode) {
         teamsToShow = [...new Set([gameState.favoriteTeam, ...gameState.unlockedTeams])].sort();
@@ -238,13 +219,10 @@ function updateStartScreenUI() {
         teamsToShow = gameState.lineStructures.map(t => t.team_abbr).sort();
     }
 
-    // Create a map of teams for quick lookup
     const teamsToShowSet = new Set(teamsToShow);
 
-    // Loop through conferences and divisions
     for (const [conference, divisions] of Object.entries(NHL_DIVISIONS)) {
         for (const [divisionName, teamAbbrs] of Object.entries(divisions)) {
-            // Filter teams in this division that are in the teamsToShow list
             const relevantTeams = teamAbbrs.filter(team => teamsToShowSet.has(team)).sort();
 
             if (relevantTeams.length > 0) {
@@ -261,10 +239,7 @@ function updateStartScreenUI() {
             }
         }
     }
-    // --- *** END NEW DROPDOWN LOGIC *** ---
 
-
-    // Set default target team
     let defaultTarget;
     if (isScoutMode) {
         defaultTarget = teamsToShow.includes(gameState.favoriteTeam) ? gameState.favoriteTeam : teamsToShow[0];
@@ -294,7 +269,7 @@ function createPlayerCard(player, hideNameForGuessing = false) {
     card.className = 'player-card';
     card.setAttribute('draggable', !hideNameForGuessing);
     card.dataset.playerId = player.id;
-    card.dataset.position = player.position; // Store actual position
+    card.dataset.position = player.position; 
 
     const colors = teamColors[player.team_abbr] || teamColors['DEFAULT'];
     card.style.setProperty('--team-color-primary', colors.primary);
@@ -314,7 +289,6 @@ function createPlayerCard(player, hideNameForGuessing = false) {
         <div class="card-player-position">${playerPosition}</div>
     `;
     
-    // CSS handles hiding/showing name and position
     if (hideNameForGuessing) {
         card.classList.add('hide-name');
     }
@@ -336,6 +310,7 @@ function startQuizMode() {
     gameState.timeRemaining = UI_CONSTANTS.TIMER_SECONDS;
     gameState.userLineup = {};
     gameState.mistakes = [];
+    // Note: gameState.linesToQuiz is set from the start screen buttons
     setupLineupBuilderState();
     renderLineBuilderUI();
     timerContainer.style.display = 'block';
@@ -391,8 +366,8 @@ function calculateScore() {
     for (const lineId in gameState.correctLineup) {
         for (const slotKey in gameState.correctLineup[lineId]) {
             totalSlots++;
-            const correctPlayer = gameState.correctLineup[lineId][slotKey]; // {name: "...", rating: ...}
-            const userPlayer = gameState.userLineup[lineId]?.[slotKey]; // Full player object
+            const correctPlayer = gameState.correctLineup[lineId][slotKey];
+            const userPlayer = gameState.userLineup[lineId]?.[slotKey]; 
             if (userPlayer && correctPlayer && userPlayer.player_name === correctPlayer.name) {
                 correctSlots++;
             } else if (gameState.currentMode === 'quiz') {
@@ -420,7 +395,7 @@ function renderDebrief(results, timeUp) {
     } else {
         gameState.mistakes.forEach(m => {
             const userPlayerName = m.user ? m.user.player_name : "EMPTY";
-            const correctPlayer = m.correct; // {name: "...", rating: ...}
+            const correctPlayer = m.correct; 
             const correctPlayerObj = gameState.allPlayers.find(p => p.player_name === correctPlayer.name);
             const correctPlayerTrait = correctPlayerObj?.unique_trait || "Data pending.";
             const item = document.createElement('div');
@@ -451,7 +426,6 @@ function startScoutPhase1() {
 function generatePhase1Question() {
     phase1Feedback.textContent = '';
     phase1Feedback.className = 'phase-feedback';
-    // Get top 15 skaters
     const teamPlayers = gameState.allPlayers.filter(p => p.team_abbr === gameState.currentTeam && ['C', 'L', 'R', 'D'].includes(p.position))
                                        .sort((a, b) => b.rating - a.rating)
                                        .slice(0, 15);
@@ -599,7 +573,10 @@ function handlePhase2Answer(isCorrect, button, correctAnswer) {
 function startScoutPhase3() {
      gameState.currentScoutPhase = 3;
     gameState.userLineup = {};
-    gameState.linesToQuiz = 3; // Always 3 lines for mastery
+    // --- MODIFICATION: Only build first 2 lines ---
+    gameState.linesToQuiz = 2; 
+    // --- END MODIFICATION ---
+    
     setupLineupBuilderState();
     renderLineBuilderUI();
     timerContainer.style.display = 'none';
@@ -690,7 +667,7 @@ function showPhaseCompleteScreen(phaseCompleted, passed) {
     setScreen('phaseComplete');
 }
 
-// --- *** NEW: DIVISION QUIZ MODE *** ---
+// --- DIVISION QUIZ MODE ---
 function startDivisionQuiz(divisionName) {
     gameState.currentDivisionQuiz = divisionName;
     gameState.scoutPhaseProgress = 0;
@@ -704,13 +681,11 @@ function startDivisionQuiz(divisionName) {
 }
 
 function generateDivisionQuizQuestion() {
-    // 1. Reset UI
     divisionQuizFeedback.textContent = '';
     divisionQuizFeedback.className = 'phase-feedback';
     divisionQuizCardDisplay.innerHTML = '';
     divisionQuizChoices.innerHTML = '';
 
-    // 2. Get all teams in this division
     const divisionTeams = ALL_DIVISIONS[gameState.currentDivisionQuiz];
     if (!divisionTeams) {
         alert("Error: Could not find division teams.");
@@ -718,7 +693,6 @@ function generateDivisionQuizQuestion() {
         return;
     }
 
-    // 3. Get all players from all teams in this division (top 15 from each)
     const playerPool = [];
     divisionTeams.forEach(teamAbbr => {
         const teamPlayers = gameState.allPlayers
@@ -734,19 +708,15 @@ function generateDivisionQuizQuestion() {
         return;
     }
 
-    // 4. Pick a random player to ask about
     const targetPlayer = playerPool[Math.floor(Math.random() * playerPool.length)];
-    const correctAnswer = targetPlayer.team_abbr; // The answer is the team's abbreviation
+    const correctAnswer = targetPlayer.team_abbr; 
 
-    // 5. Display the player card (name visible)
     const card = createPlayerCard(targetPlayer, false);
     divisionQuizCardDisplay.appendChild(card);
 
-    // 6. Store correct answer
     gameState.scoutPhaseQuestionData = { correctAnswer };
 
-    // 7. Display choices (all 8 teams in the division)
-    divisionQuizChoices.className = 'phase-choices division-quiz-choices'; // Use new class
+    divisionQuizChoices.className = 'phase-choices division-quiz-choices'; 
     divisionTeams.forEach(teamAbbr => {
         const button = document.createElement('button');
         button.className = 'choice-btn';
@@ -755,7 +725,6 @@ function generateDivisionQuizQuestion() {
         divisionQuizChoices.appendChild(button);
     });
 
-    // 8. Update progress
     updatePhaseProgress('division-quiz', UI_CONSTANTS.DIVISION_QUIZ_QUESTIONS);
 }
 
@@ -781,7 +750,6 @@ function handleDivisionQuizAnswer(isCorrect, button, correctAnswer) {
 
     if (gameState.scoutPhaseProgress >= UI_CONSTANTS.DIVISION_QUIZ_QUESTIONS) {
         const accuracy = gameState.scoutPhaseCorrect / UI_CONSTANTS.DIVISION_QUIZ_QUESTIONS;
-        // Show a simple alert for completion, then go back to start
         setTimeout(() => {
             alert(`Division Quiz Complete!\nScore: ${gameState.scoutPhaseCorrect} / ${UI_CONSTANTS.DIVISION_QUIZ_QUESTIONS} (${accuracy * 100}%)`);
             goToStartScreen();
@@ -790,8 +758,6 @@ function handleDivisionQuizAnswer(isCorrect, button, correctAnswer) {
         setTimeout(generateDivisionQuizQuestion, 1500);
     }
 }
-// --- *** END NEW DIVISION QUIZ MODE *** ---
-
 
 // --- Shared Line Builder UI/Logic ---
 function setupLineupBuilderState() {
@@ -806,7 +772,8 @@ function setupLineupBuilderState() {
     gameState.correctLineup = {};
     gameState.userLineup = {}; 
     
-    const lines = (gameState.currentMode === 'scout' && gameState.currentScoutPhase === 3) ? 3 : gameState.linesToQuiz;
+    // Use gameState.linesToQuiz (set by Quiz Mode or Scout Phase 3)
+    const lines = gameState.linesToQuiz;
     
     for (let i = 1; i <= lines; i++) {
         const lineKey = `Line ${i}`;
@@ -816,15 +783,19 @@ function setupLineupBuilderState() {
         }
     }
 }
+
 function renderLineBuilderUI() {
     currentTeamDisplay.textContent = `Team: ${gameState.currentTeam}`;
     lineSlotsContainer.innerHTML = '';
-    const linesToRender = (gameState.currentMode === 'scout' && gameState.currentScoutPhase === 3) ? 3 : gameState.linesToQuiz;
+    
+    // --- MODIFICATION: Use gameState.linesToQuiz directly ---
+    const linesToRender = gameState.linesToQuiz;
 
     if (Object.keys(gameState.userLineup).length !== linesToRender || !gameState.userLineup[`Line ${linesToRender}`]) {
         setupLineupBuilderState();
         if (Object.keys(gameState.correctLineup).length === 0) return;
     }
+    // --- END MODIFICATION ---
 
     for (let i = 1; i <= linesToRender; i++) {
         const lineId = `Line ${i}`;
@@ -852,39 +823,75 @@ function renderLineBuilderUI() {
         lineSlotsContainer.appendChild(lineUnit);
     }
 
-    playerPool.innerHTML = '';
+    // --- MODIFICATION: Dual Pool Generation ---
+    forwardPlayerPool.innerHTML = '';
+    defensePlayerPool.innerHTML = '';
+    
     const allTeamPlayers = gameState.allPlayers.filter(p => p.team_abbr === gameState.currentTeam && ['C', 'L', 'R', 'D'].includes(p.position))
                                           .sort((a, b) => b.rating - a.rating);
-    const playersNeededCount = linesToRender * 5; 
-    const playersInSlots = new Set();
+    
+    // Split players by position
+    const allTeamForwards = allTeamPlayers.filter(p => ['C', 'L', 'R'].includes(p.position));
+    const allTeamDefensemen = allTeamPlayers.filter(p => p.position === 'D');
+
+    let playersInSlots = new Set();
     Object.values(gameState.userLineup).forEach(line => { 
         Object.values(line || {}).forEach(player => { 
             if (player) playersInSlots.add(player.id); 
         }); 
     });
 
-    let poolCandidates = allTeamPlayers.slice(0, playersNeededCount + 7);
+    // 1. Generate Forward Pool
+    const forwardsNeeded = linesToRender * 3; // 3 forwards per line
+    let poolCandidatesForwards = allTeamForwards.slice(0, forwardsNeeded + 4); // Buffer
 
+    // 2. Generate Defensemen Pool
+    const defensemenNeeded = linesToRender * 2; // 2 defensemen per line
+    let poolCandidatesDefensemen = allTeamDefensemen.slice(0, defensemenNeeded + 3); // Buffer
+    
+    // 3. Ensure all *correct* players are in their respective pools
     for (let i = 1; i <= linesToRender; i++) {
         const lineId = `Line ${i}`;
         if (gameState.correctLineup[lineId]) {
-            Object.values(gameState.correctLineup[lineId]).forEach(correctPlayer => {
-                if (correctPlayer && !poolCandidates.some(p => p.player_name === correctPlayer.name)) {
-                    const fullPlayer = allTeamPlayers.find(p => p.player_name === correctPlayer.name);
-                    if (fullPlayer) poolCandidates.push(fullPlayer);
+            Object.entries(gameState.correctLineup[lineId]).forEach(([slotKey, correctPlayer]) => {
+                if (!correctPlayer) return;
+                
+                const fullPlayer = allTeamPlayers.find(p => p.player_name === correctPlayer.name);
+                if (!fullPlayer) return;
+
+                const isForward = ['C', 'L', 'R'].includes(fullPlayer.position);
+                if (isForward && !poolCandidatesForwards.some(p => p.id === fullPlayer.id)) {
+                    poolCandidatesForwards.push(fullPlayer);
+                } else if (!isForward && !poolCandidatesDefensemen.some(p => p.id === fullPlayer.id)) {
+                    poolCandidatesDefensemen.push(fullPlayer);
                 }
             });
         }
     }
-    
-    poolCandidates = poolCandidates.filter((p, i, self) => i === self.findIndex(pl => pl.id === p.id));
-    const finalPoolPlayers = poolCandidates.filter(p => !playersInSlots.has(p.id));
-    finalPoolPlayers.forEach(player => { 
-        playerPool.appendChild(createPlayerCard(player, false)); 
+
+    // 4. Filter, De-duplicate, and Render
+    const finalPoolForwards = poolCandidatesForwards
+        .filter((p, i, self) => i === self.findIndex(pl => pl.id === p.id)) // De-dupe
+        .filter(p => !playersInSlots.has(p.id)); // Filter placed
+        
+    finalPoolForwards.forEach(player => { 
+        forwardPlayerPool.appendChild(createPlayerCard(player, false)); 
+    });
+
+    const finalPoolDefensemen = poolCandidatesDefensemen
+        .filter((p, i, self) => i === self.findIndex(pl => pl.id === p.id)) // De-dupe
+        .filter(p => !playersInSlots.has(p.id)); // Filter placed
+
+    finalPoolDefensemen.forEach(player => { 
+        defensePlayerPool.appendChild(createPlayerCard(player, false)); 
     });
     
-    poolCount.textContent = finalPoolPlayers.length;
+    // 5. Update counts
+    forwardPoolCount.textContent = finalPoolForwards.length;
+    defensePoolCount.textContent = finalPoolDefensemen.length;
+    
     attachDragDropListeners();
+    // --- END MODIFICATION ---
 }
 function renderPlayerInSlot(player) {
      if (!player) return '';
@@ -947,12 +954,19 @@ function handleDrop(e) {
         return;
     }
     
+    // --- MODIFICATION: Return existing card to correct pool ---
     if (slot.children.length > 1) { 
         const existingCard = slot.querySelector('.player-card');
         if (existingCard) {
-            playerPool.appendChild(existingCard); 
+            const playerPos = existingCard.dataset.position;
+            if (['C', 'L', 'R'].includes(playerPos)) {
+                forwardPlayerPool.appendChild(existingCard);
+            } else {
+                defensePlayerPool.appendChild(existingCard);
+            }
         }
     }
+    // --- END MODIFICATION ---
     
     slot.appendChild(draggedCard); 
     
@@ -971,6 +985,7 @@ function handleDrop(e) {
     
     if (gameState.currentMode === 'quiz') { checkQuizCompletion(); }
 }
+
 function handleCardClick(e) {
      if (e.currentTarget.closest('#phase-1-card-display') || e.currentTarget.closest('#phase-2-card-display') || e.currentTarget.closest('#division-quiz-card-display')) { return; }
      
@@ -980,7 +995,15 @@ function handleCardClick(e) {
     const slot = card.closest('.line-slot');
     
     if (slot) {
-        playerPool.appendChild(card);
+        // --- MODIFICATION: Return card to correct pool ---
+        const playerPos = card.dataset.position;
+        if (['C', 'L', 'R'].includes(playerPos)) {
+            forwardPlayerPool.appendChild(card);
+        } else {
+            defensePlayerPool.appendChild(card);
+        }
+        // --- END MODIFICATION ---
+        
         const [lineId, slotKey] = slot.dataset.slotId.split('-');
          if (gameState.userLineup[lineId]) { gameState.userLineup[lineId][slotKey] = null; }
         slot.classList.remove('feedback-correct', 'feedback-warning', 'feedback-incorrect');
@@ -997,7 +1020,8 @@ function attachDragDropListeners() {
         slot.addEventListener('drop', handleDrop);
     });
     
-     playerPool.querySelectorAll('.player-card').forEach(card => {
+    // --- MODIFICATION: Attach listeners to both pools ---
+     document.querySelectorAll('#forward-player-pool .player-card, #defense-player-pool .player-card').forEach(card => {
          card.removeEventListener('dragstart', handleDragStart);
          card.addEventListener('dragstart', handleDragStart);
          card.removeEventListener('click', handleCardClick);
@@ -1031,17 +1055,15 @@ function goToStartScreen() {
      gameState.currentDivisionQuiz = null;
      clearInterval(gameState.timer);
      updateStartScreenUI(); 
-     updateDivisionMasteryUI(); // Check for new division quizzes
+     updateDivisionMasteryUI(); 
      setScreen('start');
 }
 
-// --- NEW: Check for mastered divisions and show buttons ---
 function updateDivisionMasteryUI() {
-    divisionQuizButtons.innerHTML = ''; // Clear old buttons
+    divisionQuizButtons.innerHTML = ''; 
     let unlockedCount = 0;
 
     for (const [divisionName, teamAbbrs] of Object.entries(ALL_DIVISIONS)) {
-        // Check if every team in this division is in the masteredTeams set
         const isMastered = teamAbbrs.every(team => gameState.masteredTeams.has(team));
         
         if (isMastered) {
@@ -1053,8 +1075,6 @@ function updateDivisionMasteryUI() {
             divisionQuizButtons.appendChild(button);
         }
     }
-
-    // Show/hide placeholder text
     divisionMasteryPlaceholder.style.display = (unlockedCount === 0) ? 'block' : 'none';
 }
 
