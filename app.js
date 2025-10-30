@@ -69,11 +69,15 @@ const phase1CardDisplay = document.getElementById('phase-1-card-display');
 const phase1Choices = document.getElementById('phase-1-choices');
 const phase1Feedback = document.getElementById('phase-1-feedback');
 const phase1Progress = document.getElementById('phase-1-progress');
+
+// --- MODIFIED PHASE 2 DOM ELEMENTS ---
 const phase2Team = document.getElementById('scout-phase-2-team');
-const phase2PlayerA = document.getElementById('phase-2-player-A');
-const phase2PlayerB = document.getElementById('phase-2-player-B');
+const phase2CardDisplay = document.getElementById('phase-2-card-display'); // Changed
+const phase2Choices = document.getElementById('phase-2-choices'); // Changed
 const phase2Feedback = document.getElementById('phase-2-feedback');
 const phase2Progress = document.getElementById('phase-2-progress');
+// --- END MODIFICATION ---
+
 const phaseCompleteTitle = document.getElementById('phase-complete-title');
 const phaseCompleteMessage = document.getElementById('phase-complete-message');
 const nextPhaseButton = document.getElementById('next-phase-btn');
@@ -295,11 +299,9 @@ function updateTimerDisplay() {
      const timeRatio = Math.max(0, gameState.timeRemaining / UI_CONSTANTS.TIMER_SECONDS);
     timerBar.style.width = `${timeRatio * 100}%`;
     
-    // --- FIX: Format timer as M:SS instead of MM:00 ---
     const minutes = Math.floor(gameState.timeRemaining / 60);
     const seconds = gameState.timeRemaining % 60;
     timerText.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-    // --- END FIX ---
 
     timerBar.style.backgroundColor = gameState.timeRemaining <= 10 ? 'var(--color-error-red)' : 'var(--color-accent-cyan)';
     timerBar.style.boxShadow = `0 0 10px ${gameState.timeRemaining <= 10 ? 'var(--color-error-red)' : 'var(--color-accent-cyan)'}`;
@@ -443,7 +445,7 @@ function handlePhase1Answer(isCorrect, button, targetPlayerId) {
     }
 }
 
-// --- Phase 2 ---
+// --- MODIFIED PHASE 2 ---
 function startScoutPhase2() {
     gameState.scoutPhaseProgress = 0;
     gameState.scoutPhaseCorrect = 0;
@@ -451,73 +453,92 @@ function startScoutPhase2() {
     generatePhase2Question();
     setScreen('scoutPhase2');
 }
+
 function generatePhase2Question() {
-     phase2Feedback.textContent = ''; phase2Feedback.className = 'phase-feedback';
-     phase2PlayerA.innerHTML = ''; phase2PlayerB.innerHTML = '';
-     phase2PlayerA.onclick = null; phase2PlayerB.onclick = null;
-     phase2PlayerA.style.borderColor = 'transparent'; phase2PlayerB.style.borderColor = 'transparent';
+    // 1. Reset UI
+    phase2Feedback.textContent = ''; 
+    phase2Feedback.className = 'phase-feedback';
+    phase2CardDisplay.innerHTML = '';
+    phase2Choices.innerHTML = '';
 
-    const teamPlayers = gameState.allPlayers.filter(p => p.team_abbr === gameState.currentTeam && ['C', 'L', 'R', 'D'].includes(p.position))
-                                       .sort((a, b) => b.rating - a.rating)
-                                       .slice(0, 15);
-     if (teamPlayers.length < 2) { alert("Not enough players for Scout School."); goToStartScreen(); return; }
-    
-    let playerA, playerB, attempts = 0;
-     do {
-         const shuffledPlayers = shuffleArray([...teamPlayers]);
-         playerA = shuffledPlayers[0]; playerB = shuffledPlayers[1];
-         attempts++;
-     // Keep trying if ratings are equal, but stop after 10 attempts or if there aren't enough unique players
-     } while (playerA.rating === playerB.rating && attempts < 10 && teamPlayers.length > 2);
-
-    phase2PlayerA.appendChild(createPlayerCard(playerA, false)); // Name Visible
-    phase2PlayerB.appendChild(createPlayerCard(playerB, false)); // Name Visible
-    
-    // --- FIX: Handle equal ratings correctly ---
-    let higherRatedPlayerId;
-    if (playerA.rating > playerB.rating) {
-        higherRatedPlayerId = playerA.id;
-    } else if (playerB.rating > playerA.rating) {
-        higherRatedPlayerId = playerB.id;
-    } else {
-        higherRatedPlayerId = 'EQUAL'; // Special case for ties
+    // 2. Find the team's line structure
+    const teamData = gameState.lineStructures.find(t => t.team_abbr === gameState.currentTeam);
+    if (!teamData || !teamData.lines) {
+        alert("No line data found for this team.");
+        goToStartScreen();
+        return;
     }
-    gameState.scoutPhaseQuestionData = { higherRatedPlayerId };
-    
-    phase2PlayerA.onclick = () => handlePhase2Answer(playerA.id, phase2PlayerA);
-    phase2PlayerB.onclick = () => handlePhase2Answer(playerB.id, phase2PlayerB);
-    // --- END FIX ---
 
+    // 3. Create a pool of players from Lines 1, 2, and 3
+    const playerPool = [];
+    const linesToQuiz = ['Line 1', 'Line 2', 'Line 3'];
+
+    for (const lineId of linesToQuiz) {
+        if (teamData.lines[lineId]) {
+            // Get all player names from the line (e.g., "LW", "C", "RW", "LD", "RD")
+            Object.values(teamData.lines[lineId]).forEach(playerInfo => { // playerInfo is {name: "...", rating: ...}
+                // Find the full player object from allPlayers
+                const fullPlayer = gameState.allPlayers.find(p => p.player_name === playerInfo.name);
+                if (fullPlayer) {
+                    playerPool.push({ player: fullPlayer, correctLine: lineId });
+                }
+            });
+        }
+    }
+
+    if (playerPool.length === 0) {
+        alert("Not enough line data for Scout School on this team.");
+        goToStartScreen();
+        return;
+    }
+
+    // 4. Pick a random player to ask about
+    const questionData = playerPool[Math.floor(Math.random() * playerPool.length)];
+    const targetPlayer = questionData.player;
+    const correctAnswer = questionData.correctLine;
+
+    // 5. Display the player card
+    const card = createPlayerCard(targetPlayer, false); // false = show name
+    phase2CardDisplay.appendChild(card);
+
+    // 6. Store correct answer
+    gameState.scoutPhaseQuestionData = { correctAnswer };
+
+    // 7. Display choices
+    const choices = ["Line 1", "Line 2", "Line 3"];
+    choices.forEach(lineName => {
+        const button = document.createElement('button');
+        button.className = 'choice-btn';
+        button.textContent = lineName;
+        // Check if chosen line (lineName) is the correct answer (correctAnswer)
+        button.onclick = () => handlePhase2Answer(lineName === correctAnswer, button, correctAnswer);
+        phase2Choices.appendChild(button);
+    });
+
+    // 8. Update progress display
     updatePhaseProgress(2);
 }
-function handlePhase2Answer(selectedPlayerId, selectedCardElement) { // --- FIX: Pass ID to check logic ---
-    phase2PlayerA.onclick = null; phase2PlayerB.onclick = null;
 
-    // --- FIX: Check against 'EQUAL' case ---
-    const { higherRatedPlayerId } = gameState.scoutPhaseQuestionData;
-    const isCorrect = (selectedPlayerId === higherRatedPlayerId) || (higherRatedPlayerId === 'EQUAL');
-    // --- END FIX ---
+function handlePhase2Answer(isCorrect, button, correctAnswer) {
+    // Disable all choice buttons
+    phase2Choices.querySelectorAll('button').forEach(btn => btn.disabled = true);
 
     if (isCorrect) {
         gameState.scoutPhaseCorrect++;
         phase2Feedback.textContent = 'CORRECT!';
         phase2Feedback.className = 'phase-feedback correct';
-        selectedCardElement.style.borderColor = 'var(--color-feedback-green)';
+        button.classList.add('correct');
     } else {
-        phase2Feedback.textContent = 'INCORRECT!';
+        phase2Feedback.textContent = `INCORRECT! Player is on ${correctAnswer}`;
         phase2Feedback.className = 'phase-feedback incorrect';
-        selectedCardElement.style.borderColor = 'var(--color-error-red)';
-        
-        // Find the correct card to highlight
-        let correctCard = null;
-        if (higherRatedPlayerId === 'EQUAL') {
-             correctCard = selectedCardElement === phase2PlayerA ? phase2PlayerB : phase2PlayerA;
-        } else {
-             correctCard = (phase2PlayerA.querySelector(`[data-player-id="${higherRatedPlayerId}"]`)) ? phase2PlayerA : phase2PlayerB;
-        }
-        if (correctCard && correctCard !== selectedCardElement) { correctCard.style.borderColor = 'var(--color-feedback-green)'; }
+        button.classList.add('incorrect');
+        // Highlight the correct answer
+        phase2Choices.querySelectorAll('button').forEach(btn => {
+            if (btn.textContent === correctAnswer) { btn.classList.add('correct'); }
+        });
     }
     
+    // Check for phase completion
     gameState.scoutPhaseProgress++;
     if (gameState.scoutPhaseProgress >= UI_CONSTANTS.PHASE_2_QUESTIONS) {
         const accuracy = gameState.scoutPhaseCorrect / UI_CONSTANTS.PHASE_2_QUESTIONS;
@@ -526,6 +547,7 @@ function handlePhase2Answer(selectedPlayerId, selectedCardElement) { // --- FIX:
         setTimeout(generatePhase2Question, 1500);
     }
 }
+// --- END MODIFICATION ---
 
 
 // --- Phase 3 ---
@@ -672,7 +694,6 @@ function renderLineBuilderUI() {
         lineUnit.innerHTML = `<h4>:: LINE ${i} ::</h4>
                               <div class="line-slots" data-line-id="${lineId}">
                                   ${Object.keys(gameState.correctLineup[lineId]).map(slotId => {
-                                      // --- FIX: Determine correct position type (C, W, or D) ---
                                       const slotKey = slotId; // e.g., "LW", "LD"
                                       let posType;
                                       if (slotKey === 'C') {
@@ -684,7 +705,6 @@ function renderLineBuilderUI() {
                                       } else {
                                           posType = slotKey.slice(0, 1).toUpperCase(); // Fallback
                                       }
-                                      // --- END FIX ---
 
                                       return `
                                       <div class="line-slot" data-slot-id="${lineId}-${slotId}" data-position-type="${posType}">
@@ -788,12 +808,11 @@ function handleDrop(e) {
     if (!draggedCard) return;
     
     const playerPosition = draggedCard.dataset.position; // Player's actual position (C, L, R, D)
-    const slotType = slot.dataset.positionType; // Slot type (C, W, D) - from our FIX
+    const slotType = slot.dataset.positionType; // Slot type (C, W, D)
     
     slot.classList.remove('drag-over');
     draggedCard.classList.remove('dragging');
 
-    // This logic now works thanks to the fix in renderLineBuilderUI
     const isPositionValid =
         (slotType === 'C' && playerPosition === 'C') ||
         (slotType === 'W' && ['L', 'R', 'C'].includes(playerPosition)) || // Centers can play Wing
@@ -818,7 +837,6 @@ function handleDrop(e) {
         const existingCard = slot.querySelector('.player-card');
         if (existingCard) {
             playerPool.appendChild(existingCard); // Return existing card to pool
-             // No need to clear state, handleDragStart did that
         }
     }
     
@@ -844,7 +862,7 @@ function handleDrop(e) {
 }
 function handleCardClick(e) {
      // Ignore clicks on phase 1/2 cards
-     if (e.currentTarget.closest('#phase-1-card-display') || e.currentTarget.closest('.phase-2-card')) { return; }
+     if (e.currentTarget.closest('#phase-1-card-display') || e.currentTarget.closest('#phase-2-card-display')) { return; }
      
      if (!gameState.quizActive && !(gameState.currentMode === 'scout' && gameState.currentScoutPhase === 3)) return;
     

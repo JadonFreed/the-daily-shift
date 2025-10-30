@@ -53,7 +53,7 @@
         <div id="quiz-screen" class="game-screen">
              <div class="timer-bar-container">
                 <div id="timer-bar"></div>
-                <div id="timer-text">60:00</div>
+                <div id="timer-text">0:60</div>
             </div>
             <h3 id="current-team-display">Team: --</h3>
 
@@ -93,20 +93,18 @@
          </div>
 
          <div id="scout-phase-2-screen" class="game-screen scout-phase-screen">
-            <h2>SCOUT SCHOOL - PHASE 2: EVALUATION</h2>
+            <h2>SCOUT SCHOOL - PHASE 2: LINE ASSIGNMENT</h2>
             <h3 id="scout-phase-2-team">Team: --</h3>
-            <p class="phase-objective">Select the player with the higher RATING.</p>
-            <div id="phase-2-comparison" class="phase-comparison">
-                <div id="phase-2-player-A" class="phase-2-card">
-                     </div>
-                <div class="vs-divider">VS</div>
-                <div id="phase-2-player-B" class="phase-2-card">
-                     </div>
-            </div>
+            <p class="phase-objective">Identify which line the player belongs on.</p>
+            
+            <div id="phase-2-card-display" class="phase-card-display">
+                </div>
+            <div id="phase-2-choices" class="phase-choices">
+                </div>
+
             <div id="phase-2-feedback" class="phase-feedback"></div>
              <div id="phase-2-progress" class="phase-progress">Progress: 0 / 10</div>
         </div>
-
         <div id="phase-complete-screen" class="game-screen">
              <h2 id="phase-complete-title">PHASE COMPLETE!</h2>
              <p id="phase-complete-message">Good work, scout. Prepare for the next phase.</p>
